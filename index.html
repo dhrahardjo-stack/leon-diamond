@@ -1107,8 +1107,8 @@ body { background: #f5f7f8; color: #1c1c1e; }
   background-repeat: no-repeat;
   animation: ldGlint 3.4s ease-in-out infinite;
   /* Mask ke logo shape — works karena element ini tidak bergerak */
-  -webkit-mask-image: url('images/logo.png');
-  mask-image: url('images/logo.png');
+  -webkit-mask-image: url('images/2.png');
+  mask-image: url('images/2.png');
   -webkit-mask-size: contain;
   mask-size: contain;
   -webkit-mask-repeat: no-repeat;
@@ -1152,18 +1152,18 @@ body { background: #f5f7f8; color: #1c1c1e; }
   }
   .nav-appt { display: none !important; }
 }
-/* scrolled state — transparent glass */
+/* scrolled state — semi-transparent glass overlay */
 .nav.scrolled {
-  background: transparent !important;
-  backdrop-filter: blur(24px) saturate(1.4) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(1.4) !important;
-  border-bottom: 1px solid transparent !important;
+  background: rgba(7,24,40,0.50) !important;
+  backdrop-filter: blur(20px) saturate(1.6) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(1.6) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.06) !important;
   box-shadow: none !important;
 }
 /* Logo — bigger, circular wrap */
 .nav-logo { display: inline-flex; align-items: center; }
 .nav-logo-img {
-  height: 80px !important;
+  height: 48px !important;
   width: auto !important;
   object-fit: contain;
   display: block;
@@ -1507,8 +1507,9 @@ html, body { overflow-x: hidden; }
 .celeb-carousel { cursor: default !important; }
 
 @media (max-width: 860px) {
-  /* Nav logo — centered, bigger */
-  .nav-logo-img { height: 72px !important; }
+  /* Nav height taller on mobile, logo bigger */
+  .nav { height: 72px !important; }
+  .nav-logo-img { height: 44px !important; }
 
   /* Section header margins tighter */
   .sec-header { margin-bottom: 36px !important; }
@@ -1555,8 +1556,9 @@ html, body { overflow-x: hidden; }
 }
 
 @media (max-width: 480px) {
-  /* Nav logo — centered, bigger */
-  .nav-logo-img { height: 64px !important; }
+  /* Nav logo on small phones */
+  .nav { height: 68px !important; }
+  .nav-logo-img { height: 38px !important; }
 
   /* Hero trust bar — hide on very small, no room */
   .hero-trust { display: none !important; }
@@ -1602,7 +1604,7 @@ html, body { overflow-x: hidden; }
 <nav class="nav" id="main-nav">
   <a class="nav-logo" href="https://leondiamond.com">
     <div class="logo-glint-wrap">
-      <img src="images/logo.png" alt="Leon Diamond" class="nav-logo-img">
+      <img src="images/2.png" alt="Leon Diamond" class="nav-logo-img">
       <div class="logo-glint-stripe"></div>
     </div>
   </a>
