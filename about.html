@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — Leon Diamond | Family Jewelers Since 1975</title>
+<meta name="description" content="Three generations. One family. One craft. Leon Diamond has served New York City's Diamond District since 1975 — family-owned, in-house crafted, and fiercely committed to quality.">
+<meta property="og:title" content="About Leon Diamond — Family Jewelers Since 1975">
+<meta property="og:description" content="Three generations. One family. One craft. Family-owned fine jewelers in NYC's Diamond District since 1975.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#071828">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET & BASE ─────────────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --dark:      #071828;
+  --dark-2:    #0c1e2c;
+  --dark-3:    #121e2a;
+  --white:     #ffffff;
+  --gold:      #2a6da4;
+  --gold-soft: #b2ccdd;
+  --gold-deep: #164f7a;
+  --bdr-d:     rgba(255,255,255,0.07);
+  --font:      'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font); background: var(--dark); color: var(--white); overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+button { font-family: var(--font); cursor: pointer; border: none; background: none; }
+
+/* ─── UTILITY ──────────────────────────────────────────────────────── */
+.eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+}
+.eyebrow-gold { color: var(--gold-soft); }
+
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 72px);
+}
+
+.btn {
+  display: inline-block;
+  font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  padding: 15px 36px;
+  transition: opacity 0.2s;
+}
+.btn:hover { opacity: 0.82; }
+.btn-gold  { background: var(--gold); color: var(--white); }
+.btn-ghost-w { border: 1px solid rgba(255,255,255,0.28); color: var(--white); }
+
+/* ─── FADE ANIMATION ───────────────────────────────────────────────── */
+.fade-up {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── ANNOUNCEMENT BAR ─────────────────────────────────────────────── */
+.ann-bar {
+  background: var(--dark-2); color: rgba(255,255,255,0.55);
+  text-align: center; font-size: 11px; font-weight: 500; letter-spacing: 1.8px;
+  text-transform: uppercase; padding: 8px 20px;
+  position: relative; z-index: 101;
+  border-bottom: 1px solid var(--bdr-d);
+}
+.ann-bar a {
+  color: var(--gold-soft); text-decoration: none; margin-left: 8px;
+  font-weight: 600; letter-spacing: 1.5px; transition: color 0.2s;
+}
+.ann-bar a:hover { color: var(--white); }
+
+/* ─── NAV ──────────────────────────────────────────────────────────── */
+@keyframes ldGlint {
+  0%        { background-position: -80% center; opacity: 0; }
+  6%        { opacity: 1; }
+  55%, 100% { background-position: 180% center; opacity: 0; }
+}
+
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(7,24,40,0.97);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  height: 80px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 clamp(20px, 4vw, 60px);
+  transition: background 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease;
+}
+.nav.scrolled {
+  background: transparent;
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  border-bottom: 1px solid transparent;
+}
+.nav-logo { display: inline-flex; align-items: center; }
+.logo-glint-wrap {
+  flex-shrink: 0; display: inline-flex; position: relative; overflow: hidden;
+}
+.logo-glint-stripe {
+  pointer-events: none; position: absolute; inset: 0;
+  background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.82) 50%, transparent 80%);
+  background-size: 40% 100%; background-repeat: no-repeat;
+  animation: ldGlint 3.4s ease-in-out infinite;
+  -webkit-mask-image: url('images/logo.png'); mask-image: url('images/logo.png');
+  -webkit-mask-size: contain; mask-size: contain;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-position: center; mask-position: center;
+  z-index: 2;
+}
+.nav-logo-img { height: 80px; width: auto; object-fit: contain; display: block; }
+.nav-links {
+  display: flex; gap: 0; list-style: none;
+  justify-content: center;
+}
+.nav-links a {
+  display: block; padding: 0 18px;
+  font-size: 13px; font-weight: 500; letter-spacing: 0.3px;
+  color: rgba(255,255,255,0.82);
+  position: relative; transition: color 0.2s;
+}
+.nav-links a::after {
+  content: ''; position: absolute;
+  bottom: -2px; left: 18px; right: 18px;
+  height: 1px; background: var(--gold-soft);
+  transform: scaleX(0); transform-origin: center;
+  transition: transform 0.25s ease;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-links a.active { color: var(--white); }
+.nav-links a.active::after { transform: scaleX(1); }
+.nav-right { display: flex; align-items: center; gap: 20px; justify-content: flex-end; }
+.nav-icon-btn {
+  background: none; border: none; cursor: pointer;
+  color: rgba(255,255,255,0.75); display: flex; align-items: center;
+  transition: color 0.2s;
+}
+.nav-icon-btn:hover { color: var(--white); }
+.nav-appt {
+  font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 9px 20px;
+  border: 1px solid rgba(178,204,221,0.45); color: var(--gold-soft);
+  background: transparent; transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.nav-appt:hover {
+  background: var(--gold); color: var(--white); border-color: var(--gold);
+}
+.nav-hamburger {
+  display: none; flex-direction: column; justify-content: center; align-items: center;
+  width: 40px; height: 40px; gap: 5px;
+  background: none; border: none; padding: 4px;
+}
+.nav-hamburger span {
+  display: block; width: 22px; height: 1.5px;
+  background: rgba(255,255,255,0.8);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.mobile-nav-drawer {
+  display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(7,24,40,0.98); z-index: 200; flex-direction: column;
+  justify-content: center; align-items: center; padding: 40px 32px; gap: 0;
+}
+.mobile-nav-drawer.open { display: flex; }
+.mobile-nav-drawer a {
+  font-size: clamp(28px, 6vw, 42px); font-weight: 700; letter-spacing: -0.5px;
+  color: rgba(255,255,255,0.85); padding: 14px 0; width: 100%; text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.07); transition: color 0.2s;
+}
+.mobile-nav-drawer a:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
+.mobile-nav-drawer a:hover { color: var(--white); }
+.mobile-nav-appt-wrap { margin-top: 32px; }
+.mobile-nav-appt-wrap a {
+  font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  padding: 15px 36px; border: 1px solid rgba(178,204,221,0.45); color: var(--gold-soft);
+  display: inline-block;
+}
+
+/* ─── ABOUT HERO ────────────────────────────────────────────────────── */
+.about-hero {
+  position: relative;
+  min-height: 88vh;
+  overflow: hidden;
+  background: var(--dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+/* Photo fills entire hero */
+.about-hero-photo-panel {
+  position: absolute; inset: 0;
+  z-index: 0;
+}
+.about-hero-photo-panel img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center top;
+}
+/* Subtle gradient — bottom only, very faint */
+.about-hero-photo-panel::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to top,
+    rgba(7,18,30,0.72) 0%,
+    rgba(7,18,30,0.18) 28%,
+    rgba(7,18,30,0.04) 48%,
+    transparent 65%
+  );
+  pointer-events: none;
+}
+/* Text panel overlaid at bottom */
+.about-hero-text-panel {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: clamp(56px, 7vw, 96px) clamp(32px, 5vw, 80px);
+  max-width: 720px;
+}
+.about-hero-eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold-soft); margin-bottom: 20px;
+}
+.about-hero-title {
+  font-size: clamp(42px, 5.5vw, 78px); font-weight: 800;
+  line-height: 1.02; letter-spacing: -2.5px;
+  color: var(--white); margin-bottom: 28px;
+}
+.about-hero-sub {
+  font-size: clamp(15px, 1.6vw, 17px); line-height: 1.78;
+  color: rgba(255,255,255,0.88);
+  max-width: 460px; margin-bottom: 32px;
+}
+.about-hero-quote {
+  font-size: 15px; font-style: italic; letter-spacing: 0.3px;
+  color: var(--gold-soft);
+}
+
+/* ─── STATS BAR ─────────────────────────────────────────────────────── */
+.stats-bar {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  background: var(--dark-2);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.stats-bar-item {
+  padding: 36px 24px; border-right: 1px solid rgba(255,255,255,0.07);
+  text-align: center;
+}
+.stats-bar-item:last-child { border-right: none; }
+.stat-num {
+  font-size: 32px; font-weight: 800; color: #ffffff; letter-spacing: -1px;
+  display: block; margin-bottom: 8px;
+}
+.stat-label {
+  font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.70);
+}
+
+/* ─── STORY SECTION ─────────────────────────────────────────────────── */
+.story {
+  background: var(--dark);
+  padding: clamp(64px, 8vw, 112px) 0;
+}
+.story-header { margin-bottom: 52px; }
+.story-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold-soft); margin-bottom: 18px;
+}
+.story-title {
+  font-size: clamp(28px, 3.5vw, 46px); font-weight: 800;
+  line-height: 1.1; letter-spacing: -1.5px;
+  color: #ffffff;
+}
+.story-cols {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 5vw, 80px);
+}
+.story-col p {
+  font-size: 16px; line-height: 1.85; color: #ffffff;
+  text-align: justify; margin-bottom: 24px;
+}
+.story-col p:last-child { margin-bottom: 0; }
+.story-col strong { color: #ffffff; font-weight: 700; }
+
+/* ─── CRAFT PILLARS ─────────────────────────────────────────────────── */
+.craft {
+  background: var(--dark-2);
+  padding: clamp(64px, 8vw, 112px) 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.craft-header { margin-bottom: 64px; }
+.craft-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold-soft); margin-bottom: 18px;
+}
+.craft-title {
+  font-size: clamp(28px, 3.5vw, 46px); font-weight: 800;
+  line-height: 1.1; letter-spacing: -1.5px;
+  color: var(--white); max-width: 520px;
+}
+.craft-pillars {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+.craft-pillar {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: clamp(36px, 4vw, 52px) clamp(28px, 3vw, 40px);
+}
+.craft-pillar-num {
+  font-size: 48px; font-weight: 800; letter-spacing: -2px;
+  color: rgba(178,204,221,0.20); line-height: 1;
+  margin-bottom: 20px; display: block;
+}
+.craft-pillar-title {
+  font-size: 18px; font-weight: 700; letter-spacing: -0.4px;
+  color: var(--white); margin-bottom: 14px;
+}
+.craft-pillar-desc {
+  font-size: 15px; line-height: 1.82; color: #ffffff;
+  text-align: justify;
+}
+
+/* ─── VISIT CTA ─────────────────────────────────────────────────────── */
+.visit {
+  background: var(--dark);
+  padding: clamp(64px, 8vw, 112px) 0;
+}
+.visit-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 96px);
+  align-items: center;
+}
+.visit-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold-soft); margin-bottom: 18px;
+}
+.visit-title {
+  font-size: clamp(28px, 3.5vw, 48px); font-weight: 800;
+  line-height: 1.08; letter-spacing: -1.5px;
+  color: var(--white); margin-bottom: 24px;
+}
+.visit-sub {
+  font-size: 16px; line-height: 1.78; color: #ffffff;
+  margin-bottom: 36px;
+}
+.visit-meta { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+.visit-meta-item {
+  display: flex; align-items: center; gap: 14px;
+  font-size: 15px; color: #ffffff;
+}
+.visit-meta-item svg {
+  width: 18px; height: 18px; flex-shrink: 0;
+  fill: none; stroke: var(--gold-soft); stroke-width: 1.5;
+}
+.visit-image {
+  aspect-ratio: 4/5; overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.07);
+}
+.visit-image img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ─── FOOTER ────────────────────────────────────────────────────────── */
+.footer {
+  background: var(--dark-2);
+  border-top: 1px solid var(--bdr-d);
+  padding: clamp(56px, 6vw, 80px) 0 0;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: clamp(24px, 4vw, 56px);
+  padding-bottom: 56px;
+}
+.footer-logo {
+  font-size: 13px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--white); margin-bottom: 14px;
+}
+.footer-tagline {
+  font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.48);
+  margin-bottom: 24px; max-width: 240px;
+}
+.footer-contact-item {
+  font-size: 13px; color: rgba(255,255,255,0.52); margin-bottom: 8px;
+  display: flex; gap: 8px; align-items: center;
+}
+.footer-col-title {
+  font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(255,255,255,0.40); margin-bottom: 20px;
+}
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 12px; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,0.52); transition: color 0.2s; }
+.footer-links a:hover { color: var(--white); }
+.footer-bottom {
+  border-top: 1px solid var(--bdr-d); padding: 20px 0;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
+.footer-social { display: flex; gap: 20px; }
+.footer-social a {
+  font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.45); transition: color 0.2s;
+}
+.footer-social a:hover { color: var(--gold-soft); }
+
+/* ─── RESPONSIVE ────────────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .nav { grid-template-columns: 1fr auto; }
+  .nav-right .nav-appt { display: none; }
+
+  /* Hero: smaller height on mobile */
+  .about-hero {
+    min-height: 75vh;
+  }
+  .about-hero-text-panel {
+    padding: clamp(40px, 6vw, 64px) clamp(24px, 5vw, 48px);
+  }
+
+  .story-cols { grid-template-columns: 1fr; }
+
+  .craft-pillars { grid-template-columns: 1fr; }
+
+  .visit-inner { grid-template-columns: 1fr; }
+  .visit-image { display: none; }
+
+  .stats-bar { grid-template-columns: repeat(2, 1fr); }
+  .stats-bar-item:nth-child(2) { border-right: none; }
+
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+}
+
+@media (max-width: 480px) {
+  .stats-bar { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="ann-bar">
+  Celebrating 51 Years in NYC's Diamond District — Free Overnight Shipping on All Orders
+  <a href="https://leondiamond.com/collections/all">Shop Now →</a>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="main-nav">
+  <a class="nav-logo" href="index.html">
+    <div class="logo-glint-wrap">
+      <img src="images/logo.png" alt="Leon Diamond" class="nav-logo-img">
+      <div class="logo-glint-stripe"></div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="https://leondiamond.com/pages/all-rings">Rings</a></li>
+    <li><a href="https://leondiamond.com/pages/all-earrings">Earrings</a></li>
+    <li><a href="https://leondiamond.com/collections/natural-bracelets-tennis">Bracelets</a></li>
+    <li><a href="https://leondiamond.com/pages/all-necklaces">Necklaces</a></li>
+    <li><a href="https://leondiamond.com/pages/ldbridal">Bridal</a></li>
+    <li><a href="about.html" class="active">About Us</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-icon-btn" aria-label="Search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+    </button>
+    <a class="nav-appt" href="https://calendar.app.google/Mo1Qy1UMHJpx7uo49" target="_blank">Book Appointment</a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE NAV DRAWER -->
+<div class="mobile-nav-drawer" id="mobile-nav-drawer">
+  <a href="https://leondiamond.com/pages/all-rings" onclick="closeMobileNav()">Rings</a>
+  <a href="https://leondiamond.com/pages/all-earrings" onclick="closeMobileNav()">Earrings</a>
+  <a href="https://leondiamond.com/collections/natural-bracelets-tennis" onclick="closeMobileNav()">Bracelets</a>
+  <a href="https://leondiamond.com/pages/all-necklaces" onclick="closeMobileNav()">Necklaces</a>
+  <a href="https://leondiamond.com/pages/ldbridal" onclick="closeMobileNav()">Bridal</a>
+  <a href="about.html" onclick="closeMobileNav()">About Us</a>
+  <div class="mobile-nav-appt-wrap">
+    <a href="https://calendar.app.google/Mo1Qy1UMHJpx7uo49" target="_blank">Book Appointment</a>
+  </div>
+</div>
+
+
+<!-- ═══ ABOUT HERO ════════════════════════════════════════════════════ -->
+<section class="about-hero">
+  <!-- Left: text panel, dark background -->
+  <div class="about-hero-text-panel fade-up">
+    <p class="about-hero-eyebrow">Our Story</p>
+    <h1 class="about-hero-title">One Family.<br>One Craft.<br>One District.</h1>
+    <p class="about-hero-sub">In 1975, Leon Diamond opened its doors on West 47th Street. Five decades and three generations later, we remain family-owned, in-house crafted, and fiercely committed to the art of fine jewelry.</p>
+    <p class="about-hero-quote">"We don't cut corners. We cut diamonds."</p>
+  </div>
+  <!-- Right: family photo, no text -->
+  <div class="about-hero-photo-panel">
+    <img src="images/collection/fam51.png" alt="Three generations of the Leon Diamond family">
+  </div>
+</section>
+
+<!-- ═══ STATS BAR ═════════════════════════════════════════════════════ -->
+<div class="stats-bar">
+  <div class="stats-bar-item fade-up">
+    <span class="stat-num">51</span>
+    <span class="stat-label">Years of Excellence</span>
+  </div>
+  <div class="stats-bar-item fade-up">
+    <span class="stat-num">10,000+</span>
+    <span class="stat-label">Clients For Life</span>
+  </div>
+  <div class="stats-bar-item fade-up">
+    <span class="stat-num">100%</span>
+    <span class="stat-label">In-House Crafted</span>
+  </div>
+  <div class="stats-bar-item fade-up">
+    <span class="stat-num">GIA &amp; IGI</span>
+    <span class="stat-label">Certified Only</span>
+  </div>
+</div>
+
+
+<!-- ═══ STORY ══════════════════════════════════════════════════════════ -->
+<section class="story">
+  <div class="wrap">
+    <div class="story-header fade-up">
+      <p class="story-label">The History</p>
+      <h2 class="story-title">Five Decades in the Heart of New York</h2>
+    </div>
+    <div class="story-cols fade-up">
+      <div class="story-col">
+        <p>It started with a single showcase on West 47th Street. Leon Diamond opened in <strong>1975</strong> — a small family shop with big convictions: that every stone should be hand-selected, every piece crafted in-house, and every customer treated like family.</p>
+        <p>What began as one man's vision has grown across three generations. The same values that guided the founding of Leon Diamond guide every decision made today: <strong>uncompromising quality, deep expertise, and an honest relationship with every client who walks through our doors.</strong></p>
+      </div>
+      <div class="story-col">
+        <p>We've never outsourced our craftsmanship. Our bench jewelers, diamond setters, and gemologists work under one roof — the same roof where you'll come to choose your stone, discuss your vision, and pick up your finished piece.</p>
+        <p>The Diamond District has changed around us. Trends have come and gone. New shops have opened and closed. Leon Diamond has not changed — because our clients don't want us to. They come back for the same reason their parents did. Family. Trust. The craft.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ CRAFT PILLARS ══════════════════════════════════════════════════ -->
+<section class="craft">
+  <div class="wrap">
+    <div class="craft-header fade-up">
+      <p class="craft-label">What We Stand For</p>
+      <h2 class="craft-title">The Standard We've Held Since 1975</h2>
+    </div>
+    <div class="craft-pillars">
+      <div class="craft-pillar fade-up">
+        <span class="craft-pillar-num">01</span>
+        <h3 class="craft-pillar-title">Made In-House</h3>
+        <p class="craft-pillar-desc">Every ring, pendant, and bracelet is crafted by our own bench jewelers at 74 W 47th Street. We control every step — from wax carving to final polish — so quality is never in question.</p>
+      </div>
+      <div class="craft-pillar fade-up">
+        <span class="craft-pillar-num">02</span>
+        <h3 class="craft-pillar-title">Hand-Selected Stones</h3>
+        <p class="craft-pillar-desc">We source each diamond personally — evaluating cut, color, clarity, and character beyond what any certificate can capture. We'll never put a stone in front of you that we wouldn't put on our own family.</p>
+      </div>
+      <div class="craft-pillar fade-up">
+        <span class="craft-pillar-num">03</span>
+        <h3 class="craft-pillar-title">Certified Only</h3>
+        <p class="craft-pillar-desc">Every stone we sell is GIA or IGI certified. Not as a formality — as a commitment. You deserve to know exactly what you're buying. We make that possible, always.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ VISIT ═══════════════════════════════════════════════════════════ -->
+<section class="visit">
+  <div class="wrap">
+    <div class="visit-inner">
+      <div class="fade-up">
+        <p class="visit-label">Come See Us</p>
+        <h2 class="visit-title">The District's Most Private Showroom.</h2>
+        <p class="visit-sub">74 W 47th Street. A private viewing room where you can sit, take your time, and find exactly what you're looking for — with a personal gemologist by your side.</p>
+        <div class="visit-meta">
+          <div class="visit-meta-item">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            74 W 47th St, New York, NY 10036
+          </div>
+          <div class="visit-meta-item">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            Monday – Saturday, 9AM – 6PM EST
+          </div>
+          <div class="visit-meta-item">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            By Appointment — for the best experience
+          </div>
+        </div>
+        <a href="https://calendar.app.google/Mo1Qy1UMHJpx7uo49" class="btn btn-gold" target="_blank">Book Private Appointment</a>
+      </div>
+      <div class="visit-image fade-up">
+        <img src="https://ucarecdn.com/ee6d5074-1640-4cc7-8933-47c8589c3dee/-/format/auto/" alt="Leon Diamond private showroom at 74 W 47th Street" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ FOOTER ══════════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <p class="footer-logo">Leon Diamond</p>
+        <p class="footer-tagline">Family-owned fine jewelers in New York City's Diamond District since 1975.</p>
+        <p class="footer-contact-item">74 W 47th St, New York, NY 10036</p>
+        <p class="footer-contact-item">Mon–Sat, 9AM–6PM</p>
+      </div>
+      <div>
+        <p class="footer-col-title">Collections</p>
+        <ul class="footer-links">
+          <li><a href="https://leondiamond.com/pages/all-rings">Rings</a></li>
+          <li><a href="https://leondiamond.com/pages/all-earrings">Earrings</a></li>
+          <li><a href="https://leondiamond.com/collections/natural-bracelets-tennis">Bracelets</a></li>
+          <li><a href="https://leondiamond.com/pages/all-necklaces">Necklaces</a></li>
+          <li><a href="https://leondiamond.com/pages/ldbridal">Bridal</a></li>
+          <li><a href="https://leondiamond.com/collections/gift-ideas-under-4-999">Gift Ideas</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Education</p>
+        <ul class="footer-links">
+          <li><a href="https://leondiamond.com/pages/fancy-color-guide">Diamond Guide</a></li>
+          <li><a href="https://leondiamond.com/collections/round-cut">Round Cut</a></li>
+          <li><a href="https://leondiamond.com/collections/oval-cut">Oval Cut</a></li>
+          <li><a href="https://leondiamond.com/collections/emerald-cut">Emerald Cut</a></li>
+          <li><a href="https://leondiamond.com/collections/princess-cut">Princess Cut</a></li>
+          <li><a href="https://leondiamond.com/collections/cushion-cut">Cushion Cut</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Company</p>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="https://calendar.app.google/Mo1Qy1UMHJpx7uo49">Book Appointment</a></li>
+          <li><a href="https://leondiamond.com/pages/contact">Contact</a></li>
+          <li><a href="https://leondiamond.com/pages/contact-page">Custom Requests</a></li>
+          <li><a href="https://www.instagram.com/leondiamond/">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Leon Diamond. All rights reserved. 74 W 47th St, New York, NY 10036.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/leondiamond/" target="_blank">Instagram</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══ SCRIPTS ══════════════════════════════════════════════════════════ -->
+<script>
+/* ── Scroll Fade Animations ── */
+const fadeEls = document.querySelectorAll('.fade-up');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 60);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+fadeEls.forEach(el => observer.observe(el));
+
+/* ── Nav scroll behavior ── */
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 40) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+}, { passive: true });
+
+/* ── Mobile nav ── */
+const hamburger = document.getElementById('nav-hamburger');
+const drawer = document.getElementById('mobile-nav-drawer');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  drawer.classList.toggle('open');
+  document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+});
+
+function closeMobileNav() {
+  hamburger.classList.remove('open');
+  drawer.classList.remove('open');
+  document.body.style.overflow = '';
+}
+</script>
+</body>
+</html>
