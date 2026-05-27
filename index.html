@@ -1154,9 +1154,11 @@ body { background: #f5f7f8; color: #1c1c1e; }
   position: static !important;
   transform: none !important;
   left: auto !important;
-  display: flex !important;
   justify-content: center !important;
   gap: 4px !important;
+}
+@media (min-width: 861px) {
+  .nav-links { display: flex !important; }
 }
 .nav-links a { color: rgba(255,255,255,0.82) !important; font-size: 13px; letter-spacing: 0.3px; }
 .nav-links a:hover { color: #ffffff !important; }
