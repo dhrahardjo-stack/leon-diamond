@@ -1053,6 +1053,9 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
   .nav-icon-btn { display: none; }
+  /* Logo centered, hamburger absolute right */
+  .nav { justify-content: center; position: relative; }
+  .nav-hamburger { position: absolute; right: clamp(16px, 4vw, 24px); }
 }
 @media (max-width: 600px) {
   .nav-appt { display: none; }
@@ -1488,8 +1491,8 @@ html, body { overflow-x: hidden; }
 .celeb-carousel { cursor: default !important; }
 
 @media (max-width: 860px) {
-  /* Nav logo — slightly smaller so it doesn't dominate mobile nav */
-  .nav-logo-img { height: 64px !important; }
+  /* Nav logo — centered, bigger */
+  .nav-logo-img { height: 72px !important; }
 
   /* Section header margins tighter */
   .sec-header { margin-bottom: 36px !important; }
@@ -1536,8 +1539,8 @@ html, body { overflow-x: hidden; }
 }
 
 @media (max-width: 480px) {
-  /* Nav logo smallest */
-  .nav-logo-img { height: 56px !important; }
+  /* Nav logo — centered, bigger */
+  .nav-logo-img { height: 64px !important; }
 
   /* Hero trust bar — hide on very small, no room */
   .hero-trust { display: none !important; }
