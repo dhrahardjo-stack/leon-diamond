@@ -1053,9 +1053,25 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
   .nav-icon-btn { display: none; }
-  /* Logo centered, hamburger absolute right */
-  .nav { justify-content: center; position: relative; }
-  .nav-hamburger { position: absolute; right: clamp(16px, 4vw, 24px); }
+  /* Logo centered, hamburger absolute right — override desktop grid */
+  .nav {
+    display: flex !important;
+    justify-content: center !important;
+    position: relative !important;
+  }
+  .nav-hamburger {
+    position: absolute !important;
+    right: clamp(16px, 4vw, 24px) !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+  /* Hide nav-right items except hamburger */
+  .nav-right {
+    position: static !important;
+    display: contents !important;
+  }
+  .nav-appt { display: none !important; }
+  .nav-icon-btn { display: none !important; }
 }
 @media (max-width: 600px) {
   .nav-appt { display: none; }
