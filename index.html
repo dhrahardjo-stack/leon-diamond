@@ -790,8 +790,8 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 
 /* ─── FOOTER ───────────────────────────────────────────────────────── */
 .footer {
-  background: var(--dark-2);
-  border-top: 1px solid var(--bdr-d);
+  background: #F2EFEC;
+  border-top: 1px solid rgba(0,0,0,0.08);
   padding: clamp(64px, 7vw, 96px) 0 0;
 }
 .footer-grid {
@@ -811,25 +811,26 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
   color: var(--white); margin-bottom: 14px;
 }
 .footer-tagline {
-  font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.72);
+  font-size: 13px; line-height: 1.7; color: rgba(0,0,0,0.58);
   margin-bottom: 24px; max-width: 240px;
 }
 .footer-contact-item {
-  font-size: 13px; color: rgba(255,255,255,0.75); margin-bottom: 8px;
+  font-size: 13px; color: rgba(0,0,0,0.65); margin-bottom: 8px;
   display: flex; gap: 8px; align-items: center;
 }
-.footer-contact-item a:hover { color: var(--white); }
+.footer-contact-item a { color: rgba(0,0,0,0.65); }
+.footer-contact-item a:hover { color: #000; }
 .footer-col-title {
   font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
-  color: rgba(255,255,255,0.85); margin-bottom: 20px;
+  color: rgba(0,0,0,0.80); margin-bottom: 20px;
 }
 .footer-links { list-style: none; }
 .footer-links li { margin-bottom: 12px; }
 .footer-links a {
-  font-size: 13px; color: rgba(255,255,255,0.70);
+  font-size: 13px; color: rgba(0,0,0,0.60);
   transition: color 0.2s;
 }
-.footer-links a:hover { color: var(--white); }
+.footer-links a:hover { color: #000; }
 /* Footer accordion — mobile only */
 .footer-acc-btn {
   background: none; border: none; cursor: pointer; padding: 0;
@@ -856,11 +857,11 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
   }
   .footer-brand {
     padding-bottom: 24px;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
+    border-bottom: 1px solid rgba(0,0,0,0.10);
     margin-bottom: 0;
   }
   .footer-tagline { margin-bottom: 16px; }
-  .footer-col-accordion { border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .footer-col-accordion { border-bottom: 1px solid rgba(0,0,0,0.10); }
   .footer-col-title.footer-acc-btn { padding: 15px 0; margin-bottom: 0; }
   .footer-acc-body { max-height: 0; }
   .footer-acc-body.open { max-height: 320px; }
@@ -870,20 +871,22 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 }
 
 .footer-bottom {
-  border-top: 1px solid var(--bdr-d);
-  padding: 20px 0;
+  background: #ffffff;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  margin: 0 calc(-1 * clamp(20px, 5vw, 72px));
+  padding: 20px clamp(20px, 5vw, 72px);
   display: flex; align-items: center; justify-content: space-between;
 }
 .footer-copy {
-  font-size: 12px; color: rgba(255,255,255,0.28);
+  font-size: 12px; color: rgba(0,0,0,0.38);
 }
 .footer-social { display: flex; gap: 20px; }
 .footer-social a {
   font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
-  color: rgba(255,255,255,0.62);
+  color: rgba(0,0,0,0.55);
   transition: color 0.2s;
 }
-.footer-social a:hover { color: var(--gold); }
+.footer-social a:hover { color: #000; }
 
 /* ─── RESPONSIVE ───────────────────────────────────────────────────── */
 @media (max-width: 960px) {
@@ -1439,10 +1442,10 @@ body { background: #f5f7f8; color: #1c1c1e; }
 /* Appt photo panel */
 .appt-be-photo img { opacity: 1 !important; mix-blend-mode: normal !important; }
 
-/* ── FOOTER → navy ─────────────────────────────────────────── */
-.footer-social a:hover { color: #ffffff !important; }
-.footer-links a:hover { color: rgba(255,255,255,0.95) !important; }
-.footer-col-title { color: rgba(255,255,255,0.85) !important; }
+/* ── FOOTER → cream #F2EFEC ────────────────────────────────── */
+.footer-social a:hover { color: #000000 !important; }
+.footer-links a:hover { color: #000000 !important; }
+.footer-col-title { color: rgba(0,0,0,0.80) !important; }
 
 /* mobile nav → handled by new dark-theme override above */
 
