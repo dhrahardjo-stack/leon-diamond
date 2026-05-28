@@ -830,6 +830,31 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
   transition: color 0.2s;
 }
 .footer-links a:hover { color: var(--white); }
+/* Footer accordion — mobile only */
+.footer-acc-btn {
+  background: none; border: none; cursor: pointer; padding: 0;
+  width: 100%; text-align: left; color: inherit;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-acc-icon { font-size: 16px; font-weight: 300; transition: transform 0.25s ease; }
+.footer-acc-btn[aria-expanded="true"] .footer-acc-icon { transform: rotate(45deg); }
+.footer-acc-body { overflow: hidden; transition: max-height 0.3s ease; }
+/* Desktop: always open */
+@media (min-width: 861px) {
+  .footer-acc-btn { pointer-events: none; cursor: default; }
+  .footer-acc-icon { display: none; }
+  .footer-acc-body { max-height: none !important; }
+}
+/* Mobile: collapsed by default */
+@media (max-width: 860px) {
+  .footer-col-accordion { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 4px 0; }
+  .footer-col-title.footer-acc-btn { padding: 14px 0; margin-bottom: 0; }
+  .footer-acc-body { max-height: 0; }
+  .footer-acc-body.open { max-height: 320px; }
+  .footer-acc-body li:first-child { padding-top: 4px; }
+  .footer-acc-body li:last-child { padding-bottom: 14px; }
+}
+
 .footer-bottom {
   border-top: 1px solid var(--bdr-d);
   padding: 20px 0;
@@ -1931,16 +1956,16 @@ html, body { overflow-x: hidden; }
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <p class="footer-tagline">Family-owned fine jewelers since 1975. Located in NYC's Diamond District. Crafted in-house, certified, and committed to excellence.</p>
+        <p class="footer-tagline">Family-owned fine jewelers since 1975.<br>NYC's Diamond District.</p>
         <div>
           <p class="footer-contact-item">74 W 47th St, New York, NY 10036</p>
           <p class="footer-contact-item"><a href="tel:2123027327">212.302.7327</a></p>
           <p class="footer-contact-item"><a href="https://leondiamond.com/pages/contact">Contact Us</a></p>
         </div>
       </div>
-      <div>
-        <p class="footer-col-title">Collections</p>
-        <ul class="footer-links">
+      <div class="footer-col-accordion">
+        <button class="footer-col-title footer-acc-btn" aria-expanded="false">Collections <span class="footer-acc-icon">+</span></button>
+        <ul class="footer-links footer-acc-body">
           <li><a href="https://leondiamond.com/pages/all-rings">Rings</a></li>
           <li><a href="https://leondiamond.com/pages/all-earrings">Earrings</a></li>
           <li><a href="https://leondiamond.com/collections/natural-bracelets-tennis">Bracelets</a></li>
@@ -1950,9 +1975,9 @@ html, body { overflow-x: hidden; }
           <li><a href="https://leondiamond.com/collections/gift-ideas-under-4-999">Gift Ideas</a></li>
         </ul>
       </div>
-      <div>
-        <p class="footer-col-title">Education</p>
-        <ul class="footer-links">
+      <div class="footer-col-accordion">
+        <button class="footer-col-title footer-acc-btn" aria-expanded="false">Education <span class="footer-acc-icon">+</span></button>
+        <ul class="footer-links footer-acc-body">
           <li><a href="https://leondiamond.com/pages/fancy-color-guide">Diamond Guide</a></li>
           <li><a href="https://leondiamond.com/collections/round-cut">Round Cut</a></li>
           <li><a href="https://leondiamond.com/collections/oval-cut">Oval Cut</a></li>
@@ -1961,9 +1986,9 @@ html, body { overflow-x: hidden; }
           <li><a href="https://leondiamond.com/collections/cushion-cut">Cushion Cut</a></li>
         </ul>
       </div>
-      <div>
-        <p class="footer-col-title">Company</p>
-        <ul class="footer-links">
+      <div class="footer-col-accordion">
+        <button class="footer-col-title footer-acc-btn" aria-expanded="false">Company <span class="footer-acc-icon">+</span></button>
+        <ul class="footer-links footer-acc-body">
           <li><a href="about.html">About Us</a></li>
           <li><a href="https://calendar.app.google/Mo1Qy1UMHJpx7uo49">Book Appointment</a></li>
           <li><a href="https://leondiamond.com/pages/contact">Contact</a></li>
@@ -1973,7 +1998,7 @@ html, body { overflow-x: hidden; }
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">© 2026 Leon Diamond. All rights reserved. 74 W 47th St, New York, NY 10036.</p>
+      <p class="footer-copy">© 2026 Leon Diamond. All rights reserved.</p>
       <div class="footer-social">
         <a href="https://www.instagram.com/leondiamond/" target="_blank">Instagram</a>
       </div>
@@ -2224,6 +2249,16 @@ if (hamburger) {
 if (mobileOverlay) {
   mobileOverlay.addEventListener('click', closeMobileNav);
 }
+
+/* ── Footer Accordion (mobile) ── */
+document.querySelectorAll('.footer-acc-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const body = btn.nextElementSibling;
+    const isOpen = body.classList.contains('open');
+    body.classList.toggle('open', !isOpen);
+    btn.setAttribute('aria-expanded', String(!isOpen));
+  });
+});
 </script>
 
 <!-- ═══ WHATSAPP FLOATING BOT ══════════════════════════════════════════ -->
