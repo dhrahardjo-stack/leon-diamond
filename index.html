@@ -1567,6 +1567,130 @@ body { background: #f5f7f8; color: #1c1c1e; }
    Target: iPhone 12/13/14/15 (390px), older iPhones (375px)
 ═══════════════════════════════════════════════════════════════ */
 
+/* ─── TRUST STRIP ───────────────────────────────────────────────── */
+.trust-strip {
+  background: var(--dark-2);
+  border-bottom: 1px solid var(--bdr-d);
+  padding: 16px 0;
+}
+.trust-strip-inner {
+  max-width: 1100px; margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 72px);
+  display: flex; justify-content: center; align-items: center;
+  gap: clamp(20px, 4vw, 60px); flex-wrap: wrap;
+}
+.trust-strip-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.4px;
+  color: rgba(255,255,255,0.80);
+  white-space: nowrap;
+}
+.trust-strip-item svg { color: var(--gold-soft); flex-shrink: 0; }
+.trust-strip-sep {
+  width: 1px; height: 20px;
+  background: rgba(255,255,255,0.10); flex-shrink: 0;
+}
+@media (max-width: 600px) {
+  .trust-strip-sep { display: none; }
+  .trust-strip-inner { gap: 14px 28px; }
+  .trust-strip-item { font-size: 11px; }
+}
+
+/* ─── LAB GROWN FEATURE ─────────────────────────────────────────── */
+.labgrown { background: var(--dark-3); overflow: hidden; }
+.labgrown-split {
+  display: grid; grid-template-columns: 1fr 1fr;
+  min-height: 640px;
+}
+.labgrown-photo-panel {
+  overflow: hidden; position: relative; background: var(--dark-2);
+}
+.labgrown-photo-panel img {
+  width: 100%; height: 100%; object-fit: cover;
+  object-position: center; display: block;
+  transition: transform 0.8s ease;
+}
+.labgrown-photo-panel:hover img { transform: scale(1.03); }
+.labgrown-text-panel {
+  background: var(--dark-3);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: clamp(64px,8vw,100px) clamp(32px,5vw,80px);
+}
+@media (max-width: 860px) {
+  .labgrown-split { grid-template-columns: 1fr; }
+  .labgrown-photo-panel { min-height: 420px; }
+}
+.labgrown-tag {
+  display: inline-block;
+  font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  border: 1px solid rgba(42,109,164,0.35); color: var(--gold);
+  padding: 6px 14px; margin-bottom: 32px;
+}
+.labgrown-title {
+  font-size: clamp(40px, 4.5vw, 64px);
+  font-weight: 800; line-height: 1.06; letter-spacing: -1.5px;
+  color: var(--white); margin-bottom: 20px;
+}
+.labgrown-title em { font-style: italic; font-weight: 300; }
+.labgrown-sub {
+  font-size: 16px; line-height: 1.75; color: var(--sub-w);
+  max-width: 400px; margin-bottom: 28px;
+}
+.labgrown-badges {
+  display: flex; gap: 10px; margin-bottom: 36px; flex-wrap: wrap;
+}
+.labgrown-badge {
+  font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 5px 12px;
+  background: rgba(42,109,164,0.08);
+  border: 1px solid rgba(42,109,164,0.25);
+  color: var(--gold-soft);
+}
+.labgrown-links { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+
+/* ─── CUSTOMER REVIEWS ──────────────────────────────────────────── */
+.reviews {
+  background: var(--dark);
+  padding: clamp(64px, 8vw, 96px) 0;
+  border-top: 1px solid var(--bdr-d);
+}
+.reviews-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 16px; margin-top: 48px;
+}
+@media (max-width: 860px) {
+  .reviews-grid { grid-template-columns: 1fr; max-width: 520px; margin-left: auto; margin-right: auto; }
+}
+.review-card {
+  background: var(--dark-2);
+  border: 1px solid var(--bdr-d);
+  padding: 32px 28px;
+}
+.review-stars {
+  color: #F5C518; font-size: 13px; letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+.review-text {
+  font-size: 15px; line-height: 1.75;
+  color: rgba(255,255,255,0.82);
+  margin-bottom: 24px; font-style: italic;
+}
+.review-author-name {
+  font-size: 12px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--white);
+}
+.review-author-meta {
+  font-size: 11px; color: rgba(255,255,255,0.38);
+  margin-top: 4px; letter-spacing: 0.3px;
+}
+.reviews-footer {
+  text-align: center; margin-top: 40px;
+}
+.reviews-footer p {
+  font-size: 12px; color: rgba(255,255,255,0.38);
+  letter-spacing: 0.5px;
+}
+
 /* Prevent horizontal scroll globally — do NOT apply to html element, breaks position:fixed */
 body { overflow-x: hidden; }
 
@@ -1683,8 +1807,9 @@ body { overflow-x: hidden; }
     </div>
   </a>
   <ul class="nav-links">
-    <li><a href="https://leondiamond.com/pages/all-rings">Rings</a></li>
+    <li><a href="https://leondiamond.com/collections/lab-grown">Lab Grown</a></li>
     <li><a href="https://leondiamond.com/pages/all-earrings">Earrings</a></li>
+    <li><a href="https://leondiamond.com/pages/all-rings">Rings</a></li>
     <li><a href="https://leondiamond.com/collections/natural-bracelets-tennis">Bracelets</a></li>
     <li><a href="https://leondiamond.com/pages/all-necklaces">Necklaces</a></li>
     <li><a href="https://leondiamond.com/pages/ldbridal">Bridal</a></li>
@@ -1709,8 +1834,9 @@ body { overflow-x: hidden; }
 
 <!-- MOBILE NAV DRAWER -->
 <div class="mobile-nav-drawer" id="mobile-nav-drawer">
-  <a href="https://leondiamond.com/pages/all-rings" onclick="closeMobileNav()">Rings</a>
+  <a href="https://leondiamond.com/collections/lab-grown" onclick="closeMobileNav()">Lab Grown</a>
   <a href="https://leondiamond.com/pages/all-earrings" onclick="closeMobileNav()">Earrings</a>
+  <a href="https://leondiamond.com/pages/all-rings" onclick="closeMobileNav()">Rings</a>
   <a href="https://leondiamond.com/collections/natural-bracelets-tennis" onclick="closeMobileNav()">Bracelets</a>
   <a href="https://leondiamond.com/pages/all-necklaces" onclick="closeMobileNav()">Necklaces</a>
   <a href="https://leondiamond.com/pages/ldbridal" onclick="closeMobileNav()">Bridal</a>
@@ -1741,9 +1867,10 @@ body { overflow-x: hidden; }
   <div class="hero-content fade-up">
     <p class="hero-eyebrow">Est. 1975 · NYC Diamond District</p>
     <h1 class="hero-title">Where New York<br>Finds Its<br><em>Diamonds.</em></h1>
-    <p class="hero-sub">Family-owned since 1975. Hand-selected stones, GIA &amp; IGI certified. The Diamond District's most trusted name.</p>
+    <p class="hero-sub">Natural and lab grown diamonds, GIA &amp; IGI certified. Crafted in-house by a family who has called NYC's Diamond District home since 1975.</p>
     <div class="hero-ctas">
-      <a href="https://leondiamond.com/collections/all" class="btn btn-gold">Shop Collection</a>
+      <a href="https://leondiamond.com/collections/lab-grown" class="btn btn-gold">Shop Lab Grown</a>
+      <a href="https://leondiamond.com/collections/all" class="btn btn-ghost-w">Explore All</a>
     </div>
   </div>
 
@@ -1767,6 +1894,30 @@ body { overflow-x: hidden; }
   </div>
 </section>
 
+<!-- ═══ TRUST STRIP ════════════════════════════════════════════════════ -->
+<div class="trust-strip">
+  <div class="trust-strip-inner">
+    <div class="trust-strip-item">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      4.9 · 2,400+ Reviews
+    </div>
+    <div class="trust-strip-sep"></div>
+    <div class="trust-strip-item">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      IGI &amp; GIA Certified
+    </div>
+    <div class="trust-strip-sep"></div>
+    <div class="trust-strip-item">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8zM5.5 21a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM18.5 21a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg>
+      Free Overnight Shipping
+    </div>
+    <div class="trust-strip-sep"></div>
+    <div class="trust-strip-item">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+      Free 30-Day Returns
+    </div>
+  </div>
+</div>
 
 <!-- ═══ CATEGORY GRID ══════════════════════════════════════════════════ -->
 <section class="categories">
@@ -1779,29 +1930,53 @@ body { overflow-x: hidden; }
 
   <div>
     <div class="cat-grid fade-up">
+      <a class="cat-card" href="https://leondiamond.com/pages/all-earrings">
+        <img src="images/ld-cat-earrings.png" alt="Earrings" loading="lazy">
+        <div class="cat-card-label"><span>Earrings</span><a href="https://leondiamond.com/pages/all-earrings">Explore →</a></div>
+      </a>
       <a class="cat-card" href="https://leondiamond.com/pages/all-rings">
         <img src="images/ld-cat-rings.png" alt="Rings" loading="lazy">
         <div class="cat-card-label"><span>Rings</span><a href="https://leondiamond.com/pages/all-rings">Explore →</a></div>
       </a>
-      <a class="cat-card" href="https://leondiamond.com/pages/ldbridal">
-        <img src="images/ld-cat-bridal.png" alt="Bridal" loading="lazy">
-        <div class="cat-card-label"><span>Bridal</span><a href="https://leondiamond.com/pages/ldbridal">Explore →</a></div>
-      </a>
-      <a class="cat-card" href="https://leondiamond.com/pages/all-earrings">
-        <img src="images/ld-cat-earrings.png" alt="Earrings" loading="lazy">
-        <div class="cat-card-label"><span>Earrings</span><a href="https://leondiamond.com/pages/all-earrings">Explore →</a></div>
+      <a class="cat-card" href="https://leondiamond.com/collections/natural-bracelets-tennis">
+        <img src="images/ld-cat-bracelets.png" alt="Bracelets" loading="lazy">
+        <div class="cat-card-label"><span>Bracelets</span><a href="https://leondiamond.com/collections/natural-bracelets-tennis">Explore →</a></div>
       </a>
       <a class="cat-card" href="https://leondiamond.com/pages/all-necklaces">
         <img src="images/ld-cat-necklaces.png" alt="Necklaces" loading="lazy">
         <div class="cat-card-label"><span>Necklaces</span><a href="https://leondiamond.com/pages/all-necklaces">Explore →</a></div>
       </a>
-      <a class="cat-card" href="https://leondiamond.com/pages/all-bracelets">
-        <img src="images/ld-cat-bracelets.png" alt="Bracelets" loading="lazy">
-        <div class="cat-card-label"><span>Bracelets</span><a href="https://leondiamond.com/pages/all-bracelets">Explore →</a></div>
+      <a class="cat-card" href="https://leondiamond.com/pages/ldbridal">
+        <img src="images/ld-cat-bridal.png" alt="Bridal" loading="lazy">
+        <div class="cat-card-label"><span>Bridal</span><a href="https://leondiamond.com/pages/ldbridal">Explore →</a></div>
       </a>
     </div>
     <div class="cat-more fade-up">
       <a href="https://leondiamond.com/collections/all" class="btn btn-ghost-d">View All Collections</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ LAB GROWN FEATURE ════════════════════════════════════════════════ -->
+<section class="labgrown">
+  <div class="labgrown-split">
+    <div class="labgrown-photo-panel fade-up">
+      <img src="images/ld-cat-earrings.png" alt="Leon Diamond Lab Grown Diamond Earrings" loading="lazy">
+    </div>
+    <div class="labgrown-text-panel fade-up">
+      <div class="labgrown-tag">Lab Grown · IGI Certified</div>
+      <h2 class="labgrown-title">Real Diamonds.<br><em>Smarter.</em></h2>
+      <p class="labgrown-sub">Chemically and optically identical to natural diamonds. Certified by IGI. Available in 2ct, 4ct, and 6ct stud sets — our most loved pieces, hand-crafted in NYC's Diamond District.</p>
+      <div class="labgrown-badges">
+        <span class="labgrown-badge">IGI Certified</span>
+        <span class="labgrown-badge">USA Crafted</span>
+        <span class="labgrown-badge">Free Overnight Shipping</span>
+      </div>
+      <div class="labgrown-links">
+        <a href="https://leondiamond.com/collections/lab-grown" class="btn btn-gold">Shop Lab Grown</a>
+        <a href="https://leondiamond.com/pages/all-earrings" class="bridal-link-text">View All Earrings →</a>
+      </div>
     </div>
   </div>
 </section>
@@ -1901,6 +2076,39 @@ body { overflow-x: hidden; }
     <div><span>4.9 &#9733;</span><p>Average Rating</p></div>
     <div><span>2,400+</span><p>Verified Reviews</p></div>
     <div><span>98%</span><p>Would Recommend</p></div>
+  </div>
+</section>
+
+<!-- ═══ CUSTOMER REVIEWS ════════════════════════════════════════════════ -->
+<section class="reviews">
+  <div class="wrap">
+    <div class="sec-header fade-up">
+      <p class="eyebrow eyebrow-gold">VERIFIED REVIEWS</p>
+      <h2 class="sec-title-w">What Our Clients Say</h2>
+    </div>
+    <div class="reviews-grid fade-up">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I bought the 4ct lab grown studs as a gift for my wife's birthday. The quality is stunning — you genuinely cannot tell the difference. IGI certified, beautifully packaged, arrived overnight exactly as promised."</p>
+        <p class="review-author-name">Michael T.</p>
+        <p class="review-author-meta">Verified Purchase · Lab Grown Studs 4.0ctw</p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"We came in for an engagement ring consultation and left with the most beautiful oval cut I've ever seen. The team was knowledgeable, patient, and genuinely cared about finding us the right stone."</p>
+        <p class="review-author-name">Sarah &amp; James R.</p>
+        <p class="review-author-meta">Verified Purchase · Custom Engagement Ring</p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Ordered Sunday night, arrived Monday morning. The tennis bracelet is perfect — exactly as described, GIA certified, and the craftsmanship is immaculate. Already recommended Leon Diamond to three friends."</p>
+        <p class="review-author-name">Priya K.</p>
+        <p class="review-author-meta">Verified Purchase · Diamond Tennis Bracelet</p>
+      </div>
+    </div>
+    <div class="reviews-footer">
+      <p>4.9 average · 2,400+ verified reviews on Google &amp; Shopify</p>
+    </div>
   </div>
 </section>
 
