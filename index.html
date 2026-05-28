@@ -1019,36 +1019,57 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 .nav-hamburger.open span:nth-child(2) { opacity: 0; }
 .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
+/* Mobile nav overlay backdrop */
+.mobile-nav-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 98;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+.mobile-nav-overlay.open { opacity: 1; pointer-events: auto; }
+
+/* Mobile nav drawer — slide from left, Brilliant Earth pattern */
 .mobile-nav-drawer {
-  display: none;
-  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(7,24,40,0.98);
-  backdrop-filter: blur(24px);
+  position: fixed; top: 0; left: 0; bottom: 0;
+  width: 82vw; max-width: 340px;
+  background: rgba(7,18,30,0.99);
   z-index: 99;
-  flex-direction: column; align-items: center; justify-content: center;
-  gap: 0;
+  display: flex;
+  flex-direction: column; align-items: flex-start; justify-content: flex-start;
+  transform: translateX(-100%);
+  transition: transform 0.35s cubic-bezier(0.33, 0.59, 0.14, 1);
+  overflow-y: auto;
+  padding-top: 72px; /* space for nav bar on top */
 }
-.mobile-nav-drawer.open { display: flex; }
+.mobile-nav-drawer.open { transform: translateX(0); }
 .mobile-nav-drawer a {
-  font-size: clamp(28px, 6vw, 42px); font-weight: 700; letter-spacing: -0.5px;
-  color: rgba(255,255,255,0.85);
-  padding: 18px 40px;
-  transition: color 0.2s;
-  text-align: center;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 13px; font-weight: 500; letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.78);
+  padding: 17px 28px;
+  transition: color 0.2s, background 0.2s;
+  text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
   width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+  text-decoration: none;
 }
-.mobile-nav-drawer a:last-child { border-bottom: none; }
-.mobile-nav-drawer a:hover { color: var(--gold); }
+.mobile-nav-drawer a::after { content: '›'; font-size: 18px; opacity: 0.35; font-weight: 300; }
+.mobile-nav-drawer a:hover { color: #ffffff; background: rgba(255,255,255,0.04); }
 .mobile-nav-appt-wrap {
-  margin-top: 32px;
+  padding: 24px 28px; width: 100%; margin-top: auto;
+  border-top: 1px solid rgba(255,255,255,0.07);
 }
 .mobile-nav-appt-wrap a {
-  font-size: 13px; font-weight: 700; letter-spacing: 2px;
-  border: 1px solid rgba(201,168,76,0.45); color: var(--gold-deep);
-  padding: 14px 32px; width: auto;
-  border-bottom: 1px solid rgba(122,170,198,0.5) !important;
+  display: flex !important; align-items: center; justify-content: center;
+  background: #2B7FFF !important; color: #ffffff !important;
+  font-size: 12px !important; font-weight: 600 !important; letter-spacing: 2px !important;
+  text-transform: uppercase !important; padding: 14px 20px !important;
+  border: none !important; border-bottom: none !important;
+  width: 100%; border-radius: 0 !important;
 }
+.mobile-nav-appt-wrap a::after { display: none; }
 
 @media (max-width: 860px) {
   .nav-links { display: none; }
@@ -1201,14 +1222,14 @@ body { background: #f5f7f8; color: #1c1c1e; }
   color: #ffffff !important;
   border-color: rgba(255,255,255,0.55) !important;
 }
-/* Mobile nav drawer matches dark theme */
+/* Mobile nav drawer — dark theme override */
 .mobile-nav-drawer {
-  background: rgba(7,24,40,0.98) !important;
+  background: rgba(7,18,30,0.99) !important;
 }
-.mobile-nav-drawer a { color: rgba(255,255,255,0.85) !important; border-bottom-color: rgba(255,255,255,0.06) !important; }
-.mobile-nav-drawer a:hover { color: #b2ccdd !important; }
+.mobile-nav-drawer a { color: rgba(255,255,255,0.78) !important; border-bottom-color: rgba(255,255,255,0.07) !important; }
+.mobile-nav-drawer a:hover { color: #ffffff !important; }
 .mobile-nav-appt-wrap a {
-  background: #2a6da4 !important;
+  background: #2B7FFF !important;
   color: #ffffff !important;
   border: none !important;
 }
@@ -1630,6 +1651,9 @@ html, body { overflow-x: hidden; }
     </button>
   </div>
 </nav>
+
+<!-- MOBILE NAV OVERLAY -->
+<div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
 
 <!-- MOBILE NAV DRAWER -->
 <div class="mobile-nav-drawer" id="mobile-nav-drawer">
@@ -2177,9 +2201,11 @@ if (heroTrust) trustObserver.observe(heroTrust);
 /* ── Mobile Nav ── */
 const hamburger = document.getElementById('nav-hamburger');
 const mobileDrawer = document.getElementById('mobile-nav-drawer');
+const mobileOverlay = document.getElementById('mobile-nav-overlay');
 function closeMobileNav() {
   hamburger.classList.remove('open');
   mobileDrawer.classList.remove('open');
+  if (mobileOverlay) mobileOverlay.classList.remove('open');
   document.body.style.overflow = '';
 }
 if (hamburger) {
@@ -2190,9 +2216,13 @@ if (hamburger) {
     } else {
       hamburger.classList.add('open');
       mobileDrawer.classList.add('open');
+      if (mobileOverlay) mobileOverlay.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
   });
+}
+if (mobileOverlay) {
+  mobileOverlay.addEventListener('click', closeMobileNav);
 }
 </script>
 
