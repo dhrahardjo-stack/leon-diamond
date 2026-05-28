@@ -1,6 +1,10 @@
 {
   "version": 2,
   "name": "leon-diamond",
+  "rewrites": [
+    { "source": "/card", "destination": "/card.html" },
+    { "source": "/about", "destination": "/about.html" }
+  ],
   "headers": [
     {
       "source": "/images/(.*)",
