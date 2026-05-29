@@ -573,18 +573,16 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 .fancy-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  margin-top: 48px;
+  gap: 0;
+  margin-top: 32px;
 }
 .fc-card {
-  background: #fff;
-  display: flex; flex-direction: column;
+  display: block;
   text-decoration: none;
   overflow: hidden;
-  transition: transform 0.30s;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.28);
+  position: relative;
 }
-.fc-card:hover { transform: translateY(-4px); box-shadow: 0 8px 40px rgba(0,0,0,0.40); }
+.fc-card:hover .fc-img-wrap img { transform: scale(1.04); }
 .fc-img-wrap {
   aspect-ratio: 1/1;
   overflow: hidden;
@@ -594,31 +592,30 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 .fc-img-wrap img {
   width: 100%; height: 100%; object-fit: cover;
   transition: transform 0.6s ease;
+  display: block;
 }
-.fc-card:hover .fc-img-wrap img { transform: scale(1.05); }
-.fc-badge {
+.fc-overlay {
   position: absolute; bottom: 0; left: 0; right: 0;
-  font-size: 10px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase;
-  padding: 10px 14px;
-  background: linear-gradient(to top, rgba(7,24,40,0.72) 0%, transparent 100%);
-  color: rgba(255,255,255,0.90);
+  padding: 28px 16px 16px;
+  background: linear-gradient(to top, rgba(7,24,40,0.82) 0%, rgba(7,24,40,0.30) 60%, transparent 100%);
+  transition: opacity 0.3s;
 }
-.fc-info {
-  padding: 14px 16px 16px;
-  border-top: 0.5px solid rgba(0,0,0,0.07);
+.fc-overlay-price {
+  font-size: 9px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.60); margin-bottom: 4px;
 }
-.fc-color {
-  font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-  color: #2a6da4; margin-bottom: 5px;
+.fc-overlay-color {
+  font-size: 11px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase;
+  color: #b2ccdd; margin-bottom: 2px;
 }
-.fc-name {
-  font-size: 12.5px; font-weight: 600; line-height: 1.4;
-  color: #071828;
+.fc-overlay-name {
+  font-size: 11px; font-weight: 400; color: rgba(255,255,255,0.80);
 }
-.fancy-footer { text-align: center; margin-top: 40px; }
+.fancy-footer { text-align: center; margin-top: 32px; }
 @media (max-width: 600px) {
-  .fancy-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-  .fc-info { padding: 10px 12px 12px; }
+  .fancy-grid { grid-template-columns: repeat(2, 1fr); }
+  .fc-overlay { padding: 20px 10px 10px; }
+  .fc-overlay-name { display: none; }
 }
 
 
@@ -787,13 +784,13 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 .footer {
   background: #F2EFEC;
   border-top: 1px solid rgba(0,0,0,0.08);
-  padding: clamp(64px, 7vw, 96px) 0 0;
+  padding: 40px 0 0;
 }
 .footer-grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: clamp(32px, 4vw, 64px);
-  padding-bottom: 56px;
+  gap: clamp(24px, 3vw, 48px);
+  padding-bottom: 32px;
 }
 .footer-brand {}
 .footer-logo-img {
@@ -806,11 +803,11 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
   color: var(--white); margin-bottom: 14px;
 }
 .footer-tagline {
-  font-size: 13px; line-height: 1.7; color: rgba(0,0,0,0.58);
-  margin-bottom: 24px; max-width: 240px;
+  font-size: 12px; line-height: 1.6; color: rgba(0,0,0,0.52);
+  margin-bottom: 14px; max-width: 240px;
 }
 .footer-contact-item {
-  font-size: 13px; color: rgba(0,0,0,0.65); margin-bottom: 8px;
+  font-size: 12px; color: rgba(0,0,0,0.58); margin-bottom: 5px;
   display: flex; gap: 8px; align-items: center;
 }
 .footer-contact-item a { color: rgba(0,0,0,0.65); }
@@ -1792,10 +1789,9 @@ body { background: #f5f7f8; color: #1c1c1e; }
   max-width: 680px; margin: 0 auto;
   box-sizing: border-box;
   display: flex; overflow: hidden;
-  max-height: 220px;
 }
 .review-card-photo {
-  flex: 0 0 160px;
+  flex: 0 0 140px;
   overflow: hidden;
 }
 .review-card-photo img {
@@ -1803,14 +1799,12 @@ body { background: #f5f7f8; color: #1c1c1e; }
   display: block;
 }
 .review-card-body {
-  flex: 1; padding: 24px 28px;
+  flex: 1; padding: 20px 24px;
   display: flex; flex-direction: column; justify-content: center;
-  overflow: hidden;
 }
 @media (max-width: 600px) {
-  .review-card { flex-direction: row; max-height: 160px; }
-  .review-card-photo { flex: 0 0 110px; }
-  .review-card-body { padding: 16px 16px; }
+  .review-card-photo { flex: 0 0 100px; }
+  .review-card-body { padding: 14px 14px; }
 }
 .review-stars {
   color: #F5C518; font-size: 14px; letter-spacing: 3px;
@@ -1988,7 +1982,7 @@ body { overflow-x: hidden; }
 
 <!-- NAV -->
 <nav class="nav" id="main-nav">
-  <a class="nav-logo" href="https://leondiamond.com">
+  <a class="nav-logo" href="index.html">
     <div class="logo-glint-wrap">
       <img src="images/2.png" alt="Leon Diamond" class="nav-logo-img">
       <div class="logo-glint-stripe"></div>
@@ -2129,7 +2123,7 @@ body { overflow-x: hidden; }
       </a>
       <a class="cat-card" href="https://leondiamond.com/pages/all-rings">
         <div class="cat-card-img">
-          <img src="images/ld-cat-rings.png" alt="Rings" loading="lazy">
+          <img src="images/ld-cat-rings1.png" alt="Rings" loading="lazy">
         </div>
         <div class="cat-card-footer">
           <span>Rings</span>
@@ -2195,7 +2189,6 @@ body { overflow-x: hidden; }
     <div class="sec-header fade-up">
       <p class="eyebrow eyebrow-gold">MOST LOVED</p>
       <h2 class="sec-title-w">Best Sellers</h2>
-      <p class="sec-sub-w">Our most-gifted, most-worn, most-loved pieces — crafted in NYC's Diamond District.</p>
     </div>
     <div class="bs-grid fade-up">
       <a class="bs-card" href="product.html?id=earrings-2ct">
@@ -2229,7 +2222,7 @@ body { overflow-x: hidden; }
       </a>
       <a class="bs-card" href="https://leondiamond.com/collections/engagement-rings">
         <div class="bs-img-wrap">
-          <img src="images/ld-prod-ring.png" alt="Diamond Engagement Rings" loading="lazy">
+          <img src="images/ld-cat-rings.png" alt="Diamond Engagement Rings" loading="lazy">
         </div>
         <div class="bs-info">
           <p class="bs-name">Diamond Engagement Rings</p>
@@ -2271,50 +2264,50 @@ body { overflow-x: hidden; }
     <div class="sec-header fade-up">
       <p class="eyebrow eyebrow-gold">SPECIALTY</p>
       <h2 class="sec-title-w" style="margin-top:10px">Fancy Colored Diamonds</h2>
-      <p class="sec-sub-w">Beyond white — rare yellows, pinks, blues, and greens. Among the rarest objects on Earth.</p>
     </div>
-    <div class="fancy-grid fade-up">
-      <a class="fc-card" href="https://leondiamond.com/products/gia-platinum-radiant-fancy-yellow-diamond-ring-40-05ct" target="_blank" rel="noopener">
-        <div class="fc-img-wrap">
-          <span class="fc-badge">GIA · $2,800,000</span>
-          <img src="images/ld-fancy-1.png" alt="Fancy Yellow Diamond Ring" loading="lazy">
+  </div>
+  <div class="fancy-grid fade-up">
+    <a class="fc-card" href="https://leondiamond.com/products/gia-platinum-radiant-fancy-yellow-diamond-ring-40-05ct" target="_blank" rel="noopener">
+      <div class="fc-img-wrap">
+        <img src="images/ld-fancy-1.png" alt="Fancy Yellow Diamond Ring" loading="lazy">
+        <div class="fc-overlay">
+          <p class="fc-overlay-price">GIA · $2,800,000</p>
+          <p class="fc-overlay-color">Fancy Yellow</p>
+          <p class="fc-overlay-name">Radiant Cut · 40.05ct · Platinum</p>
         </div>
-        <div class="fc-info">
-          <p class="fc-color">Fancy Yellow</p>
-          <p class="fc-name">Radiant Cut · 40.05ct · Platinum</p>
+      </div>
+    </a>
+    <a class="fc-card" href="https://leondiamond.com/collections/fancy-color" target="_blank" rel="noopener">
+      <div class="fc-img-wrap">
+        <img src="images/ld-fancy-2.png" alt="Fancy Pink Diamond Ring" loading="lazy">
+        <div class="fc-overlay">
+          <p class="fc-overlay-price">GIA · $825,000</p>
+          <p class="fc-overlay-color">Fancy Intense Pink</p>
+          <p class="fc-overlay-name">Cushion Cut · 20.16ct · Platinum</p>
         </div>
-      </a>
-      <a class="fc-card" href="https://leondiamond.com/collections/fancy-color" target="_blank" rel="noopener">
-        <div class="fc-img-wrap">
-          <span class="fc-badge">GIA · $825,000</span>
-          <img src="images/ld-fancy-2.png" alt="Fancy Pink Diamond Ring" loading="lazy">
+      </div>
+    </a>
+    <a class="fc-card" href="https://leondiamond.com/collections/fancy-color" target="_blank" rel="noopener">
+      <div class="fc-img-wrap">
+        <img src="images/ld-fancy-3.png" alt="Fancy Blue Diamond Ring" loading="lazy">
+        <div class="fc-overlay">
+          <p class="fc-overlay-price">$83,250</p>
+          <p class="fc-overlay-color">Fancy Intense Blue</p>
+          <p class="fc-overlay-name">Round Cut · 4.02ct · 18K White Gold</p>
         </div>
-        <div class="fc-info">
-          <p class="fc-color">Fancy Intense Pink</p>
-          <p class="fc-name">Cushion Cut · 20.16ct · Platinum</p>
+      </div>
+    </a>
+    <a class="fc-card" href="https://leondiamond.com/collections/fancy-color" target="_blank" rel="noopener">
+      <div class="fc-img-wrap">
+        <img src="images/ld-fancy-4.png" alt="Fancy Green Diamond Ring" loading="lazy">
+        <div class="fc-overlay">
+          <p class="fc-overlay-price">$3,850</p>
+          <p class="fc-overlay-color">Fancy Green</p>
+          <p class="fc-overlay-name">Cushion Cut · 4.60ct · White Gold</p>
         </div>
-      </a>
-      <a class="fc-card" href="https://leondiamond.com/collections/fancy-color" target="_blank" rel="noopener">
-        <div class="fc-img-wrap">
-          <span class="fc-badge">$83,250</span>
-          <img src="images/ld-fancy-3.png" alt="Fancy Blue Diamond Ring" loading="lazy">
-        </div>
-        <div class="fc-info">
-          <p class="fc-color">Fancy Intense Blue</p>
-          <p class="fc-name">Round Cut · 4.02ct · 18K White Gold</p>
-        </div>
-      </a>
-      <a class="fc-card" href="https://leondiamond.com/collections/fancy-color" target="_blank" rel="noopener">
-        <div class="fc-img-wrap">
-          <span class="fc-badge">$3,850</span>
-          <img src="images/ld-fancy-4.png" alt="Fancy Green Diamond Ring" loading="lazy">
-        </div>
-        <div class="fc-info">
-          <p class="fc-color">Fancy Green</p>
-          <p class="fc-name">Cushion Cut · 4.60ct · White Gold</p>
-        </div>
-      </a>
-    </div>
+      </div>
+    </a>
+  </div>
     <div class="fancy-footer fade-up">
       <a href="https://leondiamond.com/collections/fancy-color" class="btn btn-gold" target="_blank" rel="noopener">View All Fancy Colors</a>
     </div>
