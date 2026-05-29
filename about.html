@@ -63,11 +63,10 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 
 /* ─── ANNOUNCEMENT BAR ─────────────────────────────────────────────── */
 .ann-bar {
-  background: var(--dark-2); color: rgba(255,255,255,0.55);
+  background: #2a6da4; color: rgba(255,255,255,0.92);
   text-align: center; font-size: 11px; font-weight: 500; letter-spacing: 1.8px;
   text-transform: uppercase; padding: 8px 20px;
   position: relative; z-index: 101;
-  border-bottom: 1px solid var(--bdr-d);
 }
 .ann-bar a {
   color: var(--gold-soft); text-decoration: none; margin-left: 8px;
@@ -265,7 +264,24 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 /* ─── STORY SECTION ─────────────────────────────────────────────────── */
 .story {
   background: var(--dark);
-  padding: clamp(64px, 8vw, 112px) 0;
+  padding: 0 0 clamp(64px, 8vw, 112px);
+}
+.story-family-photo {
+  width: 100%; max-height: 520px; overflow: hidden; position: relative;
+}
+.story-family-photo img {
+  width: 100%; height: 520px; object-fit: cover; object-position: center top;
+  display: block;
+}
+.story-family-caption {
+  font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.35); text-align: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  margin-bottom: clamp(48px,6vw,80px);
+}
+@media (max-width:600px) {
+  .story-family-photo img { height: 280px; }
 }
 .story-header { margin-bottom: 52px; }
 .story-label {
@@ -396,8 +412,30 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 .footer-links li { margin-bottom: 12px; }
 .footer-links a { font-size: 13px; color: rgba(255,255,255,0.52); transition: color 0.2s; }
 .footer-links a:hover { color: var(--white); }
+.footer-acc-btn {
+  background: none; border: none; cursor: pointer; font-family: var(--font);
+  color: inherit; width: 100%; text-align: left;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-acc-icon { font-size: 16px; font-weight: 300; transition: transform 0.25s ease; }
+.footer-acc-btn[aria-expanded="true"] .footer-acc-icon { transform: rotate(45deg); }
+.footer-acc-body { overflow: hidden; transition: max-height 0.3s ease; }
+@media (min-width: 601px) {
+  .footer-acc-btn { pointer-events: none; cursor: default; }
+  .footer-acc-icon { display: none; }
+  .footer-acc-body { max-height: none !important; }
+}
+@media (max-width: 600px) {
+  .footer-col-accordion { border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .footer-col-title.footer-acc-btn { padding: 15px 0; margin-bottom: 0; }
+  .footer-acc-body { max-height: 0; }
+  .footer-acc-body.open { max-height: 320px; }
+  .footer-acc-body li { margin-bottom: 0; }
+  .footer-acc-body li a { display: block; padding: 10px 0; }
+}
+.footer-bottom-outer { border-top: 1px solid rgba(255,255,255,0.07); margin-top: 48px; }
 .footer-bottom {
-  border-top: 1px solid var(--bdr-d); padding: 20px 0;
+  padding: 20px 0;
   display: flex; align-items: center; justify-content: space-between;
 }
 .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
@@ -494,44 +532,14 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 </div>
 
 
-<!-- ═══ ABOUT HERO ════════════════════════════════════════════════════ -->
-<section class="about-hero">
-  <!-- Left: text panel, dark background -->
-  <div class="about-hero-text-panel fade-up">
-    <p class="about-hero-eyebrow">Our Story</p>
-    <h1 class="about-hero-title">One Family.<br>One Craft.<br>One District.</h1>
-    <p class="about-hero-sub">In 1975, Leon Diamond opened its doors on West 47th Street. Five decades and three generations later, we remain family-owned, in-house crafted, and fiercely committed to the art of fine jewelry.</p>
-    <p class="about-hero-quote">"We don't cut corners. We cut diamonds."</p>
-  </div>
-  <!-- Right: family photo, no text -->
-  <div class="about-hero-photo-panel">
-    <img src="images/collection/fam51.png" alt="Three generations of the Leon Diamond family">
-  </div>
-</section>
-
-<!-- ═══ STATS BAR ═════════════════════════════════════════════════════ -->
-<div class="stats-bar">
-  <div class="stats-bar-item fade-up">
-    <span class="stat-num">51</span>
-    <span class="stat-label">Years of Excellence</span>
-  </div>
-  <div class="stats-bar-item fade-up">
-    <span class="stat-num">10,000+</span>
-    <span class="stat-label">Clients For Life</span>
-  </div>
-  <div class="stats-bar-item fade-up">
-    <span class="stat-num">100%</span>
-    <span class="stat-label">In-House Crafted</span>
-  </div>
-  <div class="stats-bar-item fade-up">
-    <span class="stat-num">GIA &amp; IGI</span>
-    <span class="stat-label">Certified Only</span>
-  </div>
-</div>
 
 
 <!-- ═══ STORY ══════════════════════════════════════════════════════════ -->
 <section class="story">
+  <div class="story-family-photo fade-up">
+    <img src="images/family.png" alt="Three generations of the Leon Diamond family" loading="lazy">
+    <p class="story-family-caption">Three generations of the Leon Diamond family</p>
+  </div>
   <div class="wrap">
     <div class="story-header fade-up">
       <p class="story-label">The History</p>
@@ -551,35 +559,7 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 </section>
 
 
-<!-- ═══ CRAFT PILLARS ══════════════════════════════════════════════════ -->
-<section class="craft">
-  <div class="wrap">
-    <div class="craft-header fade-up">
-      <p class="craft-label">What We Stand For</p>
-      <h2 class="craft-title">The Standard We've Held Since 1975</h2>
-    </div>
-    <div class="craft-pillars">
-      <div class="craft-pillar fade-up">
-        <span class="craft-pillar-num">01</span>
-        <h3 class="craft-pillar-title">Made In-House</h3>
-        <p class="craft-pillar-desc">Every ring, pendant, and bracelet is crafted by our own bench jewelers at 74 W 47th Street. We control every step — from wax carving to final polish — so quality is never in question.</p>
-      </div>
-      <div class="craft-pillar fade-up">
-        <span class="craft-pillar-num">02</span>
-        <h3 class="craft-pillar-title">Hand-Selected Stones</h3>
-        <p class="craft-pillar-desc">We source each diamond personally — evaluating cut, color, clarity, and character beyond what any certificate can capture. We'll never put a stone in front of you that we wouldn't put on our own family.</p>
-      </div>
-      <div class="craft-pillar fade-up">
-        <span class="craft-pillar-num">03</span>
-        <h3 class="craft-pillar-title">Certified Only</h3>
-        <p class="craft-pillar-desc">Every stone we sell is GIA or IGI certified. Not as a formality — as a commitment. You deserve to know exactly what you're buying. We make that possible, always.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══ VISIT ═══════════════════════════════════════════════════════════ -->
+<!-- ═══ VISIT / HERO ══════════════════════════════════════════════════ -->
 <section class="visit">
   <div class="wrap">
     <div class="visit-inner">
@@ -616,25 +596,28 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <p class="footer-logo">Leon Diamond</p>
-        <p class="footer-tagline">Family-owned fine jewelers in New York City's Diamond District since 1975.</p>
-        <p class="footer-contact-item">74 W 47th St, New York, NY 10036</p>
-        <p class="footer-contact-item">Mon–Sat, 9AM–6PM</p>
+        <p class="footer-tagline">Family-owned fine jewelers since 1975.<br>NYC's Diamond District.</p>
+        <div>
+          <p class="footer-contact-item">74 W 47th St, New York, NY 10036</p>
+          <p class="footer-contact-item"><a href="tel:2123027327">212.302.7327</a></p>
+          <p class="footer-contact-item"><a href="https://leondiamond.com/pages/contact">Contact Us</a></p>
+        </div>
       </div>
-      <div>
-        <p class="footer-col-title">Collections</p>
-        <ul class="footer-links">
+      <div class="footer-col-accordion">
+        <button class="footer-col-title footer-acc-btn" aria-expanded="false">Collections <span class="footer-acc-icon">+</span></button>
+        <ul class="footer-links footer-acc-body">
           <li><a href="https://leondiamond.com/pages/all-rings">Rings</a></li>
           <li><a href="https://leondiamond.com/pages/all-earrings">Earrings</a></li>
           <li><a href="https://leondiamond.com/collections/natural-bracelets-tennis">Bracelets</a></li>
           <li><a href="https://leondiamond.com/pages/all-necklaces">Necklaces</a></li>
+          <li><a href="https://leondiamond.com/collections/pendants">Pendants</a></li>
           <li><a href="https://leondiamond.com/pages/ldbridal">Bridal</a></li>
           <li><a href="https://leondiamond.com/collections/gift-ideas-under-4-999">Gift Ideas</a></li>
         </ul>
       </div>
-      <div>
-        <p class="footer-col-title">Education</p>
-        <ul class="footer-links">
+      <div class="footer-col-accordion">
+        <button class="footer-col-title footer-acc-btn" aria-expanded="false">Education <span class="footer-acc-icon">+</span></button>
+        <ul class="footer-links footer-acc-body">
           <li><a href="https://leondiamond.com/pages/fancy-color-guide">Diamond Guide</a></li>
           <li><a href="https://leondiamond.com/collections/round-cut">Round Cut</a></li>
           <li><a href="https://leondiamond.com/collections/oval-cut">Oval Cut</a></li>
@@ -643,9 +626,9 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
           <li><a href="https://leondiamond.com/collections/cushion-cut">Cushion Cut</a></li>
         </ul>
       </div>
-      <div>
-        <p class="footer-col-title">Company</p>
-        <ul class="footer-links">
+      <div class="footer-col-accordion">
+        <button class="footer-col-title footer-acc-btn" aria-expanded="false">Company <span class="footer-acc-icon">+</span></button>
+        <ul class="footer-links footer-acc-body">
           <li><a href="about.html">About Us</a></li>
           <li><a href="https://calendar.app.google/Mo1Qy1UMHJpx7uo49">Book Appointment</a></li>
           <li><a href="https://leondiamond.com/pages/contact">Contact</a></li>
@@ -654,8 +637,10 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
         </ul>
       </div>
     </div>
+  </div>
+  <div class="footer-bottom-outer">
     <div class="footer-bottom">
-      <p class="footer-copy">© 2026 Leon Diamond. All rights reserved. 74 W 47th St, New York, NY 10036.</p>
+      <p class="footer-copy">© 2026 Leon Diamond. All rights reserved.</p>
       <div class="footer-social">
         <a href="https://www.instagram.com/leondiamond/" target="_blank">Instagram</a>
       </div>
@@ -687,6 +672,16 @@ window.addEventListener('scroll', () => {
     nav.classList.remove('scrolled');
   }
 }, { passive: true });
+
+/* ── Footer accordion ── */
+document.querySelectorAll('.footer-acc-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', !expanded);
+    const body = btn.nextElementSibling;
+    if (body) body.classList.toggle('open', !expanded);
+  });
+});
 
 /* ── Mobile nav ── */
 const hamburger = document.getElementById('nav-hamburger');
