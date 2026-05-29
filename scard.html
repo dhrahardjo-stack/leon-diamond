@@ -306,30 +306,31 @@
     font-size:9px;color:var(--accent);opacity:.7;margin-top:1px;
     letter-spacing:.16em;text-transform:uppercase;
   }
+  .contact-row .row-btns{
+    flex:0 0 auto;display:flex;flex-direction:column;gap:4px;
+  }
   .contact-row .call-btn{
-    flex:0 0 auto;
-    display:inline-flex;align-items:center;gap:5px;
-    padding:7px 11px;border-radius:7px;
+    display:inline-flex;align-items:center;justify-content:center;gap:4px;
+    padding:5px 9px;border-radius:6px;
     background:var(--ink);color:var(--paper);
     text-decoration:none;
-    font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;
+    font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;
     transition:background-color .2s ease, transform .12s ease;
   }
   .contact-row .call-btn:hover{background:var(--accent)}
   .contact-row .call-btn:active{transform:translateY(1px)}
-  .contact-row .call-btn svg{width:11px;height:11px}
+  .contact-row .call-btn svg{width:10px;height:10px}
   .contact-row .save-row-btn{
-    flex:0 0 auto;
-    display:inline-flex;align-items:center;gap:5px;
-    padding:7px 11px;border-radius:7px;
+    display:inline-flex;align-items:center;justify-content:center;gap:4px;
+    padding:5px 9px;border-radius:6px;
     background:var(--accent);color:var(--paper);
     border:none;font-family:inherit;cursor:pointer;
-    font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;
+    font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;
     transition:background-color .2s ease, transform .12s ease;
   }
   .contact-row .save-row-btn:hover{background:var(--accent-soft)}
   .contact-row .save-row-btn:active{transform:translateY(1px)}
-  .contact-row .save-row-btn svg{width:11px;height:11px}
+  .contact-row .save-row-btn svg{width:10px;height:10px}
 
   .save-selected{
     width:100%;
@@ -409,14 +410,16 @@
           <span class="ctel">917.217.4768</span>
           <span class="crole">Sales Manager</span>
         </label>
-        <a class="call-btn" href="tel:+19172174768" aria-label="Call Avi">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"></path></svg>
-          Call
-        </a>
-        <button class="save-row-btn" type="button" data-name="Avi" data-tel="+19172174768" aria-label="Save Avi to contacts">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="19" y1="8" x2="19" y2="14"></line><line x1="22" y1="11" x2="16" y2="11"></line></svg>
-          Save
-        </button>
+        <div class="row-btns">
+          <a class="call-btn" href="tel:+19172174768" aria-label="Call Avi">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"></path></svg>
+            Call
+          </a>
+          <button class="save-row-btn" type="button" data-name="Avi" data-tel="+19172174768" aria-label="Save Avi to contacts">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="19" y1="8" x2="19" y2="14"></line><line x1="22" y1="11" x2="16" y2="11"></line></svg>
+            Save
+          </button>
+        </div>
       </div>
 
       <div class="contact-row">
@@ -426,14 +429,16 @@
           <span class="ctel">212.921.4647</span>
           <span class="crole">Co Owners</span>
         </label>
-        <a class="call-btn" href="tel:+12129214647" aria-label="Call Mike">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"></path></svg>
-          Call
-        </a>
-        <button class="save-row-btn" type="button" data-name="Mike" data-tel="+12129214647" aria-label="Save Mike to contacts">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="19" y1="8" x2="19" y2="14"></line><line x1="22" y1="11" x2="16" y2="11"></line></svg>
-          Save
-        </button>
+        <div class="row-btns">
+          <a class="call-btn" href="tel:+12129214647" aria-label="Call Mike">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"></path></svg>
+            Call
+          </a>
+          <button class="save-row-btn" type="button" data-name="Mike" data-tel="+12129214647" aria-label="Save Mike to contacts">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="19" y1="8" x2="19" y2="14"></line><line x1="22" y1="11" x2="16" y2="11"></line></svg>
+            Save
+          </button>
+        </div>
       </div>
 
       <div class="contact-row">
@@ -443,14 +448,16 @@
           <span class="ctel">929.635.8749</span>
           <span class="crole">Senior Sales Associate</span>
         </label>
-        <a class="call-btn" href="tel:+19296358749" aria-label="Call Octavia">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"></path></svg>
-          Call
-        </a>
-        <button class="save-row-btn" type="button" data-name="Octavia" data-tel="+19296358749" aria-label="Save Octavia to contacts">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="19" y1="8" x2="19" y2="14"></line><line x1="22" y1="11" x2="16" y2="11"></line></svg>
-          Save
-        </button>
+        <div class="row-btns">
+          <a class="call-btn" href="tel:+19296358749" aria-label="Call Octavia">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"></path></svg>
+            Call
+          </a>
+          <button class="save-row-btn" type="button" data-name="Octavia" data-tel="+19296358749" aria-label="Save Octavia to contacts">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="19" y1="8" x2="19" y2="14"></line><line x1="22" y1="11" x2="16" y2="11"></line></svg>
+            Save
+          </button>
+        </div>
       </div>
 
       <div class="contact-row">
@@ -460,14 +467,16 @@
           <span class="ctel">718.532.6116</span>
           <span class="crole">Senior Sales Associate</span>
         </label>
-        <a class="call-btn" href="tel:+17185326116" aria-label="Call Regina">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"></path></svg>
-          Call
-        </a>
-        <button class="save-row-btn" type="button" data-name="Regina" data-tel="+17185326116" aria-label="Save Regina to contacts">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="19" y1="8" x2="19" y2="14"></line><line x1="22" y1="11" x2="16" y2="11"></line></svg>
-          Save
-        </button>
+        <div class="row-btns">
+          <a class="call-btn" href="tel:+17185326116" aria-label="Call Regina">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"></path></svg>
+            Call
+          </a>
+          <button class="save-row-btn" type="button" data-name="Regina" data-tel="+17185326116" aria-label="Save Regina to contacts">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="19" y1="8" x2="19" y2="14"></line><line x1="22" y1="11" x2="16" y2="11"></line></svg>
+            Save
+          </button>
+        </div>
       </div>
 
       <div class="contact-row">
@@ -477,14 +486,16 @@
           <span class="ctel">516.499.0078</span>
           <span class="crole">Senior Sales Associate</span>
         </label>
-        <a class="call-btn" href="tel:+15164990078" aria-label="Call Ruben">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"></path></svg>
-          Call
-        </a>
-        <button class="save-row-btn" type="button" data-name="Ruben" data-tel="+15164990078" aria-label="Save Ruben to contacts">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="19" y1="8" x2="19" y2="14"></line><line x1="22" y1="11" x2="16" y2="11"></line></svg>
-          Save
-        </button>
+        <div class="row-btns">
+          <a class="call-btn" href="tel:+15164990078" aria-label="Call Ruben">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"></path></svg>
+            Call
+          </a>
+          <button class="save-row-btn" type="button" data-name="Ruben" data-tel="+15164990078" aria-label="Save Ruben to contacts">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="19" y1="8" x2="19" y2="14"></line><line x1="22" y1="11" x2="16" y2="11"></line></svg>
+            Save
+          </button>
+        </div>
       </div>
 
       <div class="contact-row">
@@ -494,14 +505,16 @@
           <span class="ctel">212.302.7327</span>
           <span class="crole">Showroom &middot; 47th Street</span>
         </label>
-        <a class="call-btn" href="tel:+12123027327" aria-label="Call Store">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"></path></svg>
-          Call
-        </a>
-        <button class="save-row-btn" type="button" data-name="Store" data-tel="+12123027327" aria-label="Save Store to contacts">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="19" y1="8" x2="19" y2="14"></line><line x1="22" y1="11" x2="16" y2="11"></line></svg>
-          Save
-        </button>
+        <div class="row-btns">
+          <a class="call-btn" href="tel:+12123027327" aria-label="Call Store">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"></path></svg>
+            Call
+          </a>
+          <button class="save-row-btn" type="button" data-name="Store" data-tel="+12123027327" aria-label="Save Store to contacts">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="19" y1="8" x2="19" y2="14"></line><line x1="22" y1="11" x2="16" y2="11"></line></svg>
+            Save
+          </button>
+        </div>
       </div>
 
       <button class="save-selected" id="saveSelectedBtn" type="button" disabled>Save Selected (0)</button>
