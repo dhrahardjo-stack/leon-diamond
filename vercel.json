@@ -3,6 +3,7 @@
   "name": "leon-diamond",
   "rewrites": [
     { "source": "/card", "destination": "/card.html" },
+    { "source": "/scard", "destination": "/scard.html" },
     { "source": "/about", "destination": "/about.html" }
   ],
   "headers": [
