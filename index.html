@@ -236,49 +236,45 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 
 .cat-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: clamp(260px, 30vw, 440px);
+  grid-template-columns: repeat(4, 1fr);
   gap: 4px;
 }
 .cat-card {
-  position: relative; overflow: hidden; display: block; background: #ddd;
+  display: flex; flex-direction: column;
+  text-decoration: none; background: #fff; overflow: hidden;
 }
-.cat-card img {
+.cat-card-img {
+  aspect-ratio: 4/5;
+  overflow: hidden; position: relative;
+}
+.cat-card-img img {
   width: 100%; height: 100%; object-fit: cover; display: block;
   transition: transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
 }
-.cat-card:hover img { transform: scale(1.05); }
-.cat-card-overlay { display: none; }
-.cat-card-label {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 80px 28px 28px;
-  background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.18) 60%, transparent 100%);
-  display: flex; flex-direction: column; justify-content: flex-end;
+.cat-card:hover .cat-card-img img { transform: scale(1.05); }
+.cat-card-footer {
+  padding: 16px 20px 20px;
+  background: #fff;
 }
-.cat-card-label span {
-  font-size: 14px; font-weight: 700; letter-spacing: 2.5px;
-  text-transform: uppercase; color: #ffffff; display: block; margin-bottom: 8px;
+.cat-card-footer span {
+  display: block;
+  font-size: 12px; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase; color: #1c1c1e;
+  margin-bottom: 5px;
 }
-.cat-card-label a {
-  font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-  color: rgba(255,255,255,0.80); display: inline-flex; align-items: center; gap: 6px;
-  opacity: 0; transform: translateY(6px);
-  transition: opacity 0.35s, transform 0.35s; text-decoration: none;
+.cat-card-footer small {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.3px;
+  color: rgba(0,0,0,0.40); display: block;
+  transition: color 0.2s;
 }
-.cat-card:hover .cat-card-label a { opacity: 1; transform: translateY(0); }
+.cat-card:hover .cat-card-footer small { color: #2a6da4; }
 .cat-more { display: flex; align-items: center; justify-content: center; margin-top: 32px; }
 @media (max-width: 860px) {
-  .cat-grid {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: clamp(200px, 36vw, 280px) clamp(200px, 36vw, 280px);
-  }
+  .cat-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 480px) {
-  .cat-grid {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: clamp(180px, 44vw, 240px) clamp(180px, 44vw, 240px) clamp(180px, 44vw, 240px);
-  }
-  .cat-card:last-child { grid-column: 1 / -1; }
+  .cat-grid { grid-template-columns: repeat(2, 1fr); }
+  .cat-card-img { aspect-ratio: 3/4; }
 }
 
 /* ─── SHAPE GUIDE ──────────────────────────────────────────────────── */
@@ -342,30 +338,17 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 .shapes-be-item:hover .shapes-be-name { color: var(--gold); }
 
 /* ─── BRIDAL FEATURE ───────────────────────────────────────────────── */
-.bridal { background: var(--dark); overflow: hidden; }
-.bridal-split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 640px;
+.bridal {
+  position: relative; min-height: 580px; display: flex; align-items: center;
+  padding: clamp(80px,10vw,130px) 0; overflow: hidden; background: var(--dark);
 }
-.bridal-text-panel {
-  background: var(--dark);
-  display: flex; flex-direction: column; justify-content: center;
-  padding: clamp(64px,8vw,100px) clamp(32px,5vw,80px);
+.bridal-bg { position: absolute; inset: 0; }
+.bridal-bg img { width:100%; height:100%; object-fit:cover; object-position: center top; }
+.bridal-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, rgba(7,24,40,0.97) 0%, rgba(7,24,40,0.90) 45%, rgba(7,24,40,0.68) 70%, rgba(7,24,40,0.25) 100%);
 }
-.bridal-photo-panel {
-  overflow: hidden; position: relative; background: var(--dark-2);
-}
-.bridal-photo-panel img {
-  width: 100%; height: 100%; object-fit: cover;
-  object-position: center top; display: block;
-  transition: transform 0.8s ease;
-}
-.bridal-photo-panel:hover img { transform: scale(1.03); }
-@media (max-width: 860px) {
-  .bridal-split { grid-template-columns: 1fr; }
-  .bridal-photo-panel { min-height: 480px; }
-}
+.bridal-content { position:relative; z-index:2; max-width:520px; }
 .bridal-tag {
   display: inline-block;
   font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
@@ -1297,17 +1280,82 @@ body { background: #f5f7f8; color: #1c1c1e; }
 /* ── CATEGORIES → light ──────────────────────────────────────── */
 .categories { background: #f5f7f8; }
 .categories .sec-title-w { color: #1c1c1e; }
+.categories .sec-title-d { color: #1c1c1e; }
 .categories .eyebrow-w,
 .categories .eyebrow-gold { color: #2a6da4; }
 .categories .sec-sub-w { color: rgba(0,0,0,0.60); }
-.cat-card {
-  background: var(--dark) !important;
-  border: 0.5px solid rgba(0,0,0,0.09) !important;
-}
-/* Keep gradient overlay — white labels on all bg images */
-.cat-card-label span { color: #ffffff !important; text-shadow: 0 2px 8px rgba(0,0,0,0.7); }
-.cat-card-label a { color: rgba(255,255,255,0.88) !important; }
+.cat-card { background: #ffffff !important; border: 0.5px solid rgba(0,0,0,0.06) !important; }
+.cat-card-footer { background: #ffffff !important; }
+.cat-card-footer span { color: #1c1c1e !important; }
+.cat-card-footer small { color: rgba(0,0,0,0.40) !important; }
+.cat-card:hover .cat-card-footer small { color: #2a6da4 !important; }
 .btn-ghost-d { border-color: rgba(0,0,0,0.18) !important; color: #1c1c1e !important; }
+
+/* ── BEST SELLERS → cream ────────────────────────────────────── */
+.bestsellers {
+  background: #F2EFEC;
+  padding: clamp(64px, 8vw, 96px) 0;
+}
+.bestsellers .sec-title-w { color: #1c1c1e; }
+.bestsellers .eyebrow-gold { color: #2a6da4; }
+.bestsellers .sec-sub-w { color: rgba(0,0,0,0.60); }
+.bs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 48px;
+}
+.bs-card {
+  background: #ffffff;
+  display: flex; flex-direction: column;
+  text-decoration: none;
+  border: 0.5px solid rgba(0,0,0,0.07);
+  transition: border-color 0.25s, transform 0.25s;
+  overflow: hidden;
+}
+.bs-card:hover { border-color: rgba(42,109,164,0.28); transform: translateY(-2px); }
+.bs-img-wrap {
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  background: #f5f7f8;
+  position: relative;
+}
+.bs-img-wrap img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.55s ease;
+}
+.bs-card:hover .bs-img-wrap img { transform: scale(1.04); }
+.bs-badge {
+  position: absolute; top: 0; left: 0;
+  font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 5px 11px;
+  background: #2a6da4; color: #fff;
+}
+.bs-info { padding: 18px 18px 20px; flex: 1; display: flex; flex-direction: column; }
+.bs-type {
+  font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(42,109,164,0.75); margin-bottom: 6px;
+}
+.bs-name {
+  font-size: 14px; font-weight: 600; line-height: 1.4;
+  color: #1c1c1e; margin-bottom: 10px; flex: 1;
+}
+.bs-price {
+  font-size: 16px; font-weight: 700; color: #1c1c1e; letter-spacing: -0.3px;
+}
+.bs-cta {
+  display: block; text-align: center;
+  padding: 13px;
+  font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  background: #f5f7f8; color: rgba(0,0,0,0.55);
+  border-top: 1px solid rgba(0,0,0,0.07);
+  transition: background 0.2s, color 0.2s;
+}
+.bs-card:hover .bs-cta { background: #2a6da4; color: #fff; }
+.bs-footer { text-align: center; margin-top: 40px; }
+@media (max-width: 860px) {
+  .bs-grid { grid-template-columns: repeat(2, 1fr); }
+}
 
 /* ── SHAPE GUIDE → warm cream ────────────────────────────────── */
 .shapes { background: #F2EFEC; }
@@ -1418,8 +1466,7 @@ body { background: #f5f7f8; color: #1c1c1e; }
 .btn-gold { background: #2a6da4; color: #ffffff; }
 .hero .btn-ghost-w { border-color: rgba(178,204,221,0.45) !important; }
 
-/* ── BRIDAL → split layout ──────────────────────────────────── */
-.bridal-text-panel { background: var(--dark) !important; }
+/* ── BRIDAL → full-bleed ────────────────────────────────────── */
 .bridal-tag {
   border-color: rgba(178,204,221,0.40) !important;
   color: #b2ccdd !important;
@@ -1961,24 +2008,40 @@ body { overflow-x: hidden; }
   <div>
     <div class="cat-grid fade-up">
       <a class="cat-card" href="https://leondiamond.com/pages/all-earrings">
-        <img src="images/ld-cat-earrings.png" alt="Earrings" loading="lazy">
-        <div class="cat-card-label"><span>Earrings</span><a href="https://leondiamond.com/pages/all-earrings">Explore →</a></div>
+        <div class="cat-card-img">
+          <img src="images/ld-cat-earrings.png" alt="Earrings" loading="lazy">
+        </div>
+        <div class="cat-card-footer">
+          <span>Earrings</span>
+          <small>Shop Earrings →</small>
+        </div>
       </a>
       <a class="cat-card" href="https://leondiamond.com/pages/all-rings">
-        <img src="images/ld-cat-rings.png" alt="Rings" loading="lazy">
-        <div class="cat-card-label"><span>Rings</span><a href="https://leondiamond.com/pages/all-rings">Explore →</a></div>
+        <div class="cat-card-img">
+          <img src="images/ld-cat-rings.png" alt="Rings" loading="lazy">
+        </div>
+        <div class="cat-card-footer">
+          <span>Rings</span>
+          <small>Shop Rings →</small>
+        </div>
       </a>
       <a class="cat-card" href="https://leondiamond.com/collections/natural-bracelets-tennis">
-        <img src="images/ld-cat-bracelets.png" alt="Bracelets" loading="lazy">
-        <div class="cat-card-label"><span>Bracelets</span><a href="https://leondiamond.com/collections/natural-bracelets-tennis">Explore →</a></div>
+        <div class="cat-card-img">
+          <img src="images/ld-cat-bracelets.png" alt="Bracelets" loading="lazy">
+        </div>
+        <div class="cat-card-footer">
+          <span>Bracelets</span>
+          <small>Shop Bracelets →</small>
+        </div>
       </a>
       <a class="cat-card" href="https://leondiamond.com/pages/all-necklaces">
-        <img src="images/ld-cat-necklaces.png" alt="Necklaces" loading="lazy">
-        <div class="cat-card-label"><span>Necklaces</span><a href="https://leondiamond.com/pages/all-necklaces">Explore →</a></div>
-      </a>
-      <a class="cat-card" href="https://leondiamond.com/pages/ldbridal">
-        <img src="images/ld-cat-bridal.png" alt="Bridal" loading="lazy">
-        <div class="cat-card-label"><span>Bridal</span><a href="https://leondiamond.com/pages/ldbridal">Explore →</a></div>
+        <div class="cat-card-img">
+          <img src="images/ld-cat-necklaces.png" alt="Necklaces" loading="lazy">
+        </div>
+        <div class="cat-card-footer">
+          <span>Necklaces</span>
+          <small>Shop Necklaces →</small>
+        </div>
       </a>
     </div>
     <div class="cat-more fade-up">
@@ -2015,10 +2078,77 @@ body { overflow-x: hidden; }
 
 
 
+<!-- ═══ BEST SELLERS ═══════════════════════════════════════════════════ -->
+<section class="bestsellers">
+  <div class="wrap">
+    <div class="sec-header fade-up">
+      <p class="eyebrow eyebrow-gold">MOST LOVED</p>
+      <h2 class="sec-title-w">Best Sellers</h2>
+      <p class="sec-sub-w">Our most-gifted, most-worn, most-loved pieces — crafted in NYC's Diamond District.</p>
+    </div>
+    <div class="bs-grid fade-up">
+      <a class="bs-card" href="https://leondiamond.com/collections/lab-grown-earrings">
+        <div class="bs-img-wrap">
+          <div class="bs-badge">Best Seller</div>
+          <img src="images/ld-prod-earring.png" alt="Lab Grown Diamond Studs 2ct" loading="lazy">
+        </div>
+        <div class="bs-info">
+          <p class="bs-type">Lab Grown · IGI Certified</p>
+          <p class="bs-name">Lab Grown Diamond Stud Earrings 2ct</p>
+          <p class="bs-price">From $660</p>
+        </div>
+        <span class="bs-cta">Shop Now →</span>
+      </a>
+      <a class="bs-card" href="https://leondiamond.com/collections/lab-grown-earrings">
+        <div class="bs-img-wrap">
+          <div class="bs-badge">Top Pick</div>
+          <img src="images/ld-cat-earrings.png" alt="Lab Grown Diamond Studs 4ct" loading="lazy">
+        </div>
+        <div class="bs-info">
+          <p class="bs-type">Lab Grown · IGI Certified</p>
+          <p class="bs-name">Lab Grown Diamond Stud Earrings 4ct</p>
+          <p class="bs-price">From $1,175</p>
+        </div>
+        <span class="bs-cta">Shop Now →</span>
+      </a>
+      <a class="bs-card" href="https://leondiamond.com/collections/lab-grown-earrings">
+        <div class="bs-img-wrap">
+          <img src="images/ld-strip-6.png" alt="Lab Grown Diamond Studs 6ct" loading="lazy">
+        </div>
+        <div class="bs-info">
+          <p class="bs-type">Lab Grown · IGI Certified</p>
+          <p class="bs-name">Lab Grown Diamond Stud Earrings 6ct</p>
+          <p class="bs-price">From $2,040</p>
+        </div>
+        <span class="bs-cta">Shop Now →</span>
+      </a>
+      <a class="bs-card" href="https://leondiamond.com/collections/natural-bracelets-tennis">
+        <div class="bs-img-wrap">
+          <img src="images/ld-prod-bracelet.png" alt="Diamond Tennis Bracelet" loading="lazy">
+        </div>
+        <div class="bs-info">
+          <p class="bs-type">Natural Diamond · Certified</p>
+          <p class="bs-name">Diamond Tennis Bracelet</p>
+          <p class="bs-price">From $2,508</p>
+        </div>
+        <span class="bs-cta">Shop Now →</span>
+      </a>
+    </div>
+    <div class="bs-footer fade-up">
+      <a href="https://leondiamond.com/collections/all" class="btn btn-ghost-d">View All Products</a>
+    </div>
+  </div>
+</section>
+
+
 <!-- ═══ BRIDAL FEATURE ═════════════════════════════════════════════════ -->
 <section class="bridal">
-  <div class="bridal-split">
-    <div class="bridal-text-panel fade-up">
+  <div class="bridal-bg">
+    <img src="images/ld-cat-bridal.png" alt="Leon Diamond Bridal Collection" loading="lazy">
+  </div>
+  <div class="bridal-overlay"></div>
+  <div class="wrap">
+    <div class="bridal-content fade-up">
       <div class="bridal-tag">Bridal Collection · 2026</div>
       <h2 class="bridal-title">Begin with<br>a <em>Yes.</em></h2>
       <p class="bridal-sub">From the first conversation to the moment she says yes — we're here for every step. Engagement rings, wedding bands, and matching sets crafted in-house, exclusively for you.</p>
@@ -2026,11 +2156,6 @@ body { overflow-x: hidden; }
         <a href="https://leondiamond.com/pages/ldbridal" class="btn btn-gold">Explore Bridal</a>
         <a href="https://calendar.app.google/Mo1Qy1UMHJpx7uo49" class="bridal-link-text">Book Consultation →</a>
       </div>
-    </div>
-    <div class="bridal-photo-panel fade-up">
-      <a href="https://leondiamond.com/pages/ldbridal">
-        <img src="images/ld-cat-bridal.png" alt="Leon Diamond Bridal Collection" loading="lazy">
-      </a>
     </div>
   </div>
 </section>
@@ -2041,7 +2166,7 @@ body { overflow-x: hidden; }
 <!-- ═══ FANCY COLOR FEATURE ════════════════════════════════════════════ -->
 <section class="fancy">
   <div class="fancy-bg">
-    <img src="images/collection/IMG_8137.png" alt="Fancy Colored Diamond Jewelry" loading="lazy">
+    <img src="images/ld-fancy-color.png" alt="Fancy Colored Diamond Jewelry" loading="lazy">
   </div>
   <div class="fancy-overlay"></div>
   <div class="wrap">
@@ -2065,11 +2190,11 @@ body { overflow-x: hidden; }
 <!-- ═══ FANCY PHOTO STRIP ═════════════════════════════════════════════ -->
 <div class="fancy-strip fade-up">
   <div class="fancy-strip-inner">
-    <div class="fancy-strip-item"><img src="images/collection/download (1).png" alt="Leon Diamond Client" loading="lazy"></div>
-    <div class="fancy-strip-item"><img src="images/collection/download (2).png" alt="Leon Diamond Client" loading="lazy"></div>
-    <div class="fancy-strip-item"><img src="images/collection/download (10).png" alt="Leon Diamond Client" loading="lazy"></div>
-    <div class="fancy-strip-item"><img src="images/collection/download (11).png" alt="Leon Diamond Client" loading="lazy"></div>
-    <div class="fancy-strip-item"><img src="images/collection/download (12).png" alt="Leon Diamond Client" loading="lazy"></div>
+    <div class="fancy-strip-item"><img src="images/ld-strip-6.png" alt="Leon Diamond Client" loading="lazy"></div>
+    <div class="fancy-strip-item"><img src="images/ld-strip-7.png" alt="Leon Diamond Client" loading="lazy"></div>
+    <div class="fancy-strip-item"><img src="images/ld-strip-3.png" alt="Leon Diamond Client" loading="lazy"></div>
+    <div class="fancy-strip-item"><img src="images/ld-strip-4.png" alt="Leon Diamond Client" loading="lazy"></div>
+    <div class="fancy-strip-item"><img src="images/ld-strip-5.png" alt="Leon Diamond Client" loading="lazy"></div>
   </div>
 </div>
 
