@@ -737,7 +737,8 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
   overflow: hidden; position: relative; background: var(--dark-2);
 }
 .appt-be-photo img {
-  width: 100%; height: 100%; object-fit: cover; object-position: center;
+  width: 100%; height: 100%; object-fit: cover; object-position: 38% center;
+  transform: scale(1.12); transform-origin: center;
 }
 .appt-be-content {
   display: flex; flex-direction: column; justify-content: center;
@@ -1805,17 +1806,17 @@ body { background: #f5f7f8; color: #1c1c1e; }
 }
 @media (max-width: 600px) {
   .review-card { flex-direction: column; }
-  .review-card-photo { flex: none; width: 100%; height: 220px; }
-  .review-card-body { padding: 28px 22px; }
+  .review-card-photo { flex: none; width: 100%; height: 150px; }
+  .review-card-body { padding: 18px 18px 22px; }
 }
 .review-stars {
   color: #F5C518; font-size: 14px; letter-spacing: 3px;
   margin-bottom: 20px;
 }
 .review-text {
-  font-size: clamp(16px, 2vw, 19px); line-height: 1.75;
+  font-size: clamp(14px, 1.6vw, 16px); line-height: 1.65;
   color: rgba(255,255,255,0.85);
-  margin-bottom: 28px; font-style: italic;
+  margin-bottom: 18px; font-style: italic;
 }
 .review-author-name {
   font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
@@ -2409,7 +2410,7 @@ body { overflow-x: hidden; }
     <div class="appt-be-content fade-up">
       <p class="appt-tag">PRIVATE CONSULTATION</p>
       <h2 class="appt-title">We're Here<br>for You.</h2>
-      <p class="appt-sub">Whether in our showroom on West 47th Street or anywhere in the world — our gemologists are here to help you find exactly what you're looking for.</p>
+      <p class="appt-sub">In-store or anywhere in the world — our gemologists are here for you.</p>
       <div class="appt-options">
         <div class="appt-option">
           <svg class="appt-opt-icon" viewBox="0 0 36 36">
@@ -2417,8 +2418,8 @@ body { overflow-x: hidden; }
             <path d="M18,10 L18,18 L24,22"/>
           </svg>
           <div>
-            <p class="appt-opt-title">In-Store Appointment</p>
-            <p class="appt-opt-desc">Visit our showroom at 74 W 47th St, NYC. Private viewing rooms available. Mon–Sat, 9AM–6PM.</p>
+            <p class="appt-opt-title">In-Store · 74 W 47th St, NYC</p>
+            <p class="appt-opt-desc">Mon–Sat, 9AM–6PM</p>
           </div>
         </div>
         <div class="appt-option">
@@ -2428,7 +2429,7 @@ body { overflow-x: hidden; }
           </svg>
           <div>
             <p class="appt-opt-title">Virtual Consultation</p>
-            <p class="appt-opt-desc">Connect with our gemologists from anywhere in the world via video call. Flexible scheduling available.</p>
+            <p class="appt-opt-desc">Video call, flexible scheduling</p>
           </div>
         </div>
       </div>
