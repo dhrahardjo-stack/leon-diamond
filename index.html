@@ -340,7 +340,7 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 /* ─── BRIDAL FEATURE ───────────────────────────────────────────────── */
 .bridal {
   position: relative; min-height: 580px; display: flex; align-items: center;
-  padding: clamp(80px,10vw,130px) 0; overflow: hidden; background: var(--dark);
+  padding: clamp(80px,10vw,130px) 0; overflow: hidden; background: #F2EFEC;
 }
 .bridal-bg { position: absolute; inset: 0; }
 .bridal-bg img { width:100%; height:100%; object-fit:cover; object-position: center top; }
@@ -586,7 +586,7 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 }
 .fc-card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.18); }
 .fc-img-wrap {
-  aspect-ratio: 3/4;
+  aspect-ratio: 1/1;
   overflow: hidden;
   background: #f8f4ef;
   position: relative;
@@ -1024,11 +1024,17 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 .celeb-prev:hover,.celeb-next:hover { background:rgba(0,0,0,0.14); }
 .celeb-prev { left:16px; } .celeb-next { right:16px; }
 .celeb-wall-stats { display:grid; grid-template-columns:repeat(4,1fr); margin-top:64px; border-top:1px solid rgba(0,0,0,0.07); text-align:center; }
-.celeb-wall-stats > div { padding:32px 20px; border-right:1px solid rgba(0,0,0,0.07); }
+.celeb-wall-stats > div { padding:20px 16px; border-right:1px solid rgba(0,0,0,0.07); }
 .celeb-wall-stats > div:last-child { border-right:none; }
-.celeb-wall-stats span { display:block; font-size:32px; font-weight:800; color:#1c1c1e; letter-spacing:-1px; }
-.celeb-wall-stats p { font-size:11px; font-weight:600; letter-spacing:1.2px; color:rgba(0,0,0,0.40); text-transform:uppercase; margin-top:6px; }
-@media (max-width:900px) { .celeb-slide { flex:0 0 calc(33.33% - 4px); } .celeb-wall-stats { grid-template-columns:repeat(2,1fr); } }
+.celeb-wall-stats span { display:block; font-size:30px; font-weight:800; color:#1c1c1e; letter-spacing:-1px; }
+.celeb-wall-stats p { font-size:10px; font-weight:600; letter-spacing:1.2px; color:rgba(0,0,0,0.40); text-transform:uppercase; margin-top:5px; }
+@media (max-width:900px) {
+  .celeb-slide { flex:0 0 calc(33.33% - 4px); }
+  .celeb-wall-stats { grid-template-columns:repeat(2,1fr); }
+  .celeb-wall-stats > div:nth-child(-n+2) { border-bottom:1px solid rgba(0,0,0,0.07); }
+  .celeb-wall-stats > div:nth-child(2) { border-right:none; }
+  .celeb-wall-stats > div:nth-child(4) { border-right:none; }
+}
 @media (max-width:540px) { .celeb-slide { flex:0 0 calc(50% - 4px); } }
 
 @media (max-width: 960px) {
@@ -1494,6 +1500,7 @@ body { background: #f5f7f8; color: #1c1c1e; }
     display: block !important;
     min-height: unset !important;
     padding: 0 !important;
+    background: #F2EFEC !important;
   }
   .bridal-bg {
     position: relative !important;
@@ -1505,6 +1512,10 @@ body { background: #f5f7f8; color: #1c1c1e; }
     padding-top: 40px !important;
     padding-bottom: 48px !important;
   }
+  .bridal-title { color: #071828 !important; }
+  .bridal-sub { color: rgba(7,24,40,0.65) !important; }
+  .bridal-tag { color: #2a6da4 !important; border-color: rgba(42,109,164,0.35) !important; }
+  .bridal-link-text { color: #2a6da4 !important; border-bottom-color: rgba(42,109,164,0.35) !important; }
 }
 
 
@@ -1776,9 +1787,26 @@ body { background: #f5f7f8; color: #1c1c1e; }
   flex: 0 0 100%;
   background: var(--dark-2);
   border: 1px solid var(--bdr-d);
-  padding: 44px 48px;
-  max-width: 720px; margin: 0 auto;
+  max-width: 760px; margin: 0 auto;
   box-sizing: border-box;
+  display: flex; overflow: hidden;
+}
+.review-card-photo {
+  flex: 0 0 200px;
+  overflow: hidden;
+}
+.review-card-photo img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center top;
+  display: block;
+}
+.review-card-body {
+  flex: 1; padding: 40px 44px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+@media (max-width: 600px) {
+  .review-card { flex-direction: column; }
+  .review-card-photo { flex: none; width: 100%; height: 220px; }
+  .review-card-body { padding: 28px 22px; }
 }
 .review-stars {
   color: #F5C518; font-size: 14px; letter-spacing: 3px;
@@ -2301,18 +2329,15 @@ body { overflow-x: hidden; }
   </div>
   <div class="celeb-carousel-wrap fade-up">
     <div class="celeb-carousel" id="celeb-carousel">
-      <div class="celeb-slide"><div class="celeb-slide-img"><img src="https://leondiamond.com/cdn/shop/files/gempages_520655973908481054-eaf98d71-3b6d-418d-b1a1-82a60ab8186f.jpg" alt="Leon Diamond VIP Client" loading="lazy"></div></div>
-      <div class="celeb-slide"><div class="celeb-slide-img"><img src="https://leondiamond.com/cdn/shop/files/gempages_520655973908481054-cc1908ba-c65f-4d16-a7d3-1f26c68576fc.jpg" alt="Leon Diamond VIP Client" loading="lazy"></div></div>
-      <div class="celeb-slide"><div class="celeb-slide-img"><img src="https://leondiamond.com/cdn/shop/files/gempages_520655973908481054-94dc2f90-b94e-4cfb-8604-12cd5bdbb6ac.jpg" alt="Leon Diamond VIP Client" loading="lazy"></div></div>
-      <div class="celeb-slide"><div class="celeb-slide-img"><img src="https://leondiamond.com/cdn/shop/files/gempages_520655973908481054-73bffdc8-278c-411e-9210-3a9704e186d1.jpg" alt="Leon Diamond VIP Client" loading="lazy"></div></div>
-      <div class="celeb-slide"><div class="celeb-slide-img"><img src="https://leondiamond.com/cdn/shop/files/gempages_520655973908481054-a8d9b4b3-f206-412f-aa81-13ef132ed31c.jpg" alt="Leon Diamond VIP Client" loading="lazy"></div></div>
-      <div class="celeb-slide"><div class="celeb-slide-img"><img src="https://leondiamond.com/cdn/shop/files/gempages_520655973908481054-005b3ee3-48f1-436a-b837-1d4a434fc486.jpg" alt="Leon Diamond VIP Client" loading="lazy"></div></div>
-      <div class="celeb-slide"><div class="celeb-slide-img"><img src="https://leondiamond.com/cdn/shop/files/gempages_520655973908481054-0391169d-7dfb-4e06-941a-3c17e19f7e27.jpg" alt="Leon Diamond VIP Client" loading="lazy"></div></div>
-      <div class="celeb-slide"><div class="celeb-slide-img"><img src="https://leondiamond.com/cdn/shop/files/gempages_520655973908481054-6d4aa468-1442-4d21-8579-5249a78a951c.jpg" alt="Leon Diamond VIP Client" loading="lazy"></div></div>
-      <div class="celeb-slide"><div class="celeb-slide-img"><img src="https://leondiamond.com/cdn/shop/files/gempages_520655973908481054-09dd7f23-542c-4e91-ace1-13198dfc1f47.jpg" alt="Leon Diamond VIP Client" loading="lazy"></div></div>
-      <div class="celeb-slide"><div class="celeb-slide-img"><img src="https://leondiamond.com/cdn/shop/files/gempages_520655973908481054-eaf98d71-3b6d-418d-b1a1-82a60ab8186f.jpg" alt="Leon Diamond VIP Client" loading="lazy"></div></div>
-      <div class="celeb-slide"><div class="celeb-slide-img"><img src="https://leondiamond.com/cdn/shop/files/gempages_520655973908481054-cc1908ba-c65f-4d16-a7d3-1f26c68576fc.jpg" alt="Leon Diamond VIP Client" loading="lazy"></div></div>
-      <div class="celeb-slide"><div class="celeb-slide-img"><img src="https://leondiamond.com/cdn/shop/files/gempages_520655973908481054-94dc2f90-b94e-4cfb-8604-12cd5bdbb6ac.jpg" alt="Leon Diamond VIP Client" loading="lazy"></div></div>
+      <div class="celeb-slide"><div class="celeb-slide-img"><img src="https://leondiamond.com/cdn/shop/files/gempages_520655973908481054-eaf98d71-3b6d-418d-b1a1-82a60ab8186f.jpg" alt="Leon Diamond VIP Client" loading="lazy"></div><p class="celeb-slide-name">VIP Client</p></div>
+      <div class="celeb-slide"><div class="celeb-slide-img"><img src="https://leondiamond.com/cdn/shop/files/gempages_520655973908481054-cc1908ba-c65f-4d16-a7d3-1f26c68576fc.jpg" alt="Leon Diamond VIP Client" loading="lazy"></div><p class="celeb-slide-name">VIP Client</p></div>
+      <div class="celeb-slide"><div class="celeb-slide-img"><img src="https://leondiamond.com/cdn/shop/files/gempages_520655973908481054-94dc2f90-b94e-4cfb-8604-12cd5bdbb6ac.jpg" alt="Leon Diamond VIP Client" loading="lazy"></div><p class="celeb-slide-name">VIP Client</p></div>
+      <div class="celeb-slide"><div class="celeb-slide-img"><img src="https://leondiamond.com/cdn/shop/files/gempages_520655973908481054-73bffdc8-278c-411e-9210-3a9704e186d1.jpg" alt="Leon Diamond VIP Client" loading="lazy"></div><p class="celeb-slide-name">VIP Client</p></div>
+      <div class="celeb-slide"><div class="celeb-slide-img"><img src="https://leondiamond.com/cdn/shop/files/gempages_520655973908481054-a8d9b4b3-f206-412f-aa81-13ef132ed31c.jpg" alt="Leon Diamond VIP Client" loading="lazy"></div><p class="celeb-slide-name">VIP Client</p></div>
+      <div class="celeb-slide"><div class="celeb-slide-img"><img src="https://leondiamond.com/cdn/shop/files/gempages_520655973908481054-005b3ee3-48f1-436a-b837-1d4a434fc486.jpg" alt="Leon Diamond VIP Client" loading="lazy"></div><p class="celeb-slide-name">VIP Client</p></div>
+      <div class="celeb-slide"><div class="celeb-slide-img"><img src="https://leondiamond.com/cdn/shop/files/gempages_520655973908481054-0391169d-7dfb-4e06-941a-3c17e19f7e27.jpg" alt="Leon Diamond VIP Client" loading="lazy"></div><p class="celeb-slide-name">VIP Client</p></div>
+      <div class="celeb-slide"><div class="celeb-slide-img"><img src="https://leondiamond.com/cdn/shop/files/gempages_520655973908481054-6d4aa468-1442-4d21-8579-5249a78a951c.jpg" alt="Leon Diamond VIP Client" loading="lazy"></div><p class="celeb-slide-name">VIP Client</p></div>
+      <div class="celeb-slide"><div class="celeb-slide-img"><img src="https://leondiamond.com/cdn/shop/files/gempages_520655973908481054-09dd7f23-542c-4e91-ace1-13198dfc1f47.jpg" alt="Leon Diamond VIP Client" loading="lazy"></div><p class="celeb-slide-name">VIP Client</p></div>
     </div>
     <button class="celeb-prev" id="celeb-prev" aria-label="Previous">&#8592;</button>
     <button class="celeb-next" id="celeb-next" aria-label="Next">&#8594;</button>
@@ -2332,32 +2357,34 @@ body { overflow-x: hidden; }
       <p class="eyebrow eyebrow-gold">VERIFIED REVIEWS</p>
       <h2 class="sec-title-w">What Our Clients Say</h2>
     </div>
-    <div class="reviews-photo-strip fade-up">
-      <div class="reviews-photo-item"><img src="images/ld-strip-6.png" alt="Leon Diamond Client" loading="lazy"></div>
-      <div class="reviews-photo-item"><img src="images/ld-strip-7.png" alt="Leon Diamond Client" loading="lazy"></div>
-      <div class="reviews-photo-item"><img src="images/ld-strip-3.png" alt="Leon Diamond Client" loading="lazy"></div>
-      <div class="reviews-photo-item"><img src="images/ld-strip-4.png" alt="Leon Diamond Client" loading="lazy"></div>
-      <div class="reviews-photo-item"><img src="images/ld-strip-5.png" alt="Leon Diamond Client" loading="lazy"></div>
-    </div>
     <div class="reviews-carousel-wrap fade-up">
       <div class="reviews-track" id="reviews-track">
         <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"I bought the 4ct lab grown studs as a gift for my wife’s birthday. The quality is stunning — you genuinely cannot tell the difference. IGI certified, beautifully packaged, arrived overnight exactly as promised."</p>
-          <p class="review-author-name">Michael T.</p>
-          <p class="review-author-meta">Verified Purchase · Lab Grown Studs 4.0ctw</p>
+          <div class="review-card-photo"><img src="images/ld-strip-6.png" alt="Leon Diamond Client" loading="lazy"></div>
+          <div class="review-card-body">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"I bought the 4ct lab grown studs as a gift for my wife’s birthday. The quality is stunning — you genuinely cannot tell the difference. IGI certified, beautifully packaged, arrived overnight exactly as promised."</p>
+            <p class="review-author-name">Michael T.</p>
+            <p class="review-author-meta">Verified Purchase · Lab Grown Studs 4.0ctw</p>
+          </div>
         </div>
         <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"We came in for an engagement ring consultation and left with the most beautiful oval cut I’ve ever seen. The team was knowledgeable, patient, and genuinely cared about finding us the right stone."</p>
-          <p class="review-author-name">Sarah &amp; James R.</p>
-          <p class="review-author-meta">Verified Purchase · Custom Engagement Ring</p>
+          <div class="review-card-photo"><img src="images/ld-strip-3.png" alt="Leon Diamond Client" loading="lazy"></div>
+          <div class="review-card-body">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"We came in for an engagement ring consultation and left with the most beautiful oval cut I’ve ever seen. The team was knowledgeable, patient, and genuinely cared about finding us the right stone."</p>
+            <p class="review-author-name">Sarah &amp; James R.</p>
+            <p class="review-author-meta">Verified Purchase · Custom Engagement Ring</p>
+          </div>
         </div>
         <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"Ordered Sunday night, arrived Monday morning. The tennis bracelet is perfect — exactly as described, GIA certified, and the craftsmanship is immaculate. Already recommended Leon Diamond to three friends."</p>
-          <p class="review-author-name">Priya K.</p>
-          <p class="review-author-meta">Verified Purchase · Diamond Tennis Bracelet</p>
+          <div class="review-card-photo"><img src="images/ld-strip-7.png" alt="Leon Diamond Client" loading="lazy"></div>
+          <div class="review-card-body">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Ordered Sunday night, arrived Monday morning. The tennis bracelet is perfect — exactly as described, GIA certified, and the craftsmanship is immaculate. Already recommended Leon Diamond to three friends."</p>
+            <p class="review-author-name">Priya K.</p>
+            <p class="review-author-meta">Verified Purchase · Diamond Tennis Bracelet</p>
+          </div>
         </div>
       </div>
     </div>
