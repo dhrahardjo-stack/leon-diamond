@@ -165,24 +165,48 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 .nav-hamburger.open span:nth-child(2) { opacity: 0; }
 .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 .mobile-nav-drawer {
-  display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(7,24,40,0.98); z-index: 200; flex-direction: column;
-  justify-content: center; align-items: center; padding: 40px 32px; gap: 0;
+  position: fixed; top: 0; left: 0; bottom: 0;
+  width: 82vw; max-width: 340px;
+  background: rgba(7,18,30,0.94);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  z-index: 99;
+  display: flex;
+  flex-direction: column; align-items: flex-start; justify-content: flex-start;
+  transform: translateX(-100%);
+  transition: transform 0.35s cubic-bezier(0.33, 0.59, 0.14, 1);
+  overflow-y: auto;
+  padding-top: 72px;
+  border-right: 1px solid rgba(255,255,255,0.07);
 }
-.mobile-nav-drawer.open { display: flex; }
+.mobile-nav-drawer.open { transform: translateX(0); }
 .mobile-nav-drawer a {
-  font-size: clamp(28px, 6vw, 42px); font-weight: 700; letter-spacing: -0.5px;
-  color: rgba(255,255,255,0.85); padding: 14px 0; width: 100%; text-align: center;
-  border-bottom: 1px solid rgba(255,255,255,0.07); transition: color 0.2s;
+  font-size: 13px; font-weight: 500; letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.90);
+  padding: 17px 28px;
+  transition: color 0.2s, background 0.2s;
+  text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+  text-decoration: none;
 }
-.mobile-nav-drawer a:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
-.mobile-nav-drawer a:hover { color: var(--white); }
-.mobile-nav-appt-wrap { margin-top: 32px; }
+.mobile-nav-drawer a::after { content: '›'; font-size: 18px; opacity: 0.35; font-weight: 300; }
+.mobile-nav-drawer a:hover { color: #ffffff; background: rgba(255,255,255,0.04); }
+.mobile-nav-appt-wrap {
+  padding: 24px 28px; width: 100%; margin-top: auto;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
 .mobile-nav-appt-wrap a {
-  font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-  padding: 15px 36px; border: 1px solid rgba(178,204,221,0.45); color: var(--gold-soft);
-  display: inline-block;
+  display: flex !important; align-items: center; justify-content: center;
+  background: #2B7FFF !important; color: #ffffff !important;
+  font-size: 12px !important; font-weight: 600 !important; letter-spacing: 2px !important;
+  text-transform: uppercase !important; padding: 14px 20px !important;
+  border: none !important; border-bottom: none !important;
+  width: 100%; border-radius: 0 !important;
 }
+.mobile-nav-appt-wrap a::after { display: none; }
 
 /* ─── ABOUT HERO ────────────────────────────────────────────────────── */
 .about-hero {
@@ -484,10 +508,6 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 <body>
 
 <!-- ANNOUNCEMENT BAR -->
-<div class="ann-bar">
-  Celebrating 51 Years in NYC's Diamond District — Free Overnight Shipping on All Orders
-  <a href="https://leondiamond.com/collections/all">Shop Now →</a>
-</div>
 
 <!-- NAV -->
 <nav class="nav" id="main-nav">
@@ -559,36 +579,6 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 </section>
 
 
-<!-- ═══ VISIT / HERO ══════════════════════════════════════════════════ -->
-<section class="visit">
-  <div class="wrap">
-    <div class="visit-inner">
-      <div class="fade-up">
-        <p class="visit-label">Come See Us</p>
-        <h2 class="visit-title">The District's Most Private Showroom.</h2>
-        <p class="visit-sub">74 W 47th Street. A private viewing room where you can sit, take your time, and find exactly what you're looking for — with a personal gemologist by your side.</p>
-        <div class="visit-meta">
-          <div class="visit-meta-item">
-            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-            74 W 47th St, New York, NY 10036
-          </div>
-          <div class="visit-meta-item">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            Monday – Saturday, 9AM – 6PM EST
-          </div>
-          <div class="visit-meta-item">
-            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            By Appointment — for the best experience
-          </div>
-        </div>
-        <a href="https://calendar.app.google/Mo1Qy1UMHJpx7uo49" class="btn btn-gold" target="_blank">Book Private Appointment</a>
-      </div>
-      <div class="visit-image fade-up">
-        <img src="https://ucarecdn.com/ee6d5074-1640-4cc7-8933-47c8589c3dee/-/format/auto/" alt="Leon Diamond private showroom at 74 W 47th Street" loading="lazy">
-      </div>
-    </div>
-  </div>
-</section>
 
 
 <!-- ═══ FOOTER ══════════════════════════════════════════════════════════ -->

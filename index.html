@@ -580,11 +580,11 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
   background: #fff;
   display: flex; flex-direction: column;
   text-decoration: none;
-  border: 0.5px solid rgba(255,255,255,0.06);
   overflow: hidden;
-  transition: transform 0.25s, border-color 0.25s;
+  transition: transform 0.30s;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.28);
 }
-.fc-card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.18); }
+.fc-card:hover { transform: translateY(-4px); box-shadow: 0 8px 40px rgba(0,0,0,0.40); }
 .fc-img-wrap {
   aspect-ratio: 1/1;
   overflow: hidden;
@@ -597,10 +597,11 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 }
 .fc-card:hover .fc-img-wrap img { transform: scale(1.05); }
 .fc-badge {
-  position: absolute; top: 0; left: 0;
-  font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
-  padding: 5px 10px;
-  background: #071828; color: #fff;
+  position: absolute; bottom: 0; left: 0; right: 0;
+  font-size: 10px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase;
+  padding: 10px 14px;
+  background: linear-gradient(to top, rgba(7,24,40,0.72) 0%, transparent 100%);
+  color: rgba(255,255,255,0.90);
 }
 .fc-info {
   padding: 14px 16px 16px;
@@ -1788,12 +1789,13 @@ body { background: #f5f7f8; color: #1c1c1e; }
   flex: 0 0 100%;
   background: var(--dark-2);
   border: 1px solid var(--bdr-d);
-  max-width: 760px; margin: 0 auto;
+  max-width: 680px; margin: 0 auto;
   box-sizing: border-box;
   display: flex; overflow: hidden;
+  max-height: 220px;
 }
 .review-card-photo {
-  flex: 0 0 200px;
+  flex: 0 0 160px;
   overflow: hidden;
 }
 .review-card-photo img {
@@ -1801,13 +1803,14 @@ body { background: #f5f7f8; color: #1c1c1e; }
   display: block;
 }
 .review-card-body {
-  flex: 1; padding: 40px 44px;
+  flex: 1; padding: 24px 28px;
   display: flex; flex-direction: column; justify-content: center;
+  overflow: hidden;
 }
 @media (max-width: 600px) {
-  .review-card { flex-direction: column; }
-  .review-card-photo { flex: none; width: 100%; height: 150px; }
-  .review-card-body { padding: 18px 18px 22px; }
+  .review-card { flex-direction: row; max-height: 160px; }
+  .review-card-photo { flex: 0 0 110px; }
+  .review-card-body { padding: 16px 16px; }
 }
 .review-stars {
   color: #F5C518; font-size: 14px; letter-spacing: 3px;
@@ -2226,7 +2229,7 @@ body { overflow-x: hidden; }
       </a>
       <a class="bs-card" href="https://leondiamond.com/collections/engagement-rings">
         <div class="bs-img-wrap">
-          <img src="images/ld-cat-rings.png" alt="Diamond Engagement Rings" loading="lazy">
+          <img src="images/ld-prod-ring.png" alt="Diamond Engagement Rings" loading="lazy">
         </div>
         <div class="bs-info">
           <p class="bs-name">Diamond Engagement Rings</p>
@@ -2401,40 +2404,34 @@ body { overflow-x: hidden; }
   </div>
 </section>
 
-<!-- ═══ BOOK APPOINTMENT ════════════════════════════════════════════════ -->
+<!-- ═══ COME SEE US ══════════════════════════════════════════════════════ -->
 <section class="appt">
   <div class="appt-be-split">
     <div class="appt-be-photo">
       <img src="https://leondiamond.com/cdn/shop/files/gempages_520655973908481054-8c92324c-94ad-44b5-8cf3-62c056eb909b.jpg" alt="Leon Diamond Showroom" loading="lazy">
     </div>
     <div class="appt-be-content fade-up">
-      <p class="appt-tag">PRIVATE CONSULTATION</p>
-      <h2 class="appt-title">We're Here<br>for You.</h2>
-      <p class="appt-sub">In-store or anywhere in the world — our gemologists are here for you.</p>
+      <p class="appt-tag">COME SEE US</p>
+      <h2 class="appt-title">The District's Most<br>Private Showroom.</h2>
+      <p class="appt-sub">74 W 47th Street. A private viewing room where you can sit, take your time, and find exactly what you're looking for.</p>
       <div class="appt-options">
         <div class="appt-option">
-          <svg class="appt-opt-icon" viewBox="0 0 36 36">
-            <path d="M18,4 C10.3,4 4,10.3 4,18 C4,25.7 10.3,32 18,32 C25.7,32 32,25.7 32,18 C32,10.3 25.7,4 18,4 Z"/>
-            <path d="M18,10 L18,18 L24,22"/>
-          </svg>
+          <svg class="appt-opt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
           <div>
-            <p class="appt-opt-title">In-Store · 74 W 47th St, NYC</p>
-            <p class="appt-opt-desc">Mon–Sat, 9AM–6PM</p>
+            <p class="appt-opt-title">74 W 47th St, New York, NY 10036</p>
+            <p class="appt-opt-desc">Monday – Saturday, 9AM – 6PM EST</p>
           </div>
         </div>
         <div class="appt-option">
-          <svg class="appt-opt-icon" viewBox="0 0 36 36">
-            <rect x="4" y="8" width="28" height="20" rx="2"/>
-            <path d="M4,14 L18,22 L32,14"/>
-          </svg>
+          <svg class="appt-opt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
           <div>
-            <p class="appt-opt-title">Virtual Consultation</p>
-            <p class="appt-opt-desc">Video call, flexible scheduling</p>
+            <p class="appt-opt-title">By Appointment</p>
+            <p class="appt-opt-desc">For the best experience</p>
           </div>
         </div>
       </div>
       <div class="appt-ctas">
-        <a href="https://calendar.app.google/Mo1Qy1UMHJpx7uo49" class="btn btn-gold" target="_blank">Book an Appointment</a>
+        <a href="https://calendar.app.google/Mo1Qy1UMHJpx7uo49" class="btn btn-gold" target="_blank">Book Private Appointment</a>
       </div>
     </div>
   </div>
