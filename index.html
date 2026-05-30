@@ -288,17 +288,23 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 .shape-card {
   display: flex; flex-direction: column; align-items: center;
   text-decoration: none;
-  padding: 20px 8px 16px;
-  border: 1px solid rgba(7,24,40,0.08);
   background: #fff;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  border: 0.5px solid rgba(0,0,0,0.07);
+  overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s;
   cursor: pointer;
 }
-.shape-card:hover { border-color: #2a6da4; box-shadow: 0 2px 12px rgba(42,109,164,0.10); }
-.shape-icon { margin-bottom: 10px; display: flex; align-items: center; justify-content: center; height: 64px; }
-.shape-icon img { width: 56px; height: 56px; object-fit: contain; transition: transform 0.2s; }
-.shape-card:hover .shape-icon img { transform: scale(1.08); }
-.shape-name { font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #071828; }
+.shape-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.10); }
+.shape-icon {
+  width: 100%; aspect-ratio: 1/1; overflow: hidden;
+  background: #f8f8f8;
+}
+.shape-icon img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.shape-card:hover .shape-icon img { transform: scale(1.06); }
+.shape-name {
+  font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+  color: #071828; padding: 12px 8px 10px; text-align: center;
+}
 @media (max-width: 700px) {
   .shapes-grid { grid-template-columns: repeat(4, 1fr); }
 }
@@ -2204,35 +2210,35 @@ body { overflow-x: hidden; }
     </div>
     <div class="shapes-grid fade-up">
       <a class="shape-card" href="https://leondiamond.com/collections/round-cut" target="_blank" rel="noopener">
-        <div class="shape-icon"><img src="images/shape-round.png" alt="Round Cut" loading="lazy"></div>
+        <div class="shape-icon"><img src="images/shape-round.png?v=2" alt="Round Cut" loading="lazy"></div>
         <p class="shape-name">Round</p>
       </a>
       <a class="shape-card" href="https://leondiamond.com/collections/oval-cut" target="_blank" rel="noopener">
-        <div class="shape-icon"><img src="images/shape-oval.png" alt="Oval Cut" loading="lazy"></div>
+        <div class="shape-icon"><img src="images/shape-oval.png?v=2" alt="Oval Cut" loading="lazy"></div>
         <p class="shape-name">Oval</p>
       </a>
       <a class="shape-card" href="https://leondiamond.com/collections/emerald-cut" target="_blank" rel="noopener">
-        <div class="shape-icon"><img src="images/shape-emerald.png" alt="Emerald Cut" loading="lazy"></div>
+        <div class="shape-icon"><img src="images/shape-emerald.png?v=2" alt="Emerald Cut" loading="lazy"></div>
         <p class="shape-name">Emerald</p>
       </a>
       <a class="shape-card" href="https://leondiamond.com/collections/princess-cut" target="_blank" rel="noopener">
-        <div class="shape-icon"><img src="images/shape-princess.png" alt="Princess Cut" loading="lazy"></div>
+        <div class="shape-icon"><img src="images/shape-princess.png?v=2" alt="Princess Cut" loading="lazy"></div>
         <p class="shape-name">Princess</p>
       </a>
       <a class="shape-card" href="https://leondiamond.com/collections/cushion-cut" target="_blank" rel="noopener">
-        <div class="shape-icon"><img src="images/shape-cushion.png" alt="Cushion Cut" loading="lazy"></div>
+        <div class="shape-icon"><img src="images/shape-cushion.png?v=2" alt="Cushion Cut" loading="lazy"></div>
         <p class="shape-name">Cushion</p>
       </a>
       <a class="shape-card" href="https://leondiamond.com/collections/pear-cut" target="_blank" rel="noopener">
-        <div class="shape-icon"><img src="images/shape-pear.png" alt="Pear Cut" loading="lazy"></div>
+        <div class="shape-icon"><img src="images/shape-pear.png?v=2" alt="Pear Cut" loading="lazy"></div>
         <p class="shape-name">Pear</p>
       </a>
       <a class="shape-card" href="https://leondiamond.com/collections/radiant-cut" target="_blank" rel="noopener">
-        <div class="shape-icon"><img src="images/shape-radiant.png" alt="Radiant Cut" loading="lazy"></div>
+        <div class="shape-icon"><img src="images/shape-radiant.png?v=2" alt="Radiant Cut" loading="lazy"></div>
         <p class="shape-name">Radiant</p>
       </a>
       <a class="shape-card" href="https://leondiamond.com/collections/marquise-cut" target="_blank" rel="noopener">
-        <div class="shape-icon"><img src="images/shape-marquise.png" alt="Marquise Cut" loading="lazy"></div>
+        <div class="shape-icon"><img src="images/shape-marquise.png?v=2" alt="Marquise Cut" loading="lazy"></div>
         <p class="shape-name">Marquise</p>
       </a>
     </div>
@@ -2305,7 +2311,7 @@ body { overflow-x: hidden; }
       </a>
       <a class="bs-card" href="https://leondiamond.com/collections/engagement-rings">
         <div class="bs-img-wrap">
-          <img src="images/ld-cat-rings.png" alt="Diamond Engagement Rings" loading="lazy">
+          <img src="images/ld-prod-ring.png?v=2" alt="Diamond Engagement Rings" loading="lazy">
         </div>
         <div class="bs-info">
           <p class="bs-name">Diamond Engagement Rings</p>
