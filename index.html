@@ -2888,7 +2888,7 @@ document.querySelectorAll('.footer-acc-btn').forEach(btn => {
       <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
     </button>
   </div>
-  <a class="wa-open-wa" href="https://wa.me/12123027327?text=Hi%2C%20I%27m%20interested%20in%20Leon%20Diamond%20jewelry" target="_blank" rel="noopener">
+  <a class="wa-open-wa" href="https://wa.me/13473831345?text=Hi%2C%20I%27m%20interested%20in%20Leon%20Diamond%20jewelry" target="_blank" rel="noopener">
     Open in WhatsApp ↗
   </a>
 </div>
@@ -2913,12 +2913,13 @@ document.querySelectorAll('.footer-acc-btn').forEach(btn => {
     return d.getHours() + ':' + String(d.getMinutes()).padStart(2,'0');
   };
 
+  var WA = 'https://wa.me/13473831345';
   var FLOWS = {
     start: {
-      msg: "Hi! 👋 Welcome to *Leon Diamond* — NYC's premier diamond jeweler since 1975.
+      msg: "Hi! 👋 Welcome to *Leon Diamond* — NYC's Diamond District since 1975. Family-owned. GIA & IGI certified only.
 
 How can I help you today?",
-      replies: ['Engagement Rings 💍', 'Browse Collections', 'Book an Appointment', 'Talk to a Gemologist']
+      replies: ['Engagement Rings 💍', 'Browse Collections', 'Diamond Education 💎', 'Pricing & Budget', 'Book an Appointment', 'Talk to a Gemologist']
     },
     'Engagement Rings 💍': {
       msg: "Beautiful choice! 💍 We craft engagement rings in-house — every stone GIA or IGI certified.
@@ -2945,65 +2946,105 @@ Share your vision and our designers will bring it to life. Book a free design co
       replies: ['Book Free Consultation', 'See Custom Examples', '← Back']
     },
     'Browse Collections': {
-      msg: "We carry:
-
-✦ *Engagement & Bridal*
-✦ *Tennis Bracelets*
-✦ *Fancy Colored Diamonds*
-✦ *Earrings & Necklaces*
-✦ *Eternity Bands*
-
-What interests you?",
-      replies: ['Rings', 'Bracelets', 'Necklaces', 'Fancy Color Diamonds']
+      msg: "We carry:\n✦ *Engagement & Bridal Rings*\n✦ *Diamond Earrings*\n✦ *Tennis Bracelets*\n✦ *Diamond Necklaces*\n✦ *Fancy Colored Diamonds* 🌈\n✦ *Lab Grown Diamonds*\n\nWhat interests you?",
+      replies: ['Rings', 'Earrings', 'Bracelets', 'Necklaces', 'Fancy Color Diamonds', 'Lab Grown Diamonds']
     },
     'Fancy Color Diamonds': {
-      msg: "Rare and extraordinary. 🌈 We specialize in natural fancy colored diamonds — yellow, pink, blue, and green.
-
-Each stone is GIA certified. Prices vary by rarity.
-
-Interested in learning more?",
-      replies: ['View Fancy Colors', 'Talk to a Gemologist', '← Back']
+      msg: "🌈 We specialize in *natural fancy colored diamonds* — yellow, pink, blue, green.\n\n*Price range:*\n• Fancy Yellow: from $3,000\n• Fancy Pink: from $25,000\n• Fancy Blue: from $50,000\nEach stone is GIA certified.",
+      replies: ['View Fancy Color Collection', 'Talk to a Gemologist', '← Back'],
+      links: { 'View Fancy Color Collection': 'https://leondiamond.com/collections/fancy-color' }
+    },
+    'Lab Grown Diamonds': {
+      msg: "💎 *Lab grown diamonds* are chemically and optically identical to natural — grown in a lab, not underground.\n\n*Advantages:*\n• 40-60% less than natural\n• IGI certified\n• Same brilliance & hardness\n\nWe carry lab grown studs in 2ct, 4ct, 6ct from $660.",
+      replies: ['View Lab Grown', 'Natural vs Lab?', '← Back'],
+      links: { 'View Lab Grown': 'https://leondiamond.com/collections/lab-grown-earrings' }
+    },
+    'Natural vs Lab?': {
+      msg: "*Natural Diamond:*\n• Formed over billions of years\n• Higher resale value\n• Rarer\n\n*Lab Grown Diamond:*\n• Grown in weeks, chemically identical\n• 40-60% more affordable\n• Great for fashion & everyday pieces\n\nRecommend:\n• Lab grown → earrings, bracelets\n• Natural → engagement rings",
+      replies: ['Shop Natural', 'Shop Lab Grown', '← Back'],
+      links: { 'Shop Natural': 'https://leondiamond.com/collections/all', 'Shop Lab Grown': 'https://leondiamond.com/collections/lab-grown-earrings' }
+    },
+    'Diamond Education 💎': {
+      msg: "Diamond knowledge is power! What would you like to learn?",
+      replies: ['The 4 C\'s', 'GIA vs IGI', 'Natural vs Lab?', 'Fancy Colors Explained', 'Diamond Shapes', '← Back']
+    },
+    'The 4 C\'s': {
+      msg: "The *4 C\'s* determine a diamond\'s value:\n\n💎 *Cut* — Most important. Determines sparkle. Always prioritize Excellent/Ideal.\n\n🔬 *Color* — D (colorless) to Z (yellow). G-H = near colorless, best value.\n\n🔍 *Clarity* — VS1-VS2 = eye-clean, great value.\n\n⚖️ *Carat* — Weight. 1ct ≈ 6.5mm round.\n\n*Pro tip:* Prioritize Cut over all others.",
+      replies: ['Talk to a Gemologist', 'Book Consultation', '← Back']
+    },
+    'GIA vs IGI': {
+      msg: "🏆 *GIA* — Gold standard for natural diamonds. Most conservative grading.\n\n🏅 *IGI* — Widely used for lab grown. Very reliable.\n\n*Leon Diamond uses:*\n• Natural diamonds → GIA\n• Lab grown → IGI\n\nBoth are internationally respected.",
+      replies: ['Talk to a Gemologist', '← Back']
+    },
+    'Fancy Colors Explained': {
+      msg: "🌈 Fancy Color grading (most to least valuable):\n\nFancy Vivid → Fancy Intense → Fancy → Light\n\n*Rarest colors:*\n1. 🔴 Red — rarest in the world\n2. 🩷 Pink — extremely rare\n3. 🔵 Blue — very rare\n4. 💚 Green — rare\n5. 💛 Yellow — most accessible\n\nLeon Diamond specializes in pink, yellow, blue & green.",
+      replies: ['View Fancy Colors', 'Talk to a Gemologist', '← Back'],
+      links: { 'View Fancy Colors': 'https://leondiamond.com/collections/fancy-color' }
+    },
+    'Diamond Shapes': {
+      msg: "💍 *Popular Diamond Shapes:*\n\n⬭ *Oval* — Most popular. Elongates fingers.\n◯ *Round* — Maximum sparkle. Classic.\n▭ *Emerald* — Elegant hall-of-mirrors.\n◻ *Princess* — Modern & brilliant.\n🔻 *Pear* — Unique teardrop. Very flattering.\n⬜ *Cushion* — Romantic, soft corners.\n◈ *Radiant* — Brilliant, rectangular.\n\nAll shapes in stock at Leon Diamond.",
+      replies: ['Shop by Shape', 'Talk to a Gemologist', '← Back'],
+      links: { 'Shop by Shape': 'https://leondiamond.danielhendra.com/rings' }
+    },
+    'Pricing & Budget': {
+      msg: "General price guide:\n\n💍 *Engagement Rings:*\n• Budget: $1,500–$3,500\n• Mid-range: $4,000–$10,000\n• Premium: $12,000+\n\n💎 *Tennis Bracelets:*\n• 3ct: from $2,099 | 5ct: from $3,800\n\n👂 *Diamond Studs:*\n• 2ct lab grown: from $660\n• 2ct natural: from $2,400\n\nWe work with *every budget* — tell us yours.",
+      replies: ['I have a budget in mind', 'Financing Available?', 'Book Consultation', '← Back']
+    },
+    'Financing Available?': {
+      msg: "Yes! *Financing available* through our partners.\n\n• 0% interest options (6-12 months)\n• Low monthly payments\n• Apply in-store or by appointment\n\nSpeak to our team for eligibility:",
+      replies: ['Book Appointment', 'Talk to a Gemologist', '← Back']
+    },
+    'I have a budget in mind': {
+      msg: "Perfect! Our gemologists will find the best stone *within your budget* — we never oversell.\n\nShare your budget on WhatsApp and we'll prepare options before you visit:",
+      replies: ['Message Sales Team', '← Back']
     },
     'Book an Appointment': {
-      msg: "We'd love to meet you! 📅
-
-We're located at *74 W 47th St, New York City* — in the heart of the Diamond District.
-
-Book a free 30-minute consultation:",
-      replies: ['Book via Google Calendar', 'Call Us Now', '← Back'],
+      msg: "We'd love to meet you! 📅\n\n*Leon Diamond Showroom*\n74 W 47th St, New York City\nPrivate Viewing Rooms\n\nMon–Sat: 9AM–6PM EST",
+      replies: ['Book via Google Calendar', 'Message Sales Team', 'In-Store Walk-In', '← Back'],
       links: { 'Book via Google Calendar': 'https://calendar.app.google/Mo1Qy1UMHJpx7uo49' }
     },
+    'In-Store Walk-In': {
+      msg: "Walk-ins welcome! For best experience, book a private viewing room first.\n\n📍 *74 W 47th Street, New York, NY 10036*\n🕙 Mon–Sat, 9AM–6PM\n\nBetween 5th and 6th Ave, Diamond District.",
+      replies: ['Book Appointment', 'Get Directions', '← Back'],
+      links: { 'Get Directions': 'https://maps.app.goo.gl/5CQJb1jB8iGp7vVS7' }
+    },
+    'Message Sales Team': {
+      msg: "Connect with our sales team directly:\n\n👩 *Regina* — Senior Sales\n👩 *Octavia* — Senior Sales\n👨 *Timothy* — Senior Sales\n\nWho would you like to reach?",
+      replies: ['Contact Regina', 'Contact Octavia', 'Contact Timothy', 'Any Available', '← Back']
+    },
+    'Contact Regina': { msg: null, link: 'https://wa.me/17185326116?text=Hi+Regina%2C+I+found+you+through+Leon+Diamond' },
+    'Contact Octavia': { msg: null, link: 'https://wa.me/19296358749?text=Hi+Octavia%2C+I+found+you+through+Leon+Diamond' },
+    'Contact Timothy': { msg: null, link: 'https://wa.me/19294726328?text=Hi+Timothy%2C+I+found+you+through+Leon+Diamond' },
+    'Any Available': { msg: null, link: WA + '?text=Hi%2C+I\'m+interested+in+Leon+Diamond+jewelry' },
     'Talk to a Gemologist': {
-      msg: "Our GIA-certified gemologists are available Mon–Sat, 10am–6pm ET.
-
-You can reach us by:
-📱 Phone: (212) 302-7327
-💬 WhatsApp: same number
-📧 Email: info@leondiamond.com",
-      replies: ['Call Now', 'Send WhatsApp', '← Back'],
-      links: { 'Call Now': 'tel:+12123027327', 'Send WhatsApp': 'https://wa.me/12123027327' }
+      msg: "Our GIA-certified gemologists — *Mon–Sat, 9AM–6PM ET*.\n\n📱 WhatsApp: +1 (347) 383-1345\n📞 Store: (212) 302-7327\n📧 Leondiamondnyc@gmail.com\n\nOr connect with a sales associate directly:",
+      replies: ['Message Sales Team', 'Contact Regina', 'Contact Octavia', 'Contact Timothy', '← Back']
     },
     'Rings': {
-      msg: "Our ring collection spans engagement, fashion, and eternity styles — all crafted in-house at 74 W 47th St.",
-      replies: ['View All Rings', 'Book Consultation', '← Back'],
-      links: { 'View All Rings': 'https://leondiamond.com/pages/all-rings' }
+      msg: "Our ring collection: engagement, bridal, fashion, and eternity. All crafted in-house at 74 W 47th St.",
+      replies: ['View All Rings', 'Engagement Rings 💍', 'Shop by Shape', '← Back'],
+      links: { 'View All Rings': 'https://leondiamond.com/pages/all-rings', 'Shop by Shape': 'https://leondiamond.danielhendra.com/rings' }
+    },
+    'Earrings': {
+      msg: "Diamond earrings — studs, hoops, drops. Natural and lab grown available.\n\n*Bestseller:* Lab grown 4ct studs from $1,200",
+      replies: ['View All Earrings', 'Lab Grown Studs', '← Back'],
+      links: { 'View All Earrings': 'https://leondiamond.com/pages/all-earrings', 'Lab Grown Studs': 'https://leondiamond.com/collections/lab-grown-earrings' }
     },
     'Bracelets': {
-      msg: "Tennis bracelets are our signature. Natural diamonds, lab diamonds, or fancy colors — prong, bezel, or channel set.
-
-Starting at $1,800.",
-      replies: ['View Bracelets', 'Talk to a Gemologist', '← Back'],
-      links: { 'View Bracelets': 'https://leondiamond.com/collections/natural-bracelets-tennis' }
+      msg: "Tennis bracelets are our *signature piece*. Every diamond GIA or IGI certified.\n\n• 3ct: from $2,099\n• 5ct: from $3,800\n• 7ct: from $5,500",
+      replies: ['View Tennis Bracelets', 'Talk to a Gemologist', '← Back'],
+      links: { 'View Tennis Bracelets': 'https://leondiamond.com/collections/natural-bracelets-tennis' }
     },
     'Necklaces': {
-      msg: "From diamond pendants to layered necklaces — each piece is crafted in-house and ships overnight.",
-      replies: ['View Necklaces', 'Custom Design', '← Back'],
+      msg: "Solitaire pendants, tennis necklaces, diamond stations. Crafted in-house and ships overnight.",
+      replies: ['View Necklaces', 'Book Consultation', '← Back'],
       links: { 'View Necklaces': 'https://leondiamond.com/pages/all-necklaces' }
     },
     '← Back': {
       msg: "Of course! What else can I help you with?",
-      replies: ['Engagement Rings 💍', 'Browse Collections', 'Book an Appointment', 'Talk to a Gemologist']
+      replies: ['Engagement Rings 💍', 'Browse Collections', 'Diamond Education 💎', 'Pricing & Budget', 'Book an Appointment', 'Talk to a Gemologist']
     },
+    'Book Appointment': { msg: null, link: 'https://calendar.app.google/Mo1Qy1UMHJpx7uo49' },
     'See All Rings': { msg: null, link: 'https://leondiamond.com/pages/all-rings' },
     'Browse Solitaires': { msg: null, link: 'https://leondiamond.com/pages/all-rings' },
     'Browse Halos': { msg: null, link: 'https://leondiamond.com/pages/all-rings' },
@@ -3012,12 +3053,21 @@ Starting at $1,800.",
     'Book Consultation': { msg: null, link: 'https://calendar.app.google/Mo1Qy1UMHJpx7uo49' },
     'Book a Consultation': { msg: null, link: 'https://calendar.app.google/Mo1Qy1UMHJpx7uo49' },
     'View All Rings': { msg: null, link: 'https://leondiamond.com/pages/all-rings' },
+    'View Tennis Bracelets': { msg: null, link: 'https://leondiamond.com/collections/natural-bracelets-tennis' },
     'View Bracelets': { msg: null, link: 'https://leondiamond.com/collections/natural-bracelets-tennis' },
+    'View All Earrings': { msg: null, link: 'https://leondiamond.com/pages/all-earrings' },
     'View Necklaces': { msg: null, link: 'https://leondiamond.com/pages/all-necklaces' },
-    'View Fancy Colors': { msg: null, link: 'https://leondiamond.com/pages/fancy-color-guide' },
-    'Send WhatsApp': { msg: null, link: 'https://wa.me/12123027327' },
-    'Call Now': { msg: null, link: 'tel:+12123027327' },
-    'Call Us Now': { msg: null, link: 'tel:+12123027327' },
+    'Lab Grown Studs': { msg: null, link: 'https://leondiamond.com/collections/lab-grown-earrings' },
+    'View Lab Grown': { msg: null, link: 'https://leondiamond.com/collections/lab-grown-earrings' },
+    'View Fancy Colors': { msg: null, link: 'https://leondiamond.com/collections/fancy-color' },
+    'View Fancy Color Collection': { msg: null, link: 'https://leondiamond.com/collections/fancy-color' },
+    'Shop Natural': { msg: null, link: 'https://leondiamond.com/collections/all' },
+    'Shop Lab Grown': { msg: null, link: 'https://leondiamond.com/collections/lab-grown-earrings' },
+    'Shop by Shape': { msg: null, link: 'https://leondiamond.danielhendra.com/rings' },
+    'Get Directions': { msg: null, link: 'https://maps.app.goo.gl/5CQJb1jB8iGp7vVS7' },
+    'Send WhatsApp': { msg: null, link: WA },
+    'Call Now': { msg: null, link: 'tel:+13473831345' },
+    'Call Us Now': { msg: null, link: 'tel:+13473831345' },
     'Book via Google Calendar': { msg: null, link: 'https://calendar.app.google/Mo1Qy1UMHJpx7uo49' }
   };
 
@@ -3055,7 +3105,7 @@ Starting at $1,800.",
     var flow = FLOWS[text];
     if (!flow) {
       // fallback to WA
-      window.open('https://wa.me/12123027327?text=' + encodeURIComponent(text), '_blank');
+      window.open('https://wa.me/13473831345?text=' + encodeURIComponent(text), '_blank');
       return;
     }
     if (flow.link) {
