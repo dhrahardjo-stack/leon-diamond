@@ -278,7 +278,7 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 }
 
 /* ─── SHOP BY SHAPE ─────────────────────────────────────────────────── */
-.shapes { background: #F2EFEC; padding: clamp(56px, 7vw, 88px) 0; }
+.shapes { background: #ffffff; padding: clamp(56px, 7vw, 88px) 0; }
 .shapes-grid {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
@@ -288,22 +288,22 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 .shape-card {
   display: flex; flex-direction: column; align-items: center;
   text-decoration: none;
-  background: #fff;
-  border: 0.5px solid rgba(0,0,0,0.07);
-  overflow: hidden;
-  transition: transform 0.25s, box-shadow 0.25s;
+  background: transparent;
+  border: none;
+  overflow: visible;
+  transition: transform 0.25s;
   cursor: pointer;
 }
-.shape-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.10); }
+.shape-card:hover { transform: translateY(-4px); }
 .shape-icon {
   width: 100%; aspect-ratio: 1/1; overflow: hidden;
-  background: #f8f8f8;
+  background: transparent;
 }
-.shape-icon img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.shape-icon img { width: 100%; height: 100%; object-fit: contain; transition: transform 0.4s ease; }
 .shape-card:hover .shape-icon img { transform: scale(1.06); }
 .shape-name {
-  font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
-  color: #071828; padding: 12px 8px 10px; text-align: center;
+  font-size: 12px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase;
+  color: rgba(7,24,40,0.70); padding: 10px 0 0; text-align: center;
 }
 @media (max-width: 700px) {
   .shapes-grid { grid-template-columns: repeat(4, 1fr); }
