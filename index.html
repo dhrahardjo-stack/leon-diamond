@@ -761,11 +761,11 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 }
 .appt-be-photo {
   overflow: hidden; position: relative; background: var(--dark-2);
-  background-image: url('images/showroom-cropped.jpg');
-  background-size: cover;
-  background-position: center center;
 }
-.appt-be-photo img { display: none; }
+.appt-be-photo img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center center;
+  display: block;
+}
 .appt-be-content {
   display: flex; flex-direction: column; justify-content: center;
   padding: clamp(56px, 7vw, 96px) clamp(40px, 5vw, 72px);
@@ -1568,7 +1568,7 @@ body { background: #f5f7f8; color: #1c1c1e; }
 .appt-option:first-child { border-top-color: rgba(7,24,40,0.10) !important; }
 .appt .btn-ghost-w { border-color: rgba(178,204,221,0.40) !important; }
 /* Appt photo panel */
-.appt-be-photo img { display: none !important; }
+.appt-be-photo img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
 
 /* ── FOOTER → cream #F2EFEC ────────────────────────────────── */
 .footer-social a:hover { color: #000000 !important; }
@@ -2479,7 +2479,7 @@ body { overflow-x: hidden; }
 <section class="appt">
   <div class="appt-be-split">
     <div class="appt-be-photo">
-      <img src="https://leondiamond.com/cdn/shop/files/gempages_520655973908481054-8c92324c-94ad-44b5-8cf3-62c056eb909b.jpg" alt="Leon Diamond Showroom" loading="lazy">
+      <img src="images/showroom-cropped.jpg" alt="Leon Diamond Showroom" loading="lazy">
     </div>
     <div class="appt-be-content fade-up">
       <p class="appt-tag">COME SEE US</p>
