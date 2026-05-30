@@ -449,13 +449,17 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
   .footer-acc-icon { display: none; }
   .footer-acc-body { max-height: none !important; }
 }
-@media (max-width: 600px) {
-  .footer-col-accordion { border-bottom: 1px solid rgba(255,255,255,0.07); }
-  .footer-col-title.footer-acc-btn { padding: 15px 0; margin-bottom: 0; }
+@media (max-width: 860px) {
+  .footer-grid { grid-template-columns: 1fr !important; gap: 0 !important; padding-bottom: 0 !important; }
+  .footer-brand { padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.12); margin-bottom: 0; }
+  .footer-tagline { margin-bottom: 12px; }
+  .footer-col-accordion { border-bottom: 1px solid rgba(255,255,255,0.12); }
+  .footer-col-title.footer-acc-btn { padding: 13px 0; margin-bottom: 0; }
   .footer-acc-body { max-height: 0; }
   .footer-acc-body.open { max-height: 320px; }
   .footer-acc-body li { margin-bottom: 0; }
-  .footer-acc-body li a { display: block; padding: 10px 0; }
+  .footer-acc-body li a { display: block; padding: 9px 0; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
 }
 .footer-bottom-outer { background: rgba(0,0,0,0.20); border-top: 1px solid rgba(255,255,255,0.07); margin-top: 0; }
 .footer-bottom {
