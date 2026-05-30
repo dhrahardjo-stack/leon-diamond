@@ -277,8 +277,36 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
   .cat-card-img { aspect-ratio: 3/4; }
 }
 
-/* ─── SHAPE GUIDE ──────────────────────────────────────────────────── */
-.shapes { background: var(--dark); padding: clamp(64px, 8vw, 112px) 0; }
+/* ─── SHOP BY SHAPE ─────────────────────────────────────────────────── */
+.shapes { background: #F2EFEC; padding: clamp(56px, 7vw, 88px) 0; }
+.shapes-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 12px;
+  margin-top: 40px;
+}
+.shape-card {
+  display: flex; flex-direction: column; align-items: center;
+  text-decoration: none;
+  padding: 20px 8px 16px;
+  border: 1px solid rgba(7,24,40,0.08);
+  background: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+.shape-card:hover { border-color: #2a6da4; box-shadow: 0 2px 12px rgba(42,109,164,0.10); }
+.shape-icon { font-size: 28px; line-height: 1; margin-bottom: 10px; }
+.shape-name { font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #071828; }
+@media (max-width: 700px) {
+  .shapes-grid { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 400px) {
+  .shapes-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .shape-card { padding: 14px 6px 12px; }
+  .shape-icon { font-size: 22px; }
+}
+
+/* ─── SHAPE GUIDE (old) ─────────────────────────────────────────────── */
 .shapes-be-split {
   max-width: 1100px; margin: 0 auto;
   padding: 0 clamp(24px, 4vw, 64px);
@@ -1991,12 +2019,11 @@ body { overflow-x: hidden; }
     </div>
   </a>
   <ul class="nav-links">
-    <li><a href="https://leondiamond.com/collections/lab-grown-earrings">Lab Grown</a></li>
-    <li><a href="https://leondiamond.com/pages/all-earrings">Earrings</a></li>
-    <li><a href="https://leondiamond.com/pages/all-rings">Rings</a></li>
-    <li><a href="https://leondiamond.com/collections/natural-bracelets-tennis">Bracelets</a></li>
-    <li><a href="https://leondiamond.com/pages/all-necklaces">Necklaces</a></li>
-    <li><a href="https://leondiamond.com/pages/ldbridal">Bridal</a></li>
+    <li><a href="earrings.html">Earrings</a></li>
+    <li><a href="rings.html">Rings</a></li>
+    <li><a href="bracelets.html">Bracelets</a></li>
+    <li><a href="necklaces.html">Necklaces</a></li>
+    <li><a href="bridal.html">Bridal</a></li>
     <li><a href="https://leondiamond.com/pages/fancy-color-guide">Fancy Color</a></li>
     <li><a href="about.html">About Us</a></li>
   </ul>
@@ -2018,13 +2045,12 @@ body { overflow-x: hidden; }
 
 <!-- MOBILE NAV DRAWER -->
 <div class="mobile-nav-drawer" id="mobile-nav-drawer">
-  <a href="https://leondiamond.com/collections/lab-grown-earrings" onclick="closeMobileNav()">Lab Grown</a>
-  <a href="https://leondiamond.com/pages/all-earrings" onclick="closeMobileNav()">Earrings</a>
-  <a href="https://leondiamond.com/pages/all-rings" onclick="closeMobileNav()">Rings</a>
-  <a href="https://leondiamond.com/collections/natural-bracelets-tennis" onclick="closeMobileNav()">Bracelets</a>
-  <a href="https://leondiamond.com/pages/all-necklaces" onclick="closeMobileNav()">Necklaces</a>
-  <a href="https://leondiamond.com/pages/ldbridal" onclick="closeMobileNav()">Bridal</a>
-  <a href="https://leondiamond.com/pages/fancy-color-guide" onclick="closeMobileNav()">Education</a>
+  <a href="earrings.html" onclick="closeMobileNav()">Earrings</a>
+  <a href="rings.html" onclick="closeMobileNav()">Rings</a>
+  <a href="bracelets.html" onclick="closeMobileNav()">Bracelets</a>
+  <a href="necklaces.html" onclick="closeMobileNav()">Necklaces</a>
+  <a href="bridal.html" onclick="closeMobileNav()">Bridal</a>
+  <a href="https://leondiamond.com/pages/fancy-color-guide" onclick="closeMobileNav()">Fancy Color</a>
   <a href="about.html" onclick="closeMobileNav()">About Us</a>
   <div class="mobile-nav-appt-wrap">
     <a href="https://calendar.app.google/Mo1Qy1UMHJpx7uo49" target="_blank">Book Appointment</a>
@@ -2092,13 +2118,18 @@ body { overflow-x: hidden; }
     </div>
     <div class="trust-strip-sep"></div>
     <div class="trust-strip-item">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3.5 8H20.5M3.5 16H20.5M3 12H21"/></svg>
+      Lifetime Warranty
+    </div>
+    <div class="trust-strip-sep"></div>
+    <div class="trust-strip-item">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8zM5.5 21a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM18.5 21a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg>
       Free Overnight Shipping
     </div>
     <div class="trust-strip-sep"></div>
     <div class="trust-strip-item">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-      Free 30-Day Returns
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      Financing Available
     </div>
   </div>
 </div>
@@ -2114,7 +2145,7 @@ body { overflow-x: hidden; }
 
   <div>
     <div class="cat-grid fade-up">
-      <a class="cat-card" href="https://leondiamond.com/pages/all-earrings">
+      <a class="cat-card" href="earrings.html">
         <div class="cat-card-img">
           <img src="images/ld-cat-earrings.png" alt="Earrings" loading="lazy">
         </div>
@@ -2123,7 +2154,7 @@ body { overflow-x: hidden; }
           <small>Shop Earrings →</small>
         </div>
       </a>
-      <a class="cat-card" href="https://leondiamond.com/pages/all-rings">
+      <a class="cat-card" href="rings.html">
         <div class="cat-card-img">
           <img src="images/ld-cat-rings1.png" alt="Rings" loading="lazy">
         </div>
@@ -2132,7 +2163,7 @@ body { overflow-x: hidden; }
           <small>Shop Rings →</small>
         </div>
       </a>
-      <a class="cat-card" href="https://leondiamond.com/collections/natural-bracelets-tennis">
+      <a class="cat-card" href="bracelets.html">
         <div class="cat-card-img">
           <img src="images/ld-cat-bracelets.png" alt="Bracelets" loading="lazy">
         </div>
@@ -2141,7 +2172,7 @@ body { overflow-x: hidden; }
           <small>Shop Bracelets →</small>
         </div>
       </a>
-      <a class="cat-card" href="https://leondiamond.com/pages/all-necklaces">
+      <a class="cat-card" href="necklaces.html">
         <div class="cat-card-img">
           <img src="images/ld-cat-necklaces.png" alt="Necklaces" loading="lazy">
         </div>
@@ -2157,6 +2188,50 @@ body { overflow-x: hidden; }
   </div>
 </section>
 
+
+<!-- ═══ SHOP BY SHAPE ══════════════════════════════════════════════════ -->
+<section class="shapes">
+  <div class="wrap">
+    <div class="sec-header fade-up">
+      <p class="eyebrow eyebrow-gold">FIND YOUR STONE</p>
+      <h2 class="sec-title-d">Shop by Diamond Shape</h2>
+    </div>
+    <div class="shapes-grid fade-up">
+      <a class="shape-card" href="rings.html?shape=round">
+        <div class="shape-icon">◯</div>
+        <p class="shape-name">Round</p>
+      </a>
+      <a class="shape-card" href="rings.html?shape=oval">
+        <div class="shape-icon">⬭</div>
+        <p class="shape-name">Oval</p>
+      </a>
+      <a class="shape-card" href="rings.html?shape=emerald">
+        <div class="shape-icon">▭</div>
+        <p class="shape-name">Emerald</p>
+      </a>
+      <a class="shape-card" href="rings.html?shape=princess">
+        <div class="shape-icon">◻</div>
+        <p class="shape-name">Princess</p>
+      </a>
+      <a class="shape-card" href="rings.html?shape=cushion">
+        <div class="shape-icon">⬜</div>
+        <p class="shape-name">Cushion</p>
+      </a>
+      <a class="shape-card" href="rings.html?shape=pear">
+        <div class="shape-icon">🔻</div>
+        <p class="shape-name">Pear</p>
+      </a>
+      <a class="shape-card" href="rings.html?shape=radiant">
+        <div class="shape-icon">◈</div>
+        <p class="shape-name">Radiant</p>
+      </a>
+      <a class="shape-card" href="rings.html?shape=marquise">
+        <div class="shape-icon">⬡</div>
+        <p class="shape-name">Marquise</p>
+      </a>
+    </div>
+  </div>
+</section>
 
 <!-- ═══ LAB GROWN FEATURE ════════════════════════════════════════════════ -->
 <section class="labgrown">

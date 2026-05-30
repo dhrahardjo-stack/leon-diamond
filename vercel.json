@@ -4,7 +4,12 @@
   "rewrites": [
     { "source": "/card", "destination": "/card.html" },
     { "source": "/scard", "destination": "/scard.html" },
-    { "source": "/about", "destination": "/about.html" }
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/earrings", "destination": "/earrings.html" },
+    { "source": "/rings", "destination": "/rings.html" },
+    { "source": "/bracelets", "destination": "/bracelets.html" },
+    { "source": "/necklaces", "destination": "/necklaces.html" },
+    { "source": "/bridal", "destination": "/bridal.html" }
   ],
   "headers": [
     {

@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diamond Necklaces — Leon Diamond | NYC's Diamond District</title>
+<meta name="description" content="Shop handcrafted diamond earrings — studs, hoops, drops and more. GIA & IGI certified. Family-owned since 1975. Free overnight shipping.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET & BASE ─────────────────────────────────────────── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --dark:#071828;--dark-2:#0c1e2c;--white:#ffffff;
+  --gold:#2a6da4;--gold-soft:#b2ccdd;--bdr-d:rgba(255,255,255,0.07);
+  --font:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--font);background:#f5f7f8;color:#1c1c1e;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{text-decoration:none}
+ul{list-style:none}
+button{font-family:var(--font);cursor:pointer;border:none;background:none}
+
+/* ─── NAV ──────────────────────────────────────────────────── */
+.nav{
+  position:sticky;top:0;z-index:100;
+  display:grid;grid-template-columns:auto 1fr auto;align-items:center;
+  padding:0 clamp(20px,5vw,72px);height:64px;
+  background:rgba(7,24,40,0.96);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--bdr-d);
+}
+.nav-logo{display:inline-flex;align-items:center}
+.nav-logo-img{height:32px;width:auto;object-fit:contain}
+.nav-links{display:flex;gap:clamp(16px,2.5vw,32px);justify-content:center}
+.nav-links a{font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.72);transition:color 0.2s;white-space:nowrap}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.nav-right{display:flex;align-items:center;gap:16px;justify-content:flex-end}
+.nav-appt{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-soft);white-space:nowrap}
+.nav-icon-btn{display:flex;align-items:center;color:rgba(255,255,255,0.72);transition:color 0.2s}
+.nav-icon-btn:hover{color:#fff}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;padding:4px}
+.nav-hamburger span{display:block;width:22px;height:1.5px;background:rgba(255,255,255,0.85);transition:all 0.3s}
+@media(max-width:860px){
+  .nav-links,.nav-appt,.nav-icon-btn{display:none}
+  .nav-hamburger{display:flex}
+  .nav{grid-template-columns:1fr auto}
+}
+
+/* Mobile nav */
+.mobile-nav-drawer{
+  position:fixed;top:0;left:0;bottom:0;
+  width:82vw;max-width:340px;
+  background:rgba(7,18,30,0.96);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  z-index:200;display:flex;flex-direction:column;align-items:flex-start;
+  transform:translateX(-100%);transition:transform 0.35s cubic-bezier(0.33,0.59,0.14,1);
+  overflow-y:auto;padding-top:72px;border-right:1px solid var(--bdr-d);
+}
+.mobile-nav-drawer.open{transform:translateX(0)}
+.mobile-nav-drawer a{
+  font-size:13px;font-weight:500;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(255,255,255,0.90);padding:17px 28px;
+  border-bottom:1px solid var(--bdr-d);width:100%;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.mobile-nav-drawer a::after{content:'›';font-size:18px;opacity:0.35;font-weight:300}
+.mobile-nav-appt-wrap{padding:24px 28px;width:100%;margin-top:auto;border-top:1px solid var(--bdr-d)}
+.mobile-nav-appt-wrap a{
+  display:flex!important;align-items:center;justify-content:center;
+  background:#2B7FFF!important;color:#fff!important;
+  font-size:12px!important;font-weight:600!important;letter-spacing:2px!important;
+  text-transform:uppercase!important;padding:14px 20px!important;
+  width:100%;
+}
+.mobile-nav-appt-wrap a::after{display:none}
+.mobile-nav-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:199;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.mobile-nav-overlay.open{opacity:1;pointer-events:all}
+
+/* ─── BREADCRUMB ───────────────────────────────────────────── */
+.breadcrumb{
+  padding:14px clamp(20px,5vw,72px);
+  font-size:12px;color:rgba(0,0,0,0.45);
+  border-bottom:1px solid rgba(0,0,0,0.06);
+  background:#fff;
+}
+.breadcrumb a{color:rgba(0,0,0,0.45);text-decoration:none}
+.breadcrumb a:hover{color:var(--dark)}
+.breadcrumb span{margin:0 6px;opacity:0.4}
+
+/* ─── CATEGORY HERO ────────────────────────────────────────── */
+.cat-hero{
+  background:#fff;
+  padding:clamp(32px,5vw,56px) clamp(20px,5vw,72px) 0;
+  border-bottom:1px solid rgba(0,0,0,0.06);
+}
+.cat-hero-inner{max-width:1100px;margin:0 auto}
+.cat-hero h1{
+  font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-1px;
+  color:var(--dark);margin-bottom:10px;
+}
+.cat-hero-sub{font-size:14px;color:rgba(0,0,0,0.55);max-width:480px;line-height:1.65;margin-bottom:24px}
+.cat-hero-trust{
+  display:flex;flex-wrap:wrap;gap:16px 28px;padding:16px 0;
+  border-top:1px solid rgba(0,0,0,0.06);
+}
+.cat-hero-trust-item{
+  display:flex;align-items:center;gap:7px;
+  font-size:11px;font-weight:600;letter-spacing:0.5px;
+  color:rgba(0,0,0,0.55);
+}
+.cat-hero-trust-item svg{color:var(--gold);flex-shrink:0}
+
+/* ─── FILTER BAR ───────────────────────────────────────────── */
+.filter-bar{
+  background:#fff;
+  border-bottom:1px solid rgba(0,0,0,0.07);
+  position:sticky;top:64px;z-index:90;
+}
+.filter-bar-inner{
+  max-width:1100px;margin:0 auto;
+  padding:0 clamp(20px,5vw,72px);
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  height:52px;overflow-x:auto;scrollbar-width:none;
+}
+.filter-bar-inner::-webkit-scrollbar{display:none}
+.filter-pills{display:flex;gap:6px;flex-shrink:0}
+.filter-pill{
+  display:flex;align-items:center;gap:5px;
+  padding:6px 14px;font-size:12px;font-weight:500;
+  border:1px solid rgba(0,0,0,0.14);color:#1c1c1e;
+  background:#fff;white-space:nowrap;
+  transition:border-color 0.2s,background 0.2s;
+  cursor:pointer;
+}
+.filter-pill:hover{border-color:var(--gold);color:var(--gold)}
+.filter-pill.active{border-color:var(--gold);background:rgba(42,109,164,0.06);color:var(--gold)}
+.filter-pill svg{width:10px;height:10px;opacity:0.6}
+.filter-sort{
+  display:flex;align-items:center;gap:6px;
+  font-size:12px;font-weight:500;color:rgba(0,0,0,0.55);
+  flex-shrink:0;white-space:nowrap;
+}
+.sort-select{
+  font-family:var(--font);font-size:12px;font-weight:500;
+  border:none;background:none;color:#1c1c1e;cursor:pointer;
+  outline:none;
+}
+.filter-count{font-size:12px;color:rgba(0,0,0,0.40);flex-shrink:0}
+
+/* ─── PRODUCT GRID ─────────────────────────────────────────── */
+.cat-page-wrap{max-width:1100px;margin:0 auto;padding:32px clamp(20px,5vw,72px) 80px}
+.prod-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+@media(max-width:960px){.prod-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.prod-grid{grid-template-columns:repeat(2,1fr);gap:10px}}
+
+/* Product card */
+.prod-card-cat{
+  background:#fff;display:flex;flex-direction:column;
+  text-decoration:none;
+  border:0.5px solid rgba(0,0,0,0.06);
+  overflow:hidden;
+  transition:box-shadow 0.25s,transform 0.25s;
+}
+.prod-card-cat:hover{box-shadow:0 4px 20px rgba(0,0,0,0.10);transform:translateY(-2px)}
+.prod-card-cat-img{aspect-ratio:1/1;overflow:hidden;background:#f5f7f8;position:relative}
+.prod-card-cat-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease}
+.prod-card-cat:hover .prod-card-cat-img img{transform:scale(1.05)}
+.prod-card-cat-badge{
+  position:absolute;top:10px;left:10px;
+  font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  padding:4px 8px;background:var(--gold);color:#fff;
+}
+.prod-card-cat-info{padding:12px 14px 16px}
+.prod-card-cat-type{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(42,109,164,0.7);margin-bottom:5px}
+.prod-card-cat-name{font-size:13px;font-weight:600;line-height:1.4;color:var(--dark);margin-bottom:8px}
+.prod-card-cat-price{font-size:14px;font-weight:700;color:var(--dark);letter-spacing:-0.3px}
+.prod-card-cat-cta{
+  display:block;text-align:center;
+  padding:10px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:rgba(0,0,0,0.45);background:#f5f7f8;
+  border-top:1px solid rgba(0,0,0,0.06);
+  transition:background 0.2s,color 0.2s;
+}
+.prod-card-cat:hover .prod-card-cat-cta{background:var(--gold);color:#fff}
+
+/* Skeleton */
+.skel{background:linear-gradient(90deg,#e8e8e8 25%,#f0f0f0 50%,#e8e8e8 75%);background-size:400% 100%;animation:skel 1.4s ease infinite}
+@keyframes skel{0%{background-position:100% 50%}100%{background-position:0% 50%}}
+.skel-card{background:#fff;border:0.5px solid rgba(0,0,0,0.06)}
+.skel-img{aspect-ratio:1/1}
+.skel-line{height:10px;margin:12px 14px 6px;border-radius:3px}
+.skel-line-sm{height:8px;margin:0 14px 14px;width:60%;border-radius:3px}
+
+/* No products */
+.no-products{grid-column:1/-1;text-align:center;padding:80px 20px;color:rgba(0,0,0,0.45);font-size:15px}
+
+/* Load more */
+.load-more-wrap{text-align:center;padding:16px 0 48px}
+.load-more-btn{
+  padding:14px 40px;font-family:var(--font);
+  font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  border:1px solid rgba(0,0,0,0.20);color:var(--dark);background:#fff;
+  cursor:pointer;transition:background 0.2s,border-color 0.2s;
+}
+.load-more-btn:hover{background:var(--dark);color:#fff;border-color:var(--dark)}
+.load-more-btn:disabled{opacity:0.4;cursor:not-allowed}
+
+/* ─── CONSULT CTA ───────────────────────────────────────────── */
+.consult-strip{
+  background:var(--dark);
+  padding:48px clamp(20px,5vw,72px);
+  text-align:center;
+}
+.consult-strip h3{font-size:clamp(20px,2.5vw,28px);font-weight:700;color:#fff;margin-bottom:10px}
+.consult-strip p{font-size:14px;color:rgba(255,255,255,0.60);margin-bottom:24px}
+.consult-strip a{
+  display:inline-block;padding:13px 32px;
+  font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  background:var(--gold);color:#fff;transition:opacity 0.2s;
+}
+.consult-strip a:hover{opacity:0.85}
+
+/* ─── FOOTER ────────────────────────────────────────────────── */
+.footer{background:#071828;padding:40px 0 0}
+.footer-grid{
+  max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:clamp(24px,3vw,48px);
+  padding:0 clamp(20px,5vw,72px) 32px;
+}
+.footer-tagline{font-size:12px;line-height:1.6;color:rgba(255,255,255,0.50);margin-bottom:14px;max-width:240px}
+.footer-contact-item{font-size:12px;color:rgba(255,255,255,0.55);margin-bottom:5px;display:flex;gap:8px;align-items:center}
+.footer-contact-item a{color:rgba(255,255,255,0.55)}
+.footer-contact-item a:hover{color:#fff}
+.footer-col-title{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.80);margin-bottom:16px}
+.footer-links{list-style:none}
+.footer-links li{margin-bottom:10px}
+.footer-links a{font-size:12px;color:rgba(255,255,255,0.45);transition:color 0.2s}
+.footer-links a:hover{color:#fff}
+.footer-bottom-outer{background:rgba(0,0,0,0.20);border-top:1px solid rgba(255,255,255,0.07)}
+.footer-bottom{max-width:1100px;margin:0 auto;padding:16px clamp(20px,5vw,72px);display:flex;align-items:center;justify-content:space-between}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.28)}
+.footer-social a{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.38)}
+.footer-social a:hover{color:#fff}
+@media(max-width:860px){
+  .footer-grid{grid-template-columns:1fr;gap:0;padding-bottom:0}
+  .footer-brand{padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:16px}
+  .footer-col-accordion{border-bottom:1px solid rgba(255,255,255,0.08)}
+  .footer-col-title{padding:14px 0;margin-bottom:0;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+  .footer-acc-icon{font-size:16px;font-weight:300;transition:transform 0.25s}
+  .footer-acc-btn[aria-expanded="true"] .footer-acc-icon{transform:rotate(45deg)}
+  .footer-acc-body{max-height:0;overflow:hidden;transition:max-height 0.3s ease}
+  .footer-acc-body.open{max-height:320px}
+  .footer-acc-body li{margin-bottom:0}
+  .footer-acc-body li a{display:block;padding:10px 0}
+  .footer-bottom{flex-direction:column;gap:10px;text-align:center}
+}
+@media(min-width:861px){
+  .footer-acc-icon{display:none}
+  .footer-acc-body{max-height:none!important}
+}
+
+/* ─── UTIL ──────────────────────────────────────────────────── */
+.wrap{max-width:1100px;margin:0 auto;padding:0 clamp(20px,5vw,72px)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="main-nav">
+  <a class="nav-logo" href="index.html">
+    <img src="images/2.png" alt="Leon Diamond" class="nav-logo-img">
+  </a>
+  <ul class="nav-links">
+    <li><a href="earrings.html">Earrings</a></li>
+    <li><a href="rings.html">Rings</a></li>
+    <li><a href="bracelets.html">Bracelets</a></li>
+    <li><a href="necklaces.html" class="active">Necklaces</a></li>
+    <li><a href="bridal.html">Bridal</a></li>
+    <li><a href="https://leondiamond.com/pages/fancy-color-guide">Fancy Color</a></li>
+    <li><a href="about.html">About Us</a></li>
+  </ul>
+  <div class="nav-right">
+    <a class="nav-appt" href="https://calendar.app.google/Mo1Qy1UMHJpx7uo49" target="_blank">Book Appointment</a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+<div class="mobile-nav-drawer" id="mobile-nav-drawer">
+  <a href="earrings.html" onclick="closeMobileNav()">Earrings</a>
+  <a href="rings.html" onclick="closeMobileNav()">Rings</a>
+  <a href="bracelets.html" onclick="closeMobileNav()">Bracelets</a>
+  <a href="necklaces.html" onclick="closeMobileNav()">Necklaces</a>
+  <a href="bridal.html" onclick="closeMobileNav()">Bridal</a>
+  <a href="https://leondiamond.com/pages/fancy-color-guide" onclick="closeMobileNav()">Fancy Color</a>
+  <a href="about.html" onclick="closeMobileNav()">About Us</a>
+  <div class="mobile-nav-appt-wrap">
+    <a href="https://calendar.app.google/Mo1Qy1UMHJpx7uo49" target="_blank">Book Appointment</a>
+  </div>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span>/</span>Earrings
+</div>
+
+<!-- CATEGORY HERO -->
+<div class="cat-hero">
+  <div class="cat-hero-inner">
+    <h1>Diamond Necklaces</h1>
+    <p class="cat-hero-sub">Solitaire pendants, tennis necklaces, and diamond chains. GIA Handcrafted in NYC's Diamond District. Every piece GIA or IGI certified — studs, hoops, drops, and more. IGI certified. Crafted in NYC.</p>
+    <div class="cat-hero-trust">
+      <div class="cat-hero-trust-item">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        GIA &amp; IGI Certified
+      </div>
+      <div class="cat-hero-trust-item">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/></svg>
+        Free Overnight Shipping
+      </div>
+      <div class="cat-hero-trust-item">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+        Free 30-Day Returns
+      </div>
+      <div class="cat-hero-trust-item">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
+        Lifetime Warranty
+      </div>
+      <div class="cat-hero-trust-item">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+        In-House Crafted, NYC
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <div class="filter-bar-inner">
+    <div class="filter-pills">
+      <button class="filter-pill active" data-filter="all">All</button>
+      <button class="filter-pill" data-filter="solitaire">Solitaire</button>
+      <button class="filter-pill" data-filter="tennis">Tennis</button>
+      <button class="filter-pill" data-filter="station">Station</button>
+      <button class="filter-pill" data-filter="chain">Chain</button>
+      <button class="filter-pill" data-filter="pendant">Pendant</button>
+    </div>
+    <div class="filter-sort">
+      Sort:
+      <select class="sort-select" id="sort-select">
+        <option value="best-selling">Best Sellers</option>
+        <option value="created-descending">New Arrivals</option>
+        <option value="price-ascending">Price: Low → High</option>
+        <option value="price-descending">Price: High → Low</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCT GRID -->
+<div class="cat-page-wrap">
+  <div class="prod-grid" id="prod-grid">
+    <!-- Skeleton placeholders -->
+    <div class="skel-card"><div class="skel-img skel"></div><div class="skel-line skel"></div><div class="skel-line-sm skel"></div></div>
+    <div class="skel-card"><div class="skel-img skel"></div><div class="skel-line skel"></div><div class="skel-line-sm skel"></div></div>
+    <div class="skel-card"><div class="skel-img skel"></div><div class="skel-line skel"></div><div class="skel-line-sm skel"></div></div>
+    <div class="skel-card"><div class="skel-img skel"></div><div class="skel-line skel"></div><div class="skel-line-sm skel"></div></div>
+    <div class="skel-card"><div class="skel-img skel"></div><div class="skel-line skel"></div><div class="skel-line-sm skel"></div></div>
+    <div class="skel-card"><div class="skel-img skel"></div><div class="skel-line skel"></div><div class="skel-line-sm skel"></div></div>
+    <div class="skel-card"><div class="skel-img skel"></div><div class="skel-line skel"></div><div class="skel-line-sm skel"></div></div>
+    <div class="skel-card"><div class="skel-img skel"></div><div class="skel-line skel"></div><div class="skel-line-sm skel"></div></div>
+  </div>
+  <div class="load-more-wrap" id="load-more-wrap" style="display:none">
+    <button class="load-more-btn" id="load-more-btn">Load More</button>
+  </div>
+</div>
+
+<!-- CONSULT CTA -->
+<div class="consult-strip">
+  <h3>Can't find what you're looking for?</h3>
+  <p>Our gemologists will help you find or create the perfect piece.</p>
+  <a href="https://calendar.app.google/Mo1Qy1UMHJpx7uo49" target="_blank">Book a Private Consultation</a>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <p class="footer-tagline">Family-owned fine jewelers since 1975.<br>NYC's Diamond District.</p>
+      <p class="footer-contact-item"><a href="tel:2123027327">212.302.7327</a></p>
+      <p class="footer-contact-item"><a href="https://leondiamond.com/pages/contact">Contact Us</a></p>
+    </div>
+    <div class="footer-col-accordion">
+      <p class="footer-col-title footer-acc-btn" tabindex="0">Collections <span class="footer-acc-icon">+</span></p>
+      <ul class="footer-links footer-acc-body">
+        <li><a href="earrings.html">Earrings</a></li>
+        <li><a href="rings.html">Rings</a></li>
+        <li><a href="bracelets.html">Bracelets</a></li>
+        <li><a href="necklaces.html" class="active">Necklaces</a></li>
+        <li><a href="bridal.html">Bridal</a></li>
+        <li><a href="https://leondiamond.com/collections/fancy-color">Fancy Color</a></li>
+      </ul>
+    </div>
+    <div class="footer-col-accordion">
+      <p class="footer-col-title footer-acc-btn" tabindex="0">Education <span class="footer-acc-icon">+</span></p>
+      <ul class="footer-links footer-acc-body">
+        <li><a href="https://leondiamond.com/pages/fancy-color-guide">Diamond Guide</a></li>
+        <li><a href="rings.html?shape=round">Round Cut</a></li>
+        <li><a href="rings.html?shape=oval">Oval Cut</a></li>
+        <li><a href="rings.html?shape=emerald">Emerald Cut</a></li>
+        <li><a href="rings.html?shape=cushion">Cushion Cut</a></li>
+      </ul>
+    </div>
+    <div class="footer-col-accordion">
+      <p class="footer-col-title footer-acc-btn" tabindex="0">Company <span class="footer-acc-icon">+</span></p>
+      <ul class="footer-links footer-acc-body">
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="https://calendar.app.google/Mo1Qy1UMHJpx7uo49">Book Appointment</a></li>
+        <li><a href="https://leondiamond.com/pages/contact">Contact</a></li>
+        <li><a href="https://www.instagram.com/leondiamond/">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom-outer">
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Leon Diamond. All rights reserved.</p>
+      <div class="footer-social"><a href="https://www.instagram.com/leondiamond/" target="_blank">Instagram</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── Nav ── */
+const hamburger = document.getElementById('nav-hamburger');
+const drawer = document.getElementById('mobile-nav-drawer');
+const overlay = document.getElementById('mobile-nav-overlay');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  drawer.classList.toggle('open');
+  overlay.classList.toggle('open');
+  document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+});
+overlay.addEventListener('click', closeMobileNav);
+function closeMobileNav() {
+  hamburger.classList.remove('open');
+  drawer.classList.remove('open');
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* ── Footer accordion ── */
+document.querySelectorAll('.footer-acc-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const body = btn.nextElementSibling;
+    if (body) { body.classList.toggle('open'); }
+  });
+});
+
+/* ── Product loading ── */
+const COLLECTION = 'all-necklaces';
+const SHOPIFY_BASE = 'https://leondiamond.com';
+let allProducts = [];
+let page = 1;
+const PER_PAGE = 12;
+
+async function loadProducts() {
+  try {
+    const res = await fetch(`${SHOPIFY_BASE}/collections/${COLLECTION}/products.json?limit=50&sort_by=best-selling`);
+    const data = await res.json();
+    allProducts = data.products || [];
+    renderProducts();
+  } catch(e) {
+    document.getElementById('prod-grid').innerHTML = '<p class="no-products">Products loading — <a href="https://leondiamond.com/pages/all-necklaces" target="_blank">view on Leon Diamond →</a></p>';
+  }
+}
+
+function formatPrice(price) {
+  return '$' + parseFloat(price).toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0});
+}
+
+function renderProducts() {
+  const grid = document.getElementById('prod-grid');
+  const slice = allProducts.slice(0, page * PER_PAGE);
+  grid.innerHTML = slice.map(p => {
+    const img = p.images[0] ? p.images[0].src : 'images/ld-cat-necklaces.png';
+    const price = p.variants[0] ? formatPrice(p.variants[0].price) : '';
+    const url = `${SHOPIFY_BASE}/products/${p.handle}`;
+    const isNew = new Date(p.created_at) > new Date(Date.now() - 30*24*60*60*1000);
+    return `<a class="prod-card-cat" href="${url}" target="_blank" rel="noopener">
+      <div class="prod-card-cat-img">
+        ${isNew ? '<span class="prod-card-cat-badge">New</span>' : ''}
+        <img src="${img}" alt="${p.title}" loading="lazy">
+      </div>
+      <div class="prod-card-cat-info">
+        <p class="prod-card-cat-type">${p.product_type || 'Earrings'}</p>
+        <p class="prod-card-cat-name">${p.title}</p>
+        <p class="prod-card-cat-price">From ${price}</p>
+      </div>
+      <span class="prod-card-cat-cta">View →</span>
+    </a>`;
+  }).join('');
+
+  const loadMoreWrap = document.getElementById('load-more-wrap');
+  if (allProducts.length > page * PER_PAGE) {
+    loadMoreWrap.style.display = 'block';
+  } else {
+    loadMoreWrap.style.display = 'none';
+  }
+}
+
+document.getElementById('load-more-btn').addEventListener('click', () => {
+  page++;
+  renderProducts();
+});
+
+document.getElementById('sort-select').addEventListener('change', async (e) => {
+  page = 1;
+  try {
+    const res = await fetch(`${SHOPIFY_BASE}/collections/${COLLECTION}/products.json?limit=50&sort_by=${e.target.value}`);
+    const data = await res.json();
+    allProducts = data.products || [];
+    renderProducts();
+  } catch(e) {}
+});
+
+/* Filter pills (client-side by product_type) */
+document.querySelectorAll('.filter-pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+    const filter = pill.dataset.filter;
+    if (filter === 'all') {
+      renderProducts();
+    } else {
+      const grid = document.getElementById('prod-grid');
+      const filtered = allProducts.filter(p => p.title.toLowerCase().includes(filter) || (p.product_type||'').toLowerCase().includes(filter));
+      grid.innerHTML = filtered.length ? filtered.map(p => {
+        const img = p.images[0] ? p.images[0].src : 'images/ld-cat-necklaces.png';
+        const price = p.variants[0] ? formatPrice(p.variants[0].price) : '';
+        return `<a class="prod-card-cat" href="${SHOPIFY_BASE}/products/${p.handle}" target="_blank" rel="noopener">
+          <div class="prod-card-cat-img"><img src="${img}" alt="${p.title}" loading="lazy"></div>
+          <div class="prod-card-cat-info">
+            <p class="prod-card-cat-type">${p.product_type || 'Earrings'}</p>
+            <p class="prod-card-cat-name">${p.title}</p>
+            <p class="prod-card-cat-price">From ${price}</p>
+          </div>
+          <span class="prod-card-cat-cta">View →</span>
+        </a>`;
+      }).join('') : '<p class="no-products">No products found. <a href="https://leondiamond.com/pages/all-necklaces" target="_blank">View all on Leon Diamond →</a></p>';
+      document.getElementById('load-more-wrap').style.display = 'none';
+    }
+  });
+});
+
+loadProducts();
+</script>
+</body>
+</html>
