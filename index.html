@@ -169,9 +169,12 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 .hero-bg video,
 .hero-bg img {
   width: 100%; height: 100%; object-fit: cover;
-  opacity: 0.42;
+  opacity: 0;
   filter: grayscale(15%);
+  transition: opacity 0.8s ease;
 }
+.hero-bg video.ready,
+.hero-bg img.ready { opacity: 0.42; }
 .hero-overlay {
   position: absolute; inset: 0;
   background: linear-gradient(to bottom, rgba(7,24,40,0.18) 0%, rgba(7,24,40,0.62) 100%);
@@ -2073,15 +2076,10 @@ body { overflow-x: hidden; }
 <section class="hero">
   <div class="hero-bg">
     <video
+      id="hero-video"
       autoplay muted loop playsinline
-      poster="images/ld-hero.png"
     >
       <source src="https://d2xsxph8kpxj0f.cloudfront.net/310419663026756153/VibskhUpLgco7wQXWFdWoj/dh-hero-video_03cf3299.mp4" type="video/mp4">
-      <!-- Fallback image if video fails to load -->
-      <img
-        src="images/ld-hero.png"
-        alt="Leon Diamond fine jewelry"
-      >
     </video>
     <div class="hero-overlay"></div>
   </div>
@@ -2776,6 +2774,14 @@ async function loadMatchingSets() {
 loadNewArrivals();
 loadMatchingSets();
 
+/* ── Hero video fade in ── */
+const heroVideo = document.getElementById('hero-video');
+if (heroVideo) {
+  heroVideo.addEventListener('canplay', function() { heroVideo.classList.add('ready'); }, { once: true });
+  heroVideo.addEventListener('playing', function() { heroVideo.classList.add('ready'); }, { once: true });
+  setTimeout(function() { if (heroVideo) heroVideo.classList.add('ready'); }, 2000);
+}
+
 /* ── Nav transparent → scrolled ── */
 const nav = document.querySelector('.nav');
 const annBar = document.querySelector('.ann-bar');
@@ -2925,33 +2931,23 @@ document.querySelectorAll('.footer-acc-btn').forEach(btn => {
   var WA = 'https://wa.me/13473831345';
   var FLOWS = {
     start: {
-      msg: "Hi! 👋 Welcome to *Leon Diamond* — NYC's Diamond District since 1975. Family-owned. GIA & IGI certified only.
-
-How can I help you today?",
+      msg: "Hi! 👋 Welcome to *Leon Diamond* — NYC's Diamond District since 1975. Family-owned. GIA & IGI certified only.\n\nHow can I help you today?",
       replies: ['Engagement Rings 💍', 'Browse Collections', 'Diamond Education 💎', 'Pricing & Budget', 'Book an Appointment', 'Talk to a Gemologist']
     },
     'Engagement Rings 💍': {
-      msg: "Beautiful choice! 💍 We craft engagement rings in-house — every stone GIA or IGI certified.
-
-What are you looking for?",
+      msg: "Beautiful choice! 💍 We craft engagement rings in-house — every stone GIA or IGI certified.\n\nWhat are you looking for?",
       replies: ['Solitaire Rings', 'Halo Settings', 'Custom Design', 'See All Rings']
     },
     'Solitaire Rings': {
-      msg: "Our solitaires are timeless. Round brilliant, oval, princess, emerald — all certified, all crafted at our 47th St atelier.
-
-Would you like to browse or speak to a gemologist?",
+      msg: "Our solitaires are timeless. Round brilliant, oval, princess, emerald — all certified, all crafted at our 47th St atelier.\n\nWould you like to browse or speak to a gemologist?",
       replies: ['Browse Solitaires', 'Talk to a Gemologist', '← Back']
     },
     'Halo Settings': {
-      msg: "Halo settings add incredible brilliance around the center stone. Popular in round and oval cuts.
-
-Our halo rings start at $3,500 with certified diamonds.",
+      msg: "Halo settings add incredible brilliance around the center stone. Popular in round and oval cuts.\n\nOur halo rings start at $3,500 with certified diamonds.",
       replies: ['Browse Halos', 'Book a Consultation', '← Back']
     },
     'Custom Design': {
-      msg: "Custom is our specialty. 🎨 We've been crafting custom pieces for 51 years.
-
-Share your vision and our designers will bring it to life. Book a free design consultation:",
+      msg: "Custom is our specialty. 🎨 We've been crafting custom pieces for 51 years.\n\nShare your vision and our designers will bring it to life. Book a free design consultation:",
       replies: ['Book Free Consultation', 'See Custom Examples', '← Back']
     },
     'Browse Collections': {
@@ -3147,9 +3143,7 @@ Share your vision and our designers will bring it to life. Book a free design co
     } else if (lower.includes('appoint') || lower.includes('book') || lower.includes('visit')) {
       reply = FLOWS['Book an Appointment'];
     } else if (lower.includes('price') || lower.includes('cost') || lower.includes('how much')) {
-      reply = { msg: "Our pieces range from $800 for fashion jewelry to $50,000+ for rare fancy colored diamonds.
-
-Every stone is GIA or IGI certified. Would you like to speak with a gemologist for a specific quote?", replies: ['Talk to a Gemologist', 'Book an Appointment', 'Browse Collections'] };
+      reply = { msg: "Our pieces range from $800 for fashion jewelry to $50,000+ for rare fancy colored diamonds.\n\nEvery stone is GIA or IGI certified. Would you like to speak with a gemologist for a specific quote?", replies: ['Talk to a Gemologist', 'Book an Appointment', 'Browse Collections'] };
     } else if (lower.includes('color') || lower.includes('fancy') || lower.includes('pink') || lower.includes('yellow')) {
       reply = FLOWS['Fancy Color Diamonds'];
     } else if (lower.includes('gemologist') || lower.includes('expert') || lower.includes('advice')) {
