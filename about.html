@@ -407,25 +407,25 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 
 /* ─── FOOTER ────────────────────────────────────────────────────────── */
 .footer {
-  background: var(--dark-2);
-  border-top: 1px solid var(--bdr-d);
-  padding: clamp(56px, 6vw, 80px) 0 0;
+  background: #071828;
+  border-top: none;
+  padding: 40px 0 0;
 }
 .footer-grid {
   display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: clamp(24px, 4vw, 56px);
-  padding-bottom: 56px;
+  gap: clamp(24px, 3vw, 48px);
+  padding-bottom: 32px;
 }
 .footer-logo {
   font-size: 13px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
   color: var(--white); margin-bottom: 14px;
 }
 .footer-tagline {
-  font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.48);
-  margin-bottom: 24px; max-width: 240px;
+  font-size: 12px; line-height: 1.6; color: rgba(255,255,255,0.50);
+  margin-bottom: 14px; max-width: 240px;
 }
 .footer-contact-item {
-  font-size: 13px; color: rgba(255,255,255,0.52); margin-bottom: 8px;
+  font-size: 12px; color: rgba(255,255,255,0.55); margin-bottom: 5px;
   display: flex; gap: 8px; align-items: center;
 }
 .footer-col-title {
@@ -433,8 +433,8 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
   color: rgba(255,255,255,0.40); margin-bottom: 20px;
 }
 .footer-links { list-style: none; }
-.footer-links li { margin-bottom: 12px; }
-.footer-links a { font-size: 13px; color: rgba(255,255,255,0.52); transition: color 0.2s; }
+.footer-links li { margin-bottom: 10px; }
+.footer-links a { font-size: 12px; color: rgba(255,255,255,0.45); transition: color 0.2s; }
 .footer-links a:hover { color: var(--white); }
 .footer-acc-btn {
   background: none; border: none; cursor: pointer; font-family: var(--font);
@@ -457,9 +457,9 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
   .footer-acc-body li { margin-bottom: 0; }
   .footer-acc-body li a { display: block; padding: 10px 0; }
 }
-.footer-bottom-outer { border-top: 1px solid rgba(255,255,255,0.07); margin-top: 48px; }
+.footer-bottom-outer { background: rgba(0,0,0,0.20); border-top: 1px solid rgba(255,255,255,0.07); margin-top: 0; }
 .footer-bottom {
-  padding: 20px 0;
+  padding: 16px 0;
   display: flex; align-items: center; justify-content: space-between;
 }
 .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
@@ -588,7 +588,6 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
       <div class="footer-brand">
         <p class="footer-tagline">Family-owned fine jewelers since 1975.<br>NYC's Diamond District.</p>
         <div>
-          <p class="footer-contact-item">74 W 47th St, New York, NY 10036</p>
           <p class="footer-contact-item"><a href="tel:2123027327">212.302.7327</a></p>
           <p class="footer-contact-item"><a href="https://leondiamond.com/pages/contact">Contact Us</a></p>
         </div>
