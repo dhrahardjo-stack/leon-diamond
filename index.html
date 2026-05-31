@@ -2747,59 +2747,79 @@ document.querySelectorAll('.footer-acc-btn').forEach(btn => {
 </script>
 
 <!-- ═══ EMAIL POPUP ══════════════════════════════════════════════════════ -->
-<div id="ld-popup" style="display:none;position:fixed;inset:0;z-index:9998;background:rgba(7,24,40,0.75);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:20px;">
-  <div style="background:#fff;max-width:440px;width:100%;position:relative;overflow:hidden;">
-    <button id="ld-popup-close" style="position:absolute;top:14px;right:18px;font-size:22px;color:rgba(0,0,0,0.35);background:none;border:none;cursor:pointer;line-height:1;">×</button>
-    <div style="background:#071828;padding:32px 36px 28px;text-align:center;">
-      <p style="font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#b2ccdd;margin-bottom:10px;">Welcome to Leon Diamond</p>
-      <h2 style="font-size:28px;font-weight:800;color:#fff;letter-spacing:-0.5px;margin-bottom:8px;">Unlock 15% Off</h2>
-      <p style="font-size:14px;color:rgba(255,255,255,0.65);margin-bottom:0;">Your first order — for a limited time only</p>
+<style>
+@media (max-width: 640px) {
+  #ld-popup-img { display: none !important; }
+  #ld-popup-card { max-width: 420px !important; min-height: auto !important; }
+}
+#ld-popup input::placeholder { color: rgba(255,255,255,0.45); }
+#ld-popup input:focus { border-color: #c9a84c; }
+</style>
+
+<div id="ld-popup" style="display:none;position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,0.72);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:16px;">
+  <div id="ld-popup-card" style="display:flex;max-width:860px;width:100%;border-radius:12px;overflow:hidden;position:relative;min-height:500px;">
+
+    <!-- Close -->
+    <button id="ld-popup-close" style="position:absolute;top:14px;right:16px;z-index:10;font-size:24px;line-height:1;color:rgba(255,255,255,0.50);background:none;border:none;cursor:pointer;font-family:inherit;padding:4px 8px;">×</button>
+
+    <!-- Left: image -->
+    <div id="ld-popup-img" style="flex:0 0 45%;overflow:hidden;">
+      <img src="assets/pop_up.png" alt="Leon Diamond" style="width:100%;height:100%;object-fit:cover;display:block;">
     </div>
-    <div style="padding:28px 36px 32px;">
-      <div id="ld-popup-timer" style="margin-bottom:24px;text-align:center;">
-        <p style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(0,0,0,0.40);margin-bottom:10px;">This offer expires in</p>
-        <div style="display:inline-flex;align-items:center;gap:6px;background:#fff5f5;border:1px solid rgba(231,76,60,0.18);padding:10px 24px;">
-          <div style="text-align:center;min-width:46px;">
-            <div id="ld-timer-m" style="font-size:38px;font-weight:800;color:#e74c3c;letter-spacing:-2px;line-height:1;font-variant-numeric:tabular-nums;">10</div>
-            <div style="font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(0,0,0,0.35);margin-top:3px;">Min</div>
-          </div>
-          <div style="font-size:30px;font-weight:700;color:#e74c3c;line-height:1;padding-bottom:10px;">:</div>
-          <div style="text-align:center;min-width:46px;">
-            <div id="ld-timer-s" style="font-size:38px;font-weight:800;color:#e74c3c;letter-spacing:-2px;line-height:1;font-variant-numeric:tabular-nums;">00</div>
-            <div style="font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(0,0,0,0.35);margin-top:3px;">Sec</div>
-          </div>
+
+    <!-- Right: content -->
+    <div style="flex:1;background:#0a1628;padding:40px;display:flex;flex-direction:column;justify-content:center;min-width:0;">
+
+      <p style="font-size:10px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:#c9a84c;margin:0 0 14px;">LEON DIAMOND</p>
+      <h2 id="ld-popup-headline" style="font-size:clamp(22px,2.8vw,30px);font-weight:800;color:#fff;letter-spacing:-0.5px;line-height:1.1;margin:0 0 12px;">Exclusive Welcome Offer</h2>
+      <p style="font-size:14px;line-height:1.65;color:rgba(255,255,255,0.68);margin:0 0 22px;">Get 15% off your first order from NYC's Diamond District since 1975.</p>
+      <div style="height:1px;background:rgba(201,168,76,0.28);margin-bottom:22px;"></div>
+
+      <!-- Form section -->
+      <div id="ld-popup-form-section">
+        <p style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.50);margin:0 0 6px;">Offer expires in:</p>
+        <div style="margin-bottom:22px;line-height:1;">
+          <span id="ld-timer-m" style="font-size:44px;font-weight:800;color:#c9a84c;letter-spacing:-2px;font-variant-numeric:tabular-nums;">10</span><span style="font-size:36px;font-weight:700;color:#c9a84c;margin:0 3px;">:</span><span id="ld-timer-s" style="font-size:44px;font-weight:800;color:#c9a84c;letter-spacing:-2px;font-variant-numeric:tabular-nums;">00</span>
         </div>
+        <input id="ld-popup-email" type="email" name="email" placeholder="Your email address" style="width:100%;padding:13px 16px;background:transparent;border:1px solid rgba(201,168,76,0.45);color:#fff;font-size:14px;font-family:inherit;outline:none;margin-bottom:10px;box-sizing:border-box;border-radius:0;">
+        <button id="ld-popup-submit" style="width:100%;padding:15px;background:#c9a84c;color:#0a1628;border:none;font-family:inherit;font-size:11px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;transition:opacity 0.2s;">CLAIM MY 15% OFF</button>
+        <p id="ld-popup-skip" style="text-align:center;margin:14px 0 0;font-size:11px;color:rgba(255,255,255,0.32);cursor:pointer;letter-spacing:0.5px;">No thanks, I prefer full price</p>
       </div>
-      <input id="ld-popup-email" type="email" name="email" placeholder="Your email address" style="width:100%;padding:14px 16px;border:1px solid rgba(0,0,0,0.15);font-size:14px;font-family:inherit;outline:none;margin-bottom:12px;box-sizing:border-box;">
-      <button id="ld-popup-submit" style="width:100%;padding:15px;background:#2a6da4;color:#fff;border:none;font-family:inherit;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;">Claim My 15% Off</button>
-      <p style="text-align:center;margin-top:14px;font-size:12px;color:rgba(0,0,0,0.35);cursor:pointer;" id="ld-popup-skip">No thanks, I prefer full price</p>
+
+      <!-- Success section -->
+      <div id="ld-popup-success-section" style="display:none;">
+        <p style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.50);margin:0 0 12px;">Your exclusive code:</p>
+        <div style="background:rgba(201,168,76,0.10);border:1.5px solid #c9a84c;padding:20px;text-align:center;margin-bottom:18px;">
+          <span style="font-size:30px;font-weight:800;color:#c9a84c;letter-spacing:5px;">WELCOME15</span>
+        </div>
+        <p style="font-size:13px;line-height:1.6;color:rgba(255,255,255,0.60);">Apply at checkout for 15% off your first order. Valid for new customers only.</p>
+      </div>
+
     </div>
   </div>
 </div>
-<div id="ld-popup-success" style="display:none;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:9999;background:#071828;color:#fff;padding:16px 28px;font-size:13px;font-weight:600;letter-spacing:0.5px;box-shadow:0 8px 32px rgba(0,0,0,0.3);">
-  ✓ Code <strong>WELCOME15</strong> applied — use at checkout for 15% off!
-</div>
 
 <script>
-/* ── Email Popup — runs here so DOM elements already exist ── */
+/* ── Email Popup — script after HTML so all elements exist in DOM ── */
 (function(){
   if(localStorage.getItem('ld_popup_dismissed')) return;
-  var popup = document.getElementById('ld-popup');
-  var success = document.getElementById('ld-popup-success');
-  var timerM = document.getElementById('ld-timer-m');
-  var timerS = document.getElementById('ld-timer-s');
+  var popup    = document.getElementById('ld-popup');
+  var timerM   = document.getElementById('ld-timer-m');
+  var timerS   = document.getElementById('ld-timer-s');
   var total, timerInterval, submitted = false;
 
   function updateTimer() {
     if(submitted) return;
-    var m = Math.floor(total/60), s = total%60;
+    var m = Math.floor(total/60), s = total % 60;
     if(timerM) timerM.textContent = String(m).padStart(2,'0');
     if(timerS) timerS.textContent = String(s).padStart(2,'0');
     if(total <= 0) {
       clearInterval(timerInterval);
-      var timerBox = document.getElementById('ld-popup-timer');
-      if(timerBox) timerBox.innerHTML = '<p style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(0,0,0,0.40);text-align:center;padding:10px 0;">Offer has expired</p>';
-      setTimeout(closePopup, 2000);
+      var hl = document.getElementById('ld-popup-headline');
+      if(hl) hl.textContent = 'Offer Expired';
+      var btn = document.getElementById('ld-popup-submit');
+      if(btn) { btn.disabled = true; btn.style.background = 'rgba(255,255,255,0.12)'; btn.style.color = 'rgba(255,255,255,0.30)'; btn.style.cursor = 'not-allowed'; }
+      setTimeout(closePopup, 3000);
       return;
     }
     total--;
@@ -2808,6 +2828,14 @@ document.querySelectorAll('.footer-acc-btn').forEach(btn => {
   function openPopup() {
     total = 600;
     clearInterval(timerInterval);
+    var hl = document.getElementById('ld-popup-headline');
+    if(hl) hl.textContent = 'Exclusive Welcome Offer';
+    var btn = document.getElementById('ld-popup-submit');
+    if(btn) { btn.disabled = false; btn.style.background = '#c9a84c'; btn.style.color = '#0a1628'; btn.style.cursor = 'pointer'; }
+    var formSec = document.getElementById('ld-popup-form-section');
+    var succSec = document.getElementById('ld-popup-success-section');
+    if(formSec) formSec.style.display = 'block';
+    if(succSec) succSec.style.display = 'none';
     if(timerM) timerM.textContent = '10';
     if(timerS) timerS.textContent = '00';
     popup.style.display = 'flex';
@@ -2824,18 +2852,24 @@ document.querySelectorAll('.footer-acc-btn').forEach(btn => {
   document.getElementById('ld-popup-skip').addEventListener('click', closePopup);
 
   document.getElementById('ld-popup-submit').addEventListener('click', function(){
-    var email = document.getElementById('ld-popup-email').value.trim();
+    var emailInput = document.getElementById('ld-popup-email');
+    var email = emailInput.value.trim();
     if(!email || !email.includes('@')) {
-      document.getElementById('ld-popup-email').style.borderColor = '#e74c3c';
+      emailInput.style.borderColor = '#e74c3c';
       return;
     }
     submitted = true;
     clearInterval(timerInterval);
-    closePopup();
-    success.style.display = 'block';
-    setTimeout(function(){ success.style.display = 'none'; }, 6000);
     localStorage.setItem('ld_email', email);
     localStorage.setItem('ld_discount', 'WELCOME15');
+    localStorage.setItem('ld_popup_dismissed', '1');
+    // Show code inside popup
+    var formSec = document.getElementById('ld-popup-form-section');
+    var succSec = document.getElementById('ld-popup-success-section');
+    if(formSec) formSec.style.display = 'none';
+    if(succSec) succSec.style.display = 'block';
+    // Auto-close after 8s
+    setTimeout(closePopup, 8000);
     fetch('https://formspree.io/f/mojbzwzo', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -2848,12 +2882,12 @@ document.querySelectorAll('.footer-acc-btn').forEach(btn => {
     if(e.clientY < 0 && !localStorage.getItem('ld_popup_dismissed')) openPopup();
   }, { once: true });
 
-  // Time delay — 3s
+  // 3s delay
   setTimeout(function(){
     if(!localStorage.getItem('ld_popup_dismissed') && popup.style.display === 'none') openPopup();
   }, 3000);
 
-  // Scroll 30% trigger (mobile)
+  // Scroll 30%
   window.addEventListener('scroll', function onScroll(){
     if(localStorage.getItem('ld_popup_dismissed')) { window.removeEventListener('scroll', onScroll); return; }
     var scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
