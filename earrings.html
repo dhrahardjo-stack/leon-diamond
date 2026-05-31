@@ -384,6 +384,67 @@ button{font-family:var(--font);cursor:pointer;border:none;background:none}
   </div>
 </div>
 
+<!-- CARAT SIZE VISUALIZATION -->
+<section style="background:#fff;padding:clamp(48px,6vw,80px) clamp(20px,5vw,72px);border-top:1px solid rgba(0,0,0,0.06);">
+  <div style="max-width:900px;margin:0 auto;">
+    <p style="font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#2a6da4;margin-bottom:10px;text-align:center;">FIND YOUR SIZE</p>
+    <h2 style="font-size:clamp(22px,3vw,36px);font-weight:800;letter-spacing:-0.5px;color:#071828;text-align:center;margin-bottom:8px;">How big is a diamond stud on your ear?</h2>
+    <p style="font-size:14px;color:rgba(0,0,0,0.50);text-align:center;margin-bottom:36px;">Select a carat size to see how it looks in real life</p>
+
+    <!-- Size selector -->
+    <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:40px;" id="ear-size-selector">
+      <button onclick="showEarSize(this,'0.5')" style="padding:10px 20px;border:1.5px solid rgba(0,0,0,0.15);background:#fff;font-family:inherit;font-size:13px;font-weight:600;color:#1c1c1e;cursor:pointer;transition:all 0.2s;">0.5 ct</button>
+      <button onclick="showEarSize(this,'1')" style="padding:10px 20px;border:1.5px solid #2a6da4;background:rgba(42,109,164,0.06);font-family:inherit;font-size:13px;font-weight:600;color:#2a6da4;cursor:pointer;transition:all 0.2s;" class="ear-active">1 ct</button>
+      <button onclick="showEarSize(this,'2')" style="padding:10px 20px;border:1.5px solid rgba(0,0,0,0.15);background:#fff;font-family:inherit;font-size:13px;font-weight:600;color:#1c1c1e;cursor:pointer;transition:all 0.2s;">2 ct</button>
+      <button onclick="showEarSize(this,'3')" style="padding:10px 20px;border:1.5px solid rgba(0,0,0,0.15);background:#fff;font-family:inherit;font-size:13px;font-weight:600;color:#1c1c1e;cursor:pointer;transition:all 0.2s;">3 ct</button>
+      <button onclick="showEarSize(this,'4')" style="padding:10px 20px;border:1.5px solid rgba(0,0,0,0.15);background:#fff;font-family:inherit;font-size:13px;font-weight:600;color:#1c1c1e;cursor:pointer;transition:all 0.2s;">4 ct</button>
+    </div>
+
+    <!-- Image + description -->
+    <div style="display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap;">
+      <div style="width:320px;height:320px;background:#f8f8f8;display:flex;align-items:center;justify-content:center;overflow:hidden;" id="ear-img-wrap">
+        <img id="ear-viz-img" src="images/ear-1ct.png" alt="1ct diamond stud earring on ear" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';document.getElementById('ear-placeholder').style.display='flex'">
+        <div id="ear-placeholder" style="display:none;flex-direction:column;align-items:center;justify-content:center;color:rgba(0,0,0,0.25);font-size:13px;text-align:center;padding:20px;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          <p style="margin-top:12px;">Image coming soon<br><small>Add ear-1ct.png to images/</small></p>
+        </div>
+      </div>
+      <div style="max-width:280px;">
+        <p id="ear-size-label" style="font-size:32px;font-weight:800;color:#071828;letter-spacing:-1px;margin-bottom:8px;">1 ct total</p>
+        <p id="ear-size-sub" style="font-size:14px;color:rgba(0,0,0,0.55);line-height:1.65;margin-bottom:20px;">0.5ct each ear. The most popular everyday stud size. Noticeable but not overwhelming — perfect for work and social occasions.</p>
+        <p id="ear-size-price" style="font-size:18px;font-weight:700;color:#071828;margin-bottom:16px;">From $1,175 · IGI Certified</p>
+        <a href="https://leondiamond.com/collections/lab-grown-earrings" target="_blank" style="display:inline-block;padding:13px 28px;background:#2a6da4;color:#fff;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;">Shop This Size →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+var earData = {
+  '0.5': { label:'0.5 ct total', sub:'0.25ct each ear. Delicate and subtle — ideal for minimalist style or layering with other earrings.', price:'From $660 · IGI Certified' },
+  '1':   { label:'1 ct total', sub:'0.5ct each ear. The most popular everyday stud size. Noticeable but not overwhelming — perfect for work and social occasions.', price:'From $1,175 · IGI Certified' },
+  '2':   { label:'2 ct total', sub:'1ct each ear. A statement stud that catches light beautifully. Frequently chosen for special occasions and gifts.', price:'From $2,100 · IGI Certified' },
+  '3':   { label:'3 ct total', sub:'1.5ct each ear. Glamorous and eye-catching. A significant upgrade that commands attention.', price:'From $3,800 · IGI Certified' },
+  '4':   { label:'4 ct total', sub:'2ct each ear. Our largest stud size — a bold luxury statement for those who love maximum sparkle.', price:'From $6,500 · IGI Certified' }
+};
+function showEarSize(btn, size) {
+  document.querySelectorAll('#ear-size-selector button').forEach(b => {
+    b.style.border='1.5px solid rgba(0,0,0,0.15)';b.style.background='#fff';b.style.color='#1c1c1e';
+  });
+  btn.style.border='1.5px solid #2a6da4';btn.style.background='rgba(42,109,164,0.06)';btn.style.color='#2a6da4';
+  var img = document.getElementById('ear-viz-img');
+  var ph = document.getElementById('ear-placeholder');
+  img.src = 'images/ear-' + size + 'ct.png';
+  img.style.display = 'block';
+  ph.style.display = 'none';
+  img.onerror = function(){ this.style.display='none'; ph.style.display='flex'; ph.querySelector('small').textContent='Add ear-'+size+'ct.png to images/'; };
+  var d = earData[size];
+  document.getElementById('ear-size-label').textContent = d.label;
+  document.getElementById('ear-size-sub').textContent = d.sub;
+  document.getElementById('ear-size-price').textContent = d.price;
+}
+</script>
+
 <!-- CONSULT CTA -->
 <div class="consult-strip">
   <h3>Can't find what you're looking for?</h3>
