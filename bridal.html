@@ -569,7 +569,7 @@ document.querySelectorAll('.filter-pill').forEach(pill => {
 loadProducts();
 </script>
 <!-- WhatsApp Floating Button -->
-<a id="wa-float-btn" href="https://wa.me/13473831345" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" style="position:fixed;right:20px;bottom:24px;width:52px;height:52px;background:#25D366;border-radius:50%;box-shadow:0 4px 16px rgba(0,0,0,0.28);display:flex;align-items:center;justify-content:center;z-index:99999;text-decoration:none;cursor:grab;touch-action:none;user-select:none;">
+<a id="wa-float-btn" href="https://wa.me/13473831345" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" style="position:fixed;right:20px;bottom:24px;width:52px;height:52px;background:#25D366;border-radius:50%;box-shadow:0 4px 16px rgba(0,0,0,0.28);display:flex;align-items:center;justify-content:center;z-index:99999;text-decoration:none;cursor:grab;user-select:none;">
   <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M16 2C8.268 2 2 8.268 2 16c0 2.478.664 4.8 1.82 6.797L2 30l7.395-1.787A13.944 13.944 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.5a11.45 11.45 0 01-5.83-1.592l-.418-.248-4.387 1.06 1.095-4.27-.272-.437A11.44 11.44 0 014.5 16C4.5 9.648 9.648 4.5 16 4.5S27.5 9.648 27.5 16 22.352 27.5 16 27.5zm6.27-8.577c-.344-.172-2.034-1.003-2.349-1.117-.315-.115-.545-.172-.774.172-.23.344-.889 1.117-1.09 1.346-.2.23-.4.258-.744.086-.344-.172-1.452-.535-2.766-1.707-1.022-.912-1.713-2.038-1.913-2.382-.2-.344-.021-.53.15-.7.155-.154.344-.4.516-.6.172-.2.229-.344.344-.573.115-.23.057-.43-.029-.6-.086-.172-.774-1.866-1.06-2.555-.279-.67-.563-.58-.774-.59l-.659-.011c-.23 0-.6.086-.914.43-.315.344-1.203 1.175-1.203 2.866 0 1.69 1.232 3.323 1.404 3.552.172.23 2.424 3.7 5.872 5.19.821.354 1.462.566 1.962.724.824.262 1.574.225 2.167.137.66-.099 2.034-.832 2.32-1.635.287-.803.287-1.49.2-1.635-.086-.143-.315-.23-.659-.4z"/></svg>
 </a>
 <script>
@@ -586,7 +586,6 @@ loadProducts();
     initRight = getRight(btn); initBottom = getBottom(btn);
     dragging = true; dragMoved = false;
     btn.style.cursor = 'grabbing';
-    e.preventDefault();
   }
   function onMove(e){
     if(!dragging) return;
