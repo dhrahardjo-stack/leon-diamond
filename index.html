@@ -862,7 +862,7 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 .footer-links li { margin-bottom: 10px; }
 .footer-links a {
   font-size: 12px; color: rgba(255,255,255,0.60);
-  transition: color 0.2s;
+  transition: color 0.2s; display: block; padding: 3px 0;
 }
 .footer-links a:hover { color: #fff; }
 /* Footer accordion — mobile only */
@@ -898,8 +898,7 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
   .footer-col-accordion { border-bottom: 1px solid rgba(255,255,255,0.12); }
   .footer-col-title { color: rgba(255,255,255,0.85) !important; }
   .footer-col-title.footer-acc-btn { padding: 15px 0; margin-bottom: 0; }
-  .footer-acc-body { max-height: 0; }
-  .footer-acc-body.open { max-height: 320px; }
+  .footer-acc-body { max-height: none; }
   .footer-acc-body li { margin-bottom: 0; }
   .footer-acc-body li a { display: block; padding: 10px 0; }
   .footer-acc-body li:last-child a { padding-bottom: 16px; }
@@ -2735,7 +2734,53 @@ if (mobileOverlay) {
   mobileOverlay.addEventListener('click', closeMobileNav);
 }
 
-/* ── Email Popup ── */
+/* ── Footer Accordion (mobile) ── */
+document.querySelectorAll('.footer-acc-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const body = btn.nextElementSibling;
+    const isOpen = body.classList.contains('open');
+    body.classList.toggle('open', !isOpen);
+    btn.setAttribute('aria-expanded', String(!isOpen));
+  });
+});
+</script>
+
+<!-- ═══ EMAIL POPUP ══════════════════════════════════════════════════════ -->
+<div id="ld-popup" style="display:none;position:fixed;inset:0;z-index:9998;background:rgba(7,24,40,0.75);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:20px;">
+  <div style="background:#fff;max-width:440px;width:100%;position:relative;overflow:hidden;">
+    <button id="ld-popup-close" style="position:absolute;top:14px;right:18px;font-size:22px;color:rgba(0,0,0,0.35);background:none;border:none;cursor:pointer;line-height:1;">×</button>
+    <div style="background:#071828;padding:32px 36px 28px;text-align:center;">
+      <p style="font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#b2ccdd;margin-bottom:10px;">Welcome to Leon Diamond</p>
+      <h2 style="font-size:28px;font-weight:800;color:#fff;letter-spacing:-0.5px;margin-bottom:8px;">Unlock 15% Off</h2>
+      <p style="font-size:14px;color:rgba(255,255,255,0.65);margin-bottom:0;">Your first order — for a limited time only</p>
+    </div>
+    <div style="padding:28px 36px 32px;">
+      <div id="ld-popup-timer" style="margin-bottom:24px;text-align:center;">
+        <p style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(0,0,0,0.40);margin-bottom:10px;">This offer expires in</p>
+        <div style="display:inline-flex;align-items:center;gap:6px;background:#fff5f5;border:1px solid rgba(231,76,60,0.18);padding:10px 24px;">
+          <div style="text-align:center;min-width:46px;">
+            <div id="ld-timer-m" style="font-size:38px;font-weight:800;color:#e74c3c;letter-spacing:-2px;line-height:1;font-variant-numeric:tabular-nums;">10</div>
+            <div style="font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(0,0,0,0.35);margin-top:3px;">Min</div>
+          </div>
+          <div style="font-size:30px;font-weight:700;color:#e74c3c;line-height:1;padding-bottom:10px;">:</div>
+          <div style="text-align:center;min-width:46px;">
+            <div id="ld-timer-s" style="font-size:38px;font-weight:800;color:#e74c3c;letter-spacing:-2px;line-height:1;font-variant-numeric:tabular-nums;">00</div>
+            <div style="font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(0,0,0,0.35);margin-top:3px;">Sec</div>
+          </div>
+        </div>
+      </div>
+      <input id="ld-popup-email" type="email" name="email" placeholder="Your email address" style="width:100%;padding:14px 16px;border:1px solid rgba(0,0,0,0.15);font-size:14px;font-family:inherit;outline:none;margin-bottom:12px;box-sizing:border-box;">
+      <button id="ld-popup-submit" style="width:100%;padding:15px;background:#2a6da4;color:#fff;border:none;font-family:inherit;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;">Claim My 15% Off</button>
+      <p style="text-align:center;margin-top:14px;font-size:12px;color:rgba(0,0,0,0.35);cursor:pointer;" id="ld-popup-skip">No thanks, I prefer full price</p>
+    </div>
+  </div>
+</div>
+<div id="ld-popup-success" style="display:none;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:9999;background:#071828;color:#fff;padding:16px 28px;font-size:13px;font-weight:600;letter-spacing:0.5px;box-shadow:0 8px 32px rgba(0,0,0,0.3);">
+  ✓ Code <strong>WELCOME15</strong> applied — use at checkout for 15% off!
+</div>
+
+<script>
+/* ── Email Popup — runs here so DOM elements already exist ── */
 (function(){
   if(localStorage.getItem('ld_popup_dismissed')) return;
   var popup = document.getElementById('ld-popup');
@@ -2802,12 +2847,12 @@ if (mobileOverlay) {
     if(e.clientY < 0 && !localStorage.getItem('ld_popup_dismissed')) openPopup();
   }, { once: true });
 
-  // Time delay — 3s (works on mobile + all)
+  // Time delay — 3s
   setTimeout(function(){
     if(!localStorage.getItem('ld_popup_dismissed') && popup.style.display === 'none') openPopup();
   }, 3000);
 
-  // Scroll 30% trigger (mobile-friendly)
+  // Scroll 30% trigger (mobile)
   window.addEventListener('scroll', function onScroll(){
     if(localStorage.getItem('ld_popup_dismissed')) { window.removeEventListener('scroll', onScroll); return; }
     var scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
@@ -2817,54 +2862,7 @@ if (mobileOverlay) {
     }
   }, { passive: true });
 })();
-
-/* ── Footer Accordion (mobile) ── */
-document.querySelectorAll('.footer-acc-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const body = btn.nextElementSibling;
-    const isOpen = body.classList.contains('open');
-    body.classList.toggle('open', !isOpen);
-    btn.setAttribute('aria-expanded', String(!isOpen));
-  });
-});
 </script>
-
-<!-- ═══ EMAIL POPUP ══════════════════════════════════════════════════════ -->
-<div id="ld-popup" style="display:none;position:fixed;inset:0;z-index:9998;background:rgba(7,24,40,0.75);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:20px;">
-  <div style="background:#fff;max-width:440px;width:100%;position:relative;overflow:hidden;">
-    <button id="ld-popup-close" style="position:absolute;top:14px;right:18px;font-size:22px;color:rgba(0,0,0,0.35);background:none;border:none;cursor:pointer;line-height:1;">×</button>
-    <div style="background:#071828;padding:32px 36px 28px;text-align:center;">
-      <p style="font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#b2ccdd;margin-bottom:10px;">Welcome to Leon Diamond</p>
-      <h2 style="font-size:28px;font-weight:800;color:#fff;letter-spacing:-0.5px;margin-bottom:8px;">Unlock 15% Off</h2>
-      <p style="font-size:14px;color:rgba(255,255,255,0.65);margin-bottom:0;">Your first order — for a limited time only</p>
-    </div>
-    <div style="padding:28px 36px 32px;">
-      <div id="ld-popup-timer" style="margin-bottom:24px;text-align:center;">
-        <p style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(0,0,0,0.40);margin-bottom:10px;">This offer expires in</p>
-        <div style="display:inline-flex;align-items:center;gap:6px;background:#fff5f5;border:1px solid rgba(231,76,60,0.18);padding:10px 24px;">
-          <div style="text-align:center;min-width:46px;">
-            <div id="ld-timer-m" style="font-size:38px;font-weight:800;color:#e74c3c;letter-spacing:-2px;line-height:1;font-variant-numeric:tabular-nums;">10</div>
-            <div style="font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(0,0,0,0.35);margin-top:3px;">Min</div>
-          </div>
-          <div style="font-size:30px;font-weight:700;color:#e74c3c;line-height:1;padding-bottom:10px;">:</div>
-          <div style="text-align:center;min-width:46px;">
-            <div id="ld-timer-s" style="font-size:38px;font-weight:800;color:#e74c3c;letter-spacing:-2px;line-height:1;font-variant-numeric:tabular-nums;">00</div>
-            <div style="font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(0,0,0,0.35);margin-top:3px;">Sec</div>
-          </div>
-        </div>
-      </div>
-      <input id="ld-popup-email" type="email" name="email" placeholder="Your email address" style="width:100%;padding:14px 16px;border:1px solid rgba(0,0,0,0.15);font-size:14px;font-family:inherit;outline:none;margin-bottom:12px;box-sizing:border-box;">
-      <button id="ld-popup-submit" style="width:100%;padding:15px;background:#2a6da4;color:#fff;border:none;font-family:inherit;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;">Claim My 15% Off</button>
-      <p style="text-align:center;margin-top:14px;font-size:12px;color:rgba(0,0,0,0.35);cursor:pointer;" id="ld-popup-skip">No thanks, I prefer full price</p>
-    </div>
-  </div>
-</div>
-<div id="ld-popup-success" style="display:none;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:9999;background:#071828;color:#fff;padding:16px 28px;font-size:13px;font-weight:600;letter-spacing:0.5px;box-shadow:0 8px 32px rgba(0,0,0,0.3);">
-  ✓ Code <strong>WELCOME15</strong> applied — use at checkout for 15% off!
-</div>
-
-
-
 
 <script>
 /* Nav cursor parallax */
