@@ -2973,6 +2973,12 @@ if (mobileOverlay) {
     setTimeout(function(){ success.style.display = 'none'; }, 6000);
     localStorage.setItem('ld_email', email);
     localStorage.setItem('ld_discount', 'WELCOME15');
+    // Send to Formspree — emails go directly to dh.rahardjo@gmail.com
+    fetch('https://formspree.io/f/xgvepwnz', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ email: email, source: 'Leon Diamond Website Popup', code: 'WELCOME15', page: window.location.href })
+    }).catch(function(){});
   });
 
   // Exit intent (desktop)
