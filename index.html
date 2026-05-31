@@ -2974,7 +2974,7 @@ if (mobileOverlay) {
     localStorage.setItem('ld_email', email);
     localStorage.setItem('ld_discount', 'WELCOME15');
     // Send to Formspree — emails go directly to dh.rahardjo@gmail.com
-    fetch('https://formspree.io/f/xgvepwnz', {
+    fetch('https://formspree.io/f/mojbzwzo', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({ email: email, source: 'Leon Diamond Website Popup', code: 'WELCOME15', page: window.location.href })
@@ -3024,7 +3024,7 @@ document.querySelectorAll('.footer-acc-btn').forEach(btn => {
           <div style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(0,0,0,0.4);margin-top:2px;">Sec</div>
         </div>
       </div>
-      <input id="ld-popup-email" type="email" placeholder="Your email address" style="width:100%;padding:14px 16px;border:1px solid rgba(0,0,0,0.15);font-size:14px;font-family:inherit;outline:none;margin-bottom:12px;box-sizing:border-box;">
+      <input id="ld-popup-email" type="email" name="email" placeholder="Your email address" style="width:100%;padding:14px 16px;border:1px solid rgba(0,0,0,0.15);font-size:14px;font-family:inherit;outline:none;margin-bottom:12px;box-sizing:border-box;">
       <button id="ld-popup-submit" style="width:100%;padding:15px;background:#2a6da4;color:#fff;border:none;font-family:inherit;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;">Claim My 15% Off</button>
       <p style="text-align:center;margin-top:14px;font-size:12px;color:rgba(0,0,0,0.35);cursor:pointer;" id="ld-popup-skip">No thanks, I prefer full price</p>
     </div>
