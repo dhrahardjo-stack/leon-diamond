@@ -2931,48 +2931,104 @@ document.querySelectorAll('.footer-acc-btn').forEach(btn => {
   if(nBtn) nBtn.addEventListener('click',function(){pos=wrap(pos+sw()*3);});
 })();
 </script>
-<!-- WhatsApp Floating Button -->
-<a id="wa-float-btn" href="https://wa.me/13473831345" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" style="position:fixed;right:20px;bottom:24px;width:52px;height:52px;background:#25D366;border-radius:50%;box-shadow:0 4px 16px rgba(0,0,0,0.28);display:flex;align-items:center;justify-content:center;z-index:99999;text-decoration:none;cursor:grab;user-select:none;">
-  <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M16 2C8.268 2 2 8.268 2 16c0 2.478.664 4.8 1.82 6.797L2 30l7.395-1.787A13.944 13.944 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.5a11.45 11.45 0 01-5.83-1.592l-.418-.248-4.387 1.06 1.095-4.27-.272-.437A11.44 11.44 0 014.5 16C4.5 9.648 9.648 4.5 16 4.5S27.5 9.648 27.5 16 22.352 27.5 16 27.5zm6.27-8.577c-.344-.172-2.034-1.003-2.349-1.117-.315-.115-.545-.172-.774.172-.23.344-.889 1.117-1.09 1.346-.2.23-.4.258-.744.086-.344-.172-1.452-.535-2.766-1.707-1.022-.912-1.713-2.038-1.913-2.382-.2-.344-.021-.53.15-.7.155-.154.344-.4.516-.6.172-.2.229-.344.344-.573.115-.23.057-.43-.029-.6-.086-.172-.774-1.866-1.06-2.555-.279-.67-.563-.58-.774-.59l-.659-.011c-.23 0-.6.086-.914.43-.315.344-1.203 1.175-1.203 2.866 0 1.69 1.232 3.323 1.404 3.552.172.23 2.424 3.7 5.872 5.19.821.354 1.462.566 1.962.724.824.262 1.574.225 2.167.137.66-.099 2.034-.832 2.32-1.635.287-.803.287-1.49.2-1.635-.086-.143-.315-.23-.659-.4z"/></svg>
-</a>
+<!-- WA Chat Widget -->
+<style>
+#ld-chat-widget{position:fixed;right:20px;bottom:24px;z-index:99999;display:flex;flex-direction:column;align-items:flex-end;}
+#ld-chat-toggle{width:52px;height:52px;border-radius:50%;background:#25D366;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,0.28);flex-shrink:0;transition:background 0.2s;}
+#ld-chat-toggle:hover{background:#20b958;}
+#ld-chat-popup{width:320px;background:#fff;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,0.22);margin-bottom:12px;overflow:hidden;display:flex;flex-direction:column;max-height:520px;}
+#ld-chat-popup.ld-hidden{display:none;}
+#ld-chat-header{background:#075e54;padding:14px 16px;display:flex;align-items:center;gap:10px;}
+.ld-chat-avatar{width:40px;height:40px;border-radius:50%;overflow:hidden;flex-shrink:0;background:#fff;display:flex;align-items:center;justify-content:center;}
+.ld-chat-avatar img{width:100%;height:100%;object-fit:contain;}
+.ld-chat-header-info{flex:1;min-width:0;}
+.ld-chat-name{display:block;color:#fff;font-weight:700;font-size:15px;line-height:1.2;}
+.ld-chat-status{display:flex;align-items:center;gap:5px;color:rgba(255,255,255,0.78);font-size:12px;margin-top:3px;}
+.ld-chat-status-dot{width:7px;height:7px;background:#4ade80;border-radius:50%;flex-shrink:0;}
+#ld-chat-close-btn{background:none;border:none;color:rgba(255,255,255,0.7);font-size:18px;cursor:pointer;padding:4px;line-height:1;flex-shrink:0;}
+#ld-chat-close-btn:hover{color:#fff;}
+#ld-chat-body{background:#ece5dd;padding:16px;flex:1;overflow-y:auto;}
+.ld-chat-msg-row{display:flex;align-items:flex-end;gap:8px;margin-bottom:8px;}
+.ld-chat-msg-avatar{width:28px;height:28px;border-radius:50%;overflow:hidden;background:#fff;flex-shrink:0;}
+.ld-chat-msg-avatar img{width:100%;height:100%;object-fit:contain;}
+.ld-chat-bubble{background:#fff;border-radius:0 8px 8px 8px;padding:10px 12px;font-size:14px;line-height:1.55;color:#111;max-width:228px;box-shadow:0 1px 2px rgba(0,0,0,0.10);}
+#ld-chat-quick-replies{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.ld-chat-qr-btn{background:#fff;border:1.5px solid #25D366;color:#075e54;font-size:13px;font-weight:600;padding:6px 11px;border-radius:20px;cursor:pointer;line-height:1.3;transition:background 0.15s,color 0.15s;}
+.ld-chat-qr-btn:hover{background:#25D366;color:#fff;}
+#ld-chat-input-bar{display:flex;align-items:center;padding:10px 12px;background:#f0f0f0;gap:8px;border-top:1px solid #ddd;}
+#ld-chat-input{flex:1;border:none;background:#fff;border-radius:20px;padding:8px 14px;font-size:14px;outline:none;color:#111;}
+#ld-chat-send{width:36px;height:36px;border-radius:50%;background:#25D366;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.2s;}
+#ld-chat-send:hover{background:#20b958;}
+#ld-chat-footer{background:#f9f9f9;padding:8px 16px;text-align:center;border-top:1px solid #eee;}
+#ld-chat-footer a{color:#075e54;font-size:13px;font-weight:600;text-decoration:none;}
+#ld-chat-footer a:hover{text-decoration:underline;}
+@media(max-width:400px){#ld-chat-popup{width:calc(100vw - 40px);}}
+</style>
+<div id="ld-chat-widget">
+  <div id="ld-chat-popup" class="ld-hidden">
+    <div id="ld-chat-header">
+      <div class="ld-chat-avatar"><img src="images/2.png" alt="Leon Diamond"></div>
+      <div class="ld-chat-header-info">
+        <span class="ld-chat-name">Leon Diamond</span>
+        <span class="ld-chat-status"><span class="ld-chat-status-dot"></span>Online &middot; Typically replies instantly</span>
+      </div>
+      <button id="ld-chat-close-btn" aria-label="Close">&#x2715;</button>
+    </div>
+    <div id="ld-chat-body">
+      <div class="ld-chat-msg-row">
+        <div class="ld-chat-msg-avatar"><img src="images/2.png" alt=""></div>
+        <div class="ld-chat-bubble">Hi! &#x1F44B; Welcome to Leon Diamond &mdash; NYC&#39;s Diamond District since 1975. Family-owned. GIA &amp; IGI certified only. How can I help you today?</div>
+      </div>
+      <div id="ld-chat-quick-replies">
+        <button class="ld-chat-qr-btn" data-msg="I'm interested in engagement rings at Leon Diamond">Engagement Rings &#x1F48D;</button>
+        <button class="ld-chat-qr-btn" data-msg="I'd like to browse your jewelry collections">Browse Collections</button>
+        <button class="ld-chat-qr-btn" data-msg="Can you tell me about diamond quality and certifications?">Diamond Education &#x1F48E;</button>
+        <button class="ld-chat-qr-btn" data-msg="I'd like to know about pricing and budget options">Pricing &amp; Budget</button>
+        <button class="ld-chat-qr-btn" data-msg="I'd like to book an appointment at Leon Diamond">Book an Appointment</button>
+        <button class="ld-chat-qr-btn" data-msg="I'd like to speak with a gemologist at Leon Diamond">Talk to a Gemologist</button>
+      </div>
+    </div>
+    <div id="ld-chat-input-bar">
+      <input id="ld-chat-input" type="text" placeholder="Type a message..." autocomplete="off">
+      <button id="ld-chat-send" aria-label="Send">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z" fill="#fff"/></svg>
+      </button>
+    </div>
+    <div id="ld-chat-footer"><a href="https://wa.me/13473831345" target="_blank" rel="noopener">Open in WhatsApp &#x2197;</a></div>
+  </div>
+  <button id="ld-chat-toggle" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M16 2C8.268 2 2 8.268 2 16c0 2.478.664 4.8 1.82 6.797L2 30l7.395-1.787A13.944 13.944 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.5a11.45 11.45 0 01-5.83-1.592l-.418-.248-4.387 1.06 1.095-4.27-.272-.437A11.44 11.44 0 014.5 16C4.5 9.648 9.648 4.5 16 4.5S27.5 9.648 27.5 16 22.352 27.5 16 27.5zm6.27-8.577c-.344-.172-2.034-1.003-2.349-1.117-.315-.115-.545-.172-.774.172-.23.344-.889 1.117-1.09 1.346-.2.23-.4.258-.744.086-.344-.172-1.452-.535-2.766-1.707-1.022-.912-1.713-2.038-1.913-2.382-.2-.344-.021-.53.15-.7.155-.154.344-.4.516-.6.172-.2.229-.344.344-.573.115-.23.057-.43-.029-.6-.086-.172-.774-1.866-1.06-2.555-.279-.67-.563-.58-.774-.59l-.659-.011c-.23 0-.6.086-.914.43-.315.344-1.203 1.175-1.203 2.866 0 1.69 1.232 3.323 1.404 3.552.172.23 2.424 3.7 5.872 5.19.821.354 1.462.566 1.962.724.824.262 1.574.225 2.167.137.66-.099 2.034-.832 2.32-1.635.287-.803.287-1.49.2-1.635-.086-.143-.315-.23-.659-.4z"/></svg>
+  </button>
+</div>
 <script>
 (function(){
-  var btn = document.getElementById('wa-float-btn');
-  if(!btn) return;
-  var dragging = false, dragMoved = false;
-  var startX, startY, initRight, initBottom;
-  function getRight(el){ return window.innerWidth - el.getBoundingClientRect().right; }
-  function getBottom(el){ return window.innerHeight - el.getBoundingClientRect().bottom; }
-  function onStart(e){
-    var t = e.touches ? e.touches[0] : e;
-    startX = t.clientX; startY = t.clientY;
-    initRight = getRight(btn); initBottom = getBottom(btn);
-    dragging = true; dragMoved = false;
-    btn.style.cursor = 'grabbing';
+  var WA='https://wa.me/13473831345';
+  var popup=document.getElementById('ld-chat-popup');
+  var toggle=document.getElementById('ld-chat-toggle');
+  var closeBtn=document.getElementById('ld-chat-close-btn');
+  var input=document.getElementById('ld-chat-input');
+  var sendBtn=document.getElementById('ld-chat-send');
+  if(!popup||!toggle) return;
+  function openWidget(){ popup.classList.remove('ld-hidden'); }
+  function closeWidget(){ popup.classList.add('ld-hidden'); }
+  toggle.addEventListener('click',function(e){ e.stopPropagation(); popup.classList.contains('ld-hidden')?openWidget():closeWidget(); });
+  closeBtn.addEventListener('click',function(e){ e.stopPropagation(); closeWidget(); });
+  document.addEventListener('click',function(e){
+    if(!popup.classList.contains('ld-hidden')&&!document.getElementById('ld-chat-widget').contains(e.target)) closeWidget();
+  });
+  document.querySelectorAll('.ld-chat-qr-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      window.open(WA+'?text='+encodeURIComponent(btn.getAttribute('data-msg')),'_blank');
+    });
+  });
+  function sendMsg(){
+    var text=input.value.trim();
+    if(!text) return;
+    window.open(WA+'?text='+encodeURIComponent(text),'_blank');
+    input.value='';
   }
-  function onMove(e){
-    if(!dragging) return;
-    var t = e.touches ? e.touches[0] : e;
-    var dx = t.clientX - startX, dy = t.clientY - startY;
-    if(Math.abs(dx) > 5 || Math.abs(dy) > 5) dragMoved = true;
-    if(!dragMoved) return;
-    btn.style.right = Math.max(0, Math.min(window.innerWidth - 52, initRight - dx)) + 'px';
-    btn.style.bottom = Math.max(0, Math.min(window.innerHeight - 52, initBottom - dy)) + 'px';
-    btn.style.left = 'auto'; btn.style.top = 'auto';
-    e.preventDefault();
-  }
-  function onEnd(e){
-    if(!dragging) return;
-    dragging = false; btn.style.cursor = 'grab';
-    if(dragMoved) e.preventDefault();
-  }
-  btn.addEventListener('mousedown', onStart);
-  document.addEventListener('mousemove', onMove);
-  document.addEventListener('mouseup', onEnd);
-  btn.addEventListener('touchstart', onStart, { passive: false });
-  document.addEventListener('touchmove', onMove, { passive: false });
-  document.addEventListener('touchend', onEnd);
-  btn.addEventListener('click', function(e){ if(dragMoved){ e.preventDefault(); dragMoved = false; } });
+  sendBtn.addEventListener('click',sendMsg);
+  input.addEventListener('keydown',function(e){ if(e.key==='Enter') sendMsg(); });
 })();
 </script>
 </body>
