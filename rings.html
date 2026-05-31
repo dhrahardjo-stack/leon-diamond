@@ -537,6 +537,7 @@ function renderProducts() {
         <p class="prod-card-cat-type">${p.product_type || 'Earrings'}</p>
         <p class="prod-card-cat-name">${p.title}</p>
         <p class="prod-card-cat-price">From ${price}</p>
+        ${parseFloat(p.variants[0]?.price||0) >= 500 ? '<p style="font-size:10px;color:rgba(0,0,0,0.35);margin-top:2px;">~$' + Math.round(parseFloat(p.variants[0].price)/12) + '/mo with Affirm</p>' : ''}
       </div>
       <span class="prod-card-cat-cta">View →</span>
     </a>`;
@@ -585,6 +586,7 @@ document.querySelectorAll('.filter-pill').forEach(pill => {
             <p class="prod-card-cat-type">${p.product_type || 'Earrings'}</p>
             <p class="prod-card-cat-name">${p.title}</p>
             <p class="prod-card-cat-price">From ${price}</p>
+        ${parseFloat(p.variants[0]?.price||0) >= 500 ? '<p style="font-size:10px;color:rgba(0,0,0,0.35);margin-top:2px;">~$' + Math.round(parseFloat(p.variants[0].price)/12) + '/mo with Affirm</p>' : ''}
           </div>
           <span class="prod-card-cat-cta">View →</span>
         </a>`;
