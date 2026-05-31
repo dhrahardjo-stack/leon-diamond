@@ -284,7 +284,7 @@ button{font-family:var(--font);cursor:pointer;border:none;background:none}
     <li><a href="bracelets.html" class="active">Bracelets</a></li>
     <li><a href="necklaces.html">Necklaces</a></li>
     <li><a href="bridal.html">Bridal</a></li>
-    <li><a href="https://leondiamond.com/pages/fancy-color-guide">Fancy Color</a></li>
+    <li><a href="https://leondiamond.com/pages/fancy-color-guide?utm_source=custom_site&utm_medium=referral&utm_campaign=web_redesign">Fancy Color</a></li>
     <li><a href="about.html">About Us</a></li>
   </ul>
   <div class="nav-right">
@@ -301,7 +301,7 @@ button{font-family:var(--font);cursor:pointer;border:none;background:none}
   <a href="bracelets.html" onclick="closeMobileNav()">Bracelets</a>
   <a href="necklaces.html" onclick="closeMobileNav()">Necklaces</a>
   <a href="bridal.html" onclick="closeMobileNav()">Bridal</a>
-  <a href="https://leondiamond.com/pages/fancy-color-guide" onclick="closeMobileNav()">Fancy Color</a>
+  <a href="https://leondiamond.com/pages/fancy-color-guide?utm_source=custom_site&utm_medium=referral&utm_campaign=web_redesign" onclick="closeMobileNav()">Fancy Color</a>
   <a href="about.html" onclick="closeMobileNav()">About Us</a>
   <div class="mobile-nav-appt-wrap">
     <a href="https://calendar.app.google/Mo1Qy1UMHJpx7uo49" target="_blank">Book Appointment</a>
@@ -397,7 +397,7 @@ button{font-family:var(--font);cursor:pointer;border:none;background:none}
     <div class="footer-brand">
       <p class="footer-tagline">Family-owned fine jewelers since 1975.<br>NYC's Diamond District.</p>
       <p class="footer-contact-item"><a href="tel:2123027327">212.302.7327</a></p>
-      <p class="footer-contact-item"><a href="https://leondiamond.com/pages/contact">Contact Us</a></p>
+      <p class="footer-contact-item"><a href="https://leondiamond.com/pages/contact?utm_source=custom_site&utm_medium=referral&utm_campaign=web_redesign">Contact Us</a></p>
     </div>
     <div class="footer-col-accordion">
       <p class="footer-col-title footer-acc-btn" tabindex="0">Collections <span class="footer-acc-icon">+</span></p>
@@ -407,13 +407,13 @@ button{font-family:var(--font);cursor:pointer;border:none;background:none}
         <li><a href="bracelets.html" class="active">Bracelets</a></li>
         <li><a href="necklaces.html">Necklaces</a></li>
         <li><a href="bridal.html">Bridal</a></li>
-        <li><a href="https://leondiamond.com/collections/fancy-color">Fancy Color</a></li>
+        <li><a href="https://leondiamond.com/collections/fancy-color?utm_source=custom_site&utm_medium=referral&utm_campaign=web_redesign">Fancy Color</a></li>
       </ul>
     </div>
     <div class="footer-col-accordion">
       <p class="footer-col-title footer-acc-btn" tabindex="0">Education <span class="footer-acc-icon">+</span></p>
       <ul class="footer-links footer-acc-body">
-        <li><a href="https://leondiamond.com/pages/fancy-color-guide">Diamond Guide</a></li>
+        <li><a href="https://leondiamond.com/pages/fancy-color-guide?utm_source=custom_site&utm_medium=referral&utm_campaign=web_redesign">Diamond Guide</a></li>
         <li><a href="rings.html?shape=round">Round Cut</a></li>
         <li><a href="rings.html?shape=oval">Oval Cut</a></li>
         <li><a href="rings.html?shape=emerald">Emerald Cut</a></li>
@@ -425,7 +425,7 @@ button{font-family:var(--font);cursor:pointer;border:none;background:none}
       <ul class="footer-links footer-acc-body">
         <li><a href="about.html">About Us</a></li>
         <li><a href="https://calendar.app.google/Mo1Qy1UMHJpx7uo49">Book Appointment</a></li>
-        <li><a href="https://leondiamond.com/pages/contact">Contact</a></li>
+        <li><a href="https://leondiamond.com/pages/contact?utm_source=custom_site&utm_medium=referral&utm_campaign=web_redesign">Contact</a></li>
         <li><a href="https://www.instagram.com/leondiamond/">Instagram</a></li>
       </ul>
     </div>
@@ -479,7 +479,7 @@ async function loadProducts() {
     allProducts = data.products || [];
     renderProducts();
   } catch(e) {
-    document.getElementById('prod-grid').innerHTML = '<p class="no-products">Products loading — <a href="https://leondiamond.com/collections/natural-bracelets-tennis" target="_blank">view on Leon Diamond →</a></p>';
+    document.getElementById('prod-grid').innerHTML = '<p class="no-products">Products loading — <a href="https://leondiamond.com/collections/natural-bracelets-tennis?utm_source=custom_site&utm_medium=referral&utm_campaign=web_redesign" target="_blank">view on Leon Diamond →</a></p>';
   }
 }
 
@@ -557,7 +557,7 @@ document.querySelectorAll('.filter-pill').forEach(pill => {
           </div>
           <span class="prod-card-cat-cta">View →</span>
         </a>`;
-      }).join('') : '<p class="no-products">No products found. <a href="https://leondiamond.com/collections/natural-bracelets-tennis" target="_blank">View all on Leon Diamond →</a></p>';
+      }).join('') : '<p class="no-products">No products found. <a href="https://leondiamond.com/collections/natural-bracelets-tennis?utm_source=custom_site&utm_medium=referral&utm_campaign=web_redesign" target="_blank">View all on Leon Diamond →</a></p>';
       document.getElementById('load-more-wrap').style.display = 'none';
     }
   });
