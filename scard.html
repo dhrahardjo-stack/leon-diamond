@@ -343,13 +343,14 @@
         </form>
       </div>
 
-      <button class="btn btn-ghost" type="button" id="phoneToggle" aria-expanded="false" aria-controls="phonePanel">
+      <button class="btn btn-ghost" type="button" id="phoneToggle" aria-expanded="true" aria-controls="phonePanel">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
         <span class="cta-label">Call, text or save our team</span>
         <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </button>
 
-      <div class="panel" id="phonePanel" role="region" aria-labelledby="phoneToggle">
+      <!-- terbuka dari awal: customer yang memindai QR toko langsung memilih salesnya -->
+      <div class="panel open" id="phonePanel" role="region" aria-labelledby="phoneToggle">
         <div class="panel-head">
           <span class="eyebrow">Our team</span>
           <span class="hint">Tick several to save at once</span>
