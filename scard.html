@@ -138,6 +138,13 @@
   .btn-ghost[aria-expanded="true"]{border-color:var(--accent);color:var(--accent)}
   .btn-ghost[aria-expanded="true"] .chev{transform:rotate(180deg);opacity:1}
   .stack{display:flex;flex-direction:column;gap:8px}
+  .stack-cta{margin-top:14px}
+  .intro{margin:2px 0 14px}
+  .lede{margin:8px auto 0;max-width:340px;font-size:16px;line-height:1.55;color:var(--ink-soft)}
+  .btn-toggle .cta-label{flex:1;text-align:left}
+  .btn-toggle .chev{width:15px;height:15px;margin-left:auto;transition:transform .25s ease}
+  .btn-toggle[aria-expanded="true"]{background:var(--accent)}
+  .btn-toggle[aria-expanded="true"] .chev{transform:rotate(180deg)}
 
   .mini{
     display:inline-flex;align-items:center;justify-content:center;gap:5px;
@@ -235,7 +242,7 @@
   .action .value{font-size:13px;font-weight:500;color:var(--ink);margin-top:2px;line-height:1.25;overflow-wrap:anywhere}
 
   .reviews{
-    display:flex;align-items:center;gap:10px;margin-top:14px;padding:12px 14px;
+    display:flex;align-items:center;gap:10px;margin-top:0;padding:12px 14px;
     border:1px solid var(--line);border-radius:12px;background:var(--tile);
     text-decoration:none;color:var(--ink);transition:border-color .2s ease;
   }
@@ -288,8 +295,54 @@
       <div class="btns" id="mineBtns"></div>
     </section>
 
-    <div class="stack">
-      <button class="btn btn-primary" type="button" id="bookToggle" aria-expanded="false" aria-controls="bookPanel">
+    <section class="intro" aria-label="About Leon Diamond">
+      <span class="eyebrow">Family-owned since 1975</span>
+      <p class="lede">Hand-selected stones, crafted in-house on 47th Street. GIA and IGI certified.</p>
+    </section>
+
+    <!-- Angka dari Google Maps 23 Okt 2026. Cek ulang sesekali, angkanya bergerak. -->
+    <a class="reviews" href="https://www.google.com/maps?cid=2619796647675109331" target="_blank" rel="noopener">
+      <span class="rscore">4.8</span>
+      <span class="rstars" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+      <span class="rtext">245 Google reviews</span>
+      <span class="rlink">Read</span>
+    </a>
+
+    <div class="actions" role="list">
+      <a class="action" role="listitem" href="https://leondiamond.com" target="_blank" rel="noopener">
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></span>
+        <span class="meta"><span class="label">Website</span><span class="value">leondiamond.com</span></span>
+      </a>
+      <a class="action" role="listitem" href="https://www.instagram.com/leondiamond" target="_blank" rel="noopener">
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></span>
+        <span class="meta"><span class="label">Instagram</span><span class="value">@leondiamond</span></span>
+      </a>
+      <a class="action" role="listitem" href="mailto:admin@leondiamond.com">
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></span>
+        <span class="meta"><span class="label">Email</span><span class="value">admin@<br>leondiamond.com</span></span>
+      </a>
+      <a class="action" role="listitem" href="https://www.google.com/maps/search/?api=1&query=Leon+Diamond+74+West+47th+Street+New+York+NY+10036" target="_blank" rel="noopener">
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>
+        <span class="meta"><span class="label">Visit us</span><span class="value">74 W. 47th St, NYC</span></span>
+      </a>
+    </div>
+
+    <div class="stack stack-cta">
+      <button class="btn btn-primary btn-toggle" type="button" id="phoneToggle" aria-expanded="false" aria-controls="phonePanel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        <span class="cta-label">Contact sales</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </button>
+
+      <div class="panel" id="phonePanel" role="region" aria-labelledby="phoneToggle">
+        <div class="panel-head">
+          <span class="eyebrow">Our team</span>
+          <span class="hint">Tick several to save at once</span>
+        </div>
+        <div id="rows"></div>
+        <button class="save-selected" id="saveSelectedBtn" type="button" disabled>Save selected (0)</button>
+      </div>
+      <button class="btn btn-ghost" type="button" id="bookToggle" aria-expanded="false" aria-controls="bookPanel">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
         Book a private viewing
       </button>
@@ -343,51 +396,8 @@
         </form>
       </div>
 
-      <button class="btn btn-ghost" type="button" id="phoneToggle" aria-expanded="true" aria-controls="phonePanel">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-        <span class="cta-label">Call, text or save our team</span>
-        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
-      </button>
-
-      <!-- terbuka dari awal: customer yang memindai QR toko langsung memilih salesnya -->
-      <div class="panel open" id="phonePanel" role="region" aria-labelledby="phoneToggle">
-        <div class="panel-head">
-          <span class="eyebrow">Our team</span>
-          <span class="hint">Tick several to save at once</span>
-        </div>
-        <div id="rows"></div>
-        <button class="save-selected" id="saveSelectedBtn" type="button" disabled>Save selected (0)</button>
-      </div>
     </div>
 
-    <!-- Angka dari Google Maps 23 Okt 2026. Cek ulang sesekali, angkanya bergerak. -->
-    <a class="reviews" href="https://www.google.com/maps?cid=2619796647675109331" target="_blank" rel="noopener">
-      <span class="rscore">4.8</span>
-      <span class="rstars" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
-      <span class="rtext">245 Google reviews</span>
-      <span class="rlink">Read</span>
-    </a>
-
-    <div class="actions" role="list">
-      <a class="action" role="listitem" href="https://leondiamond.com" target="_blank" rel="noopener">
-        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></span>
-        <span class="meta"><span class="label">Website</span><span class="value">leondiamond.com</span></span>
-      </a>
-      <a class="action" role="listitem" href="https://www.instagram.com/leondiamond" target="_blank" rel="noopener">
-        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></span>
-        <span class="meta"><span class="label">Instagram</span><span class="value">@leondiamond</span></span>
-      </a>
-      <a class="action" role="listitem" href="mailto:admin@leondiamond.com">
-        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></span>
-        <span class="meta"><span class="label">Email</span><span class="value">admin@<br>leondiamond.com</span></span>
-      </a>
-      <a class="action" role="listitem" href="https://www.google.com/maps/search/?api=1&query=Leon+Diamond+74+West+47th+Street+New+York+NY+10036" target="_blank" rel="noopener">
-        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>
-        <span class="meta"><span class="label">Visit us</span><span class="value">74 W. 47th St, NYC</span></span>
-      </a>
-    </div>
-
-    <p class="footer">Established 1975, Diamond District, New York</p>
   </div>
 </main>
 
