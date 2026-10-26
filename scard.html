@@ -413,7 +413,8 @@
   /* Satu sumber data tim. Dulu tiap orang ditulis ulang 3 kali di HTML; sekarang ubah di sini saja. */
   var TEAM = [
     {id:'avi',     name:'Avi',     tel:'+19172174768', role:'Sales Manager'},
-    {id:'mike',    name:'Mike',    tel:'+12129214647', role:'Co-Partner'},
+    {id:'mike',    name:'Mike',    last:'Nekta', tel:'+12129214647', role:'Co-Partner',
+     work:'+12123027327,4', cal:'https://calendly.com/mike-nekta', ig:'https://www.instagram.com/mike_nekta'},
     {id:'octavia', name:'Octavia', tel:'+19296358749', role:'Senior Sales Associate'},
     {id:'regina',  name:'Regina',  tel:'+17185326116', role:'Senior Sales Associate'},
     {id:'ruben',   name:'Ruben',   tel:'+15164990078', role:'Senior Sales Associate'},
@@ -423,23 +424,17 @@
   /* Versi satu sales: /mike (rewrite di vercel.json) atau ?only=mike. Sales lain disembunyikan,
      nomor toko tetap ada. Satu berkas untuk semua versi supaya tidak ada salinan yang ketinggalan. */
   var ONLY = (new URLSearchParams(location.search).get('only') ||
-              (location.pathname.match(/^\/([a-z]+)\/?$/) || [])[1] || '').toLowerCase();
+              (location.pathname.match(/^\/([a-z]+)(?:\.html)?\/?$/) || [])[1] || '').toLowerCase();
   var onlyRep = null;
   TEAM.forEach(function(p){ if (p.id === ONLY && !p.store) onlyRep = p; });
   /* Daniel 26 Okt: di versi satu sales, isi Contact hanya sales itu (tanpa nomor tertulis, tanpa toko),
      kotak Email diganti nomor toko 917, dan email tidak dipakai di mana pun. */
   var SOLO = !!onlyRep;
   if (SOLO) {
-    var storeTel = TEAM.filter(function(p){ return p.store; })[0].tel;
     TEAM = [onlyRep];
     document.body.classList.add('solo');
     document.querySelector('#phoneToggle .cta-label').textContent = 'Contact ' + onlyRep.name;
     document.querySelector('#phonePanel .panel-head .eyebrow').textContent = onlyRep.name + ', ' + onlyRep.role;
-    var tile = document.getElementById('emailTile');
-    tile.href = 'tel:' + storeTel;
-    tile.querySelector('.icon').innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"></path></svg>';
-    tile.querySelector('.label').textContent = 'Phone';
-    tile.querySelector('.value').textContent = storeTel.replace(/\D/g,'').slice(-10).replace(/(\d{3})(\d{3})(\d{4})/,'$1.$2.$3');
     document.getElementById('toField').hidden = true;
     document.getElementById('byEmail').hidden = true;
   }
@@ -471,16 +466,20 @@
     out.push(line); return out.join('\r\n');
   }
   function vcard(p){
-    var fn = p.store ? 'Leon Diamond' : (p.name + ' - Leon Diamond');
+    var fn = p.store ? 'Leon Diamond' : p.last ? p.name + ' ' + p.last : (p.name + ' - Leon Diamond');
     var lines = [
       'BEGIN:VCARD','VERSION:3.0',
       'FN:' + fn,
-      p.store ? 'N:;Leon Diamond;;;' : 'N:Leon Diamond;' + p.name + ';;;',
+      p.store ? 'N:;Leon Diamond;;;' : 'N:' + (p.last || 'Leon Diamond') + ';' + p.name + ';;;',
       'ORG:Leon Diamond',
       'TITLE:' + p.role,
       p.store ? STORE_TELS.map(function(t,i){ return 'TEL;TYPE=WORK,VOICE' + (i===0 ? ',PREF' : '') + ':' + t; }).join('\r\n')
-              : 'TEL;TYPE=CELL,VOICE:' + p.tel,
+              : 'TEL;TYPE=CELL,VOICE,PREF:' + p.tel,
+      /* koma = jeda lalu tekan 4 (extension), dipahami iPhone dan Android */
+      p.work ? 'TEL;TYPE=WORK,VOICE:' + p.work : null,
       SOLO ? null : 'EMAIL;TYPE=WORK,INTERNET:' + EMAIL,
+      p.cal ? 'URL;TYPE=Booking:' + p.cal : null,
+      p.ig ? 'X-SOCIALPROFILE;TYPE=instagram:' + p.ig : null,
       'URL:https://leondiamond.com',
       'ADR;TYPE=WORK:;;74 West 47th Street;New York;NY;10036;USA',
       'NOTE:Fine Jewelry since 1975 · Diamond District\\, NYC · Instagram @leondiamond',
@@ -554,6 +553,7 @@
   /* ===== Panel buka-tutup ===== */
   function wirePanel(btnId, panelId, onOpen){
     var btn = document.getElementById(btnId), panel = document.getElementById(panelId);
+    if (!btn || !panel) return; /* mike.html tidak punya tombol booking SMS (pakai Calendly) */
     btn.addEventListener('click', function(){
       var open = panel.classList.toggle('open');
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
