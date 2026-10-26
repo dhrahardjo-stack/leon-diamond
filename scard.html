@@ -414,7 +414,7 @@
   var TEAM = [
     {id:'avi',     name:'Avi',     tel:'+19172174768', role:'Sales Manager'},
     {id:'mike',    name:'Mike',    last:'Nekta', tel:'+12129214647', role:'Co-Partner',
-     work:'+12123027327,4', cal:'https://calendly.com/mike-nekta', ig:'https://www.instagram.com/mike_nekta'},
+     work:'+12123027327,5', cal:'https://calendly.com/mike-nekta', ig:'https://www.instagram.com/mike_nekta'},
     {id:'octavia', name:'Octavia', tel:'+19296358749', role:'Senior Sales Associate'},
     {id:'regina',  name:'Regina',  tel:'+17185326116', role:'Senior Sales Associate'},
     {id:'ruben',   name:'Ruben',   tel:'+15164990078', role:'Senior Sales Associate'},
@@ -475,7 +475,7 @@
       'TITLE:' + p.role,
       p.store ? STORE_TELS.map(function(t,i){ return 'TEL;TYPE=WORK,VOICE' + (i===0 ? ',PREF' : '') + ':' + t; }).join('\r\n')
               : 'TEL;TYPE=CELL,VOICE,PREF:' + p.tel,
-      /* koma = jeda lalu tekan 4 (extension), dipahami iPhone dan Android */
+      /* koma = jeda lalu tekan 4 (extension 5), dipahami iPhone dan Android */
       p.work ? 'TEL;TYPE=WORK,VOICE:' + p.work : null,
       SOLO ? null : 'EMAIL;TYPE=WORK,INTERNET:' + EMAIL,
       p.cal ? 'URL;TYPE=Booking:' + p.cal : null,
